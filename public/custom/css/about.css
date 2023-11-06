@@ -1,0 +1,26 @@
+.about-background {
+    background-color: #DDE6ED;
+}
+
+.benefit-background {
+    background-color: rgba(157, 178, 191, 0.17);
+}
+
+.benefit-container {
+    background: linear-gradient(to right, black 25%, transparent 25%);
+    background-size: 100% 10px;
+    background-repeat: no-repeat;
+    margin-bottom: 5em;
+}
+
+.card-name {
+    color: #2F4573;
+}
+
+.testimoni-background {
+    background-color: rgba(123, 167, 195, 0.17);
+    box-shadow: -1px 5px 11px -1px rgba(0,0,0,0.75);
+    -webkit-box-shadow: -1px 5px 11px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 5px 11px -1px rgba(0,0,0,0.75);
+    border-radius: 20px;
+}
