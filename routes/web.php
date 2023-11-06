@@ -25,3 +25,10 @@ Route::get('views/partials/contact', function () {
     return view('partials.contact');
 });
 
+Route::get('/register', function () {
+    return view('auth.register');
+});
+
+Route::get('/login', function () {
+    return view('auth.login');
+});

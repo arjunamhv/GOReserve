@@ -51,6 +51,10 @@
         <div>
             @yield('contact')
         </div>
+
+        <div>
+            @yield('auth')
+        </div>
     </main>
 
     {{-- Bootstrap JS --}}
