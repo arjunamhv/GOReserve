@@ -1,0 +1,41 @@
+.has-icon .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 3.5rem;
+    pointer-events: none;
+    color: #aaa;
+}
+
+.login-container {
+    background-color: black;
+    background-image: url('../../img/login-image.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.register-container {
+    background-color: black;
+    background-image: url('../../img/register-image.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.form-control-feedback {
+    padding-left: 20px;
+}
+
+.custom-input {
+    background-color: rgba(221, 234, 252, 0.47);
+    border-radius: 20px;
+    border: none;   
+}
+
+.custom-input::placeholder {
+    color: rgb(255, 255, 255);
+}

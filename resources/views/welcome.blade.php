@@ -6,8 +6,8 @@
             <h1 class="text-4xl font-bold p-1">Find and book sports facilities near you</h1>
             <p class="p-1">GOReserve is the easiest way to find and book sports facilities. With our platform, you can
                 quickly search for available sports halls and make hassle-free reservations.</p>
-            <button class="btn btn-primary">Search</button>
-            <button class="btn btn-outline btn-primary">learn more</button>
+                <button class="btn btn-primary" onclick="window.location.href='register'">Sign up</button>
+                <button class="btn btn-outline btn-primary" onclick="window.location.href='login'">Login</button>
         </div>
         <div class="inline-block w-full md:w-1/2 p-5 min-w-sm">
             <img src="{{ asset('/assets/images/landing1.jpg') }}" alt="Landing.img">
@@ -128,8 +128,8 @@
             <div class="absolute w-full top-1/2 text-center m-auto">
                 <h1 class="text-4xl font-bold p-1">Find and book sports hall</h1>
                 <p class="p-1">Discover the nearest sports hall and start booking your favorite activities</p>
-                <button class="btn btn-primary">Sign up</button>
-                <button class="btn btn-outline btn-primary">learn more</button>
+                <button class="btn btn-outline btn-primary">Search</button>
+                <button class="btn btn-primary">learn more</button>
             </div>
         </div>
     </section>
