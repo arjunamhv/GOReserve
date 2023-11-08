@@ -45,15 +45,7 @@
     <!-- Page Content -->
     <main>
         <div>
-            @yield('about')
-        </div>
-
-        <div>
-            @yield('contact')
-        </div>
-
-        <div>
-            @yield('auth')
+            @yield('content')
         </div>
     </main>
 

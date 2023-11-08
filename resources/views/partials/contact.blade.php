@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('contact')
+@section('content')
     <div class="container mt-5">
         <div class="row col-md-12 mb-5">
             <div class="col-md-4 d-flex p-0">
