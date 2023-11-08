@@ -19,6 +19,17 @@
         <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
             <div class="w-50 pb-5">
                 <div class="card-body pb-5">
+                        @if(session('success'))
+                            <div class="success-message">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
+                        @if(session('error'))
+                            <div class="error-message">
+                                {{ session('error') }}
+                            </div>
+                        @endif
                     <form action="/user/login" class="pb-5" method="GET">
                         @csrf
                         <div class="mb-3">

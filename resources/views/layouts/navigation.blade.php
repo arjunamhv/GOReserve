@@ -40,18 +40,13 @@
         {{-- dekstop --}}
         <div class="hidden md:flex">
             <ul class="menu menu-horizontal px-1">
-                <li><a href="/">Home</a></li>
+                <li><a>Home</a></li>
                 <li><a href="/about">About</a></li>
                 <li><a href="/contact">Contact</a></li>
                 @guest
                     <li><a>Blog</a></li>
                 @endguest
             </ul>
-
-            <div class="button-group align-end">
-                <a href="/register" class="btn btn-outline-primary">Register</a>
-                <a href="/login" class="btn btn-primary">Login</a>
-            </div>
         </div>
         @if (Route::has('login'))
             @auth
