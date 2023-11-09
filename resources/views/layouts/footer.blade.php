@@ -5,14 +5,14 @@
     </aside>
     <nav>
       <header class="footer-title">Services</header>
-      <a class="link link-hover" href="views/partials/contact">Contact</a>
+      <a class="link link-hover" href="/contact">Contact</a>
       <a class="link link-hover">Pricing</a>
       <a class="link link-hover">FaQ</a>
-      <a class="link link-hover">Blog</a>
+      <a class="link link-hover" href="/blog">Blog</a>
     </nav>
     <nav>
       <header class="footer-title">Company</header>
-      <a class="link link-hover" href="views/partials/about">About Us</a>
+      <a class="link link-hover" href="/about">About Us</a>
       <a class="link link-hover">Testimonials</a>
       <a class="link link-hover">Partners</a>
       <a class="link link-hover">Careers</a>

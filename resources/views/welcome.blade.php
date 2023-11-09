@@ -139,19 +139,21 @@
         <p class="text-center text-sm m-2">Stay active and healthy with sports</p>
         <div class="carousel rounded-box w-full overflow-x-auto">
             <div class="carousel-item p-5">
-                <div class="card w-96 bg-base-100 shadow-xl">
-                    <figure><img src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg"
-                            alt="Shoes" /></figure>
+                <a href="/detailblog" class="card w-96 bg-base-100 shadow-xl">
+                    <figure><img src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg" alt="Shoes" /></figure>
                     <div class="card-body">
                         <h2 class="card-title">Lorem, ipsum dolor.</h2>
                         <p class="text-sm text-base-300">by diva</p>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, et amet. Aspernatur hic dignissimos, dolorem debitis accusamus modi vel quod ratione quibusdam culpa exercitationem soluta!</p>
                         <div class="flex justify-between">
-                            <span class="text-xs"><i class="fa-regular fa-clock"></i> 3 minutes ago </span><span class="text-xs"><i class="fa-regular fa-eye"></i> 3000 views</span><span class="text-xs">Nov, 02 2023</span>
+                            <span class="text-xs"><i class="fa-regular fa-clock"></i> 3 minutes ago </span>
+                            <span class="text-xs"><i class="fa-regular fa-eye"></i> 3000 views</span>
+                            <span class="text-xs">Nov, 02 2023</span>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
+            
             <div class="carousel-item p-5">
                 <div class="card w-96 bg-base-100 shadow-xl">
                     <figure><img src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg"
