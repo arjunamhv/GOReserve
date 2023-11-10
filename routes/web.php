@@ -38,5 +38,6 @@ Route::post('/user/register', [AuthController::class, 'register'])->name('user.r
 
 Route::get('/blog', [BlogController::class, 'blog'])->name('blog');
 Route::get('/detailblog', [BlogController::class, 'detailblog'])->name('detailblog');
+Route::get('/faq', [BlogController::class, 'faq'])->name('faq');
 Route::get('/welcome', [BlogController::class, 'welcome'])->name('welcome');
 

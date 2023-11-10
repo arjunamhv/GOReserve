@@ -12,6 +12,9 @@ class BlogController extends Controller
     public function detailblog() {
         return view("detailblog");
     }
+    public function faq() {
+        return view("faq");
+    }
     public function welcome() {
         return view("welcome");
     }

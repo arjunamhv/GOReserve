@@ -7,7 +7,7 @@
       <header class="footer-title">Services</header>
       <a class="link link-hover" href="/contact">Contact</a>
       <a class="link link-hover">Pricing</a>
-      <a class="link link-hover">FaQ</a>
+      <a class="link link-hover" href="/faq">FaQ</a>
       <a class="link link-hover" href="/blog">Blog</a>
     </nav>
     <nav>
