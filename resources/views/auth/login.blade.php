@@ -32,7 +32,7 @@
         <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
             <div class="w-50 pb-5">
                 <div class="card-body pb-5">
-                    <form action="/user/login" class="pb-5" method="GET">
+                    <form action="/welcome" class="pb-5" method="GET">
                         @csrf
                         <div class="mb-3">
                             <div class="form-group has-icon">

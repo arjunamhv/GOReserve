@@ -107,7 +107,7 @@ class AuthController extends Controller
             'created_at' => Carbon::now()
         ]);
 
-        Mail::send('auth.passwords.email', ['token' => $token], function ($message) use ($request) {
+        Mail::send('auth.password.email', ['token' => $token], function ($message) use ($request) {
             $message->to($request->email);
             $message->subject('Reset Password');
         });
@@ -118,7 +118,7 @@ class AuthController extends Controller
 
     public function showResetPasswordForm($token)
     {
-        return view('auth.passwords.reset', ['token' => $token]);
+        return view('auth.password.reset', ['token' => $token]);
     }
 
     public function submitResetPasswordForm(Request $request)
