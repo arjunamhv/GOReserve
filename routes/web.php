@@ -17,11 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/about', function () {
+Route::get('/partials/about', function () {
     return view('partials.about');
 });
 
-Route::get('/contact', function () {
+Route::get('/partials/contact', function () {
     return view('partials.contact');
 });
 

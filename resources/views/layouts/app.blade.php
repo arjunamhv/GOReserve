@@ -45,7 +45,11 @@
     <!-- Page Content -->
     <main>
         <div>
+<<<<<<< HEAD
             @yield('container')
+=======
+            @yield('content')
+>>>>>>> 2417658c9e58206153a36ca9e6bd31760a98f722
         </div>
     </main>
 
