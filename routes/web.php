@@ -17,17 +17,49 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('views/partials/about', function () {
+Route::get('/about', function () {
     return view('partials.about');
 });
 
-Route::get('views/partials/contact', function () {
+Route::get('/contact', function () {
     return view('partials.contact');
+});
+
+Route::get('/sporthall', function () {
+    return view('partials.sporthall');
+});
+
+Route::get('/sporthall/detail', function () {
+    return view('partials.detail.sporthall-detail');
+});
+
+Route::get('/order', function () {
+    return view('partials.order.sporthall-order');
+});
+
+Route::get('/transaksi', function () {
+    return view('partials.order.transaksi');
+});
+
+Route::get('/transaksi/add', function () {
+    return view('partials.order.add');
+});
+
+Route::get('/transaksi/input', function () {
+    return view('partials.order.transaksi2');
+});
+
+Route::get('/myticket', function () {
+    return view('partials.myticket  ');
+});
+
+Route::get('/myticket/detail', function () {
+    return view('partials.detail.myticket-detail');
 });
 
 Route::get('/register', function () {
     return view('auth.register');
-});
+}); 
 
 Route::get('/login', function () {
     return view('auth.login');

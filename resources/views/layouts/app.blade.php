@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="light" class="scroll-smooth">
 
 <head>
     <meta charset="utf-8">
@@ -45,15 +45,7 @@
     <!-- Page Content -->
     <main>
         <div>
-            @yield('about')
-        </div>
-
-        <div>
-            @yield('contact')
-        </div>
-
-        <div>
-            @yield('auth')
+            @yield('container')
         </div>
     </main>
 

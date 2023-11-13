@@ -1,4 +1,4 @@
-<nav class="navbar bg-neutral text-base-100 sticky top-0 z-10">
+<nav class="navbar bg-neutral text-base-100 sticky top-0 z-10 px-32">
     <div class="navbar-start">
 
         {{-- mobile --}}
@@ -38,7 +38,7 @@
                 class="w-24"></a>
 
         {{-- dekstop --}}
-        <div class="hidden md:flex">            
+        <div class="px-4 hidden md:flex">            
             <ul class="menu menu-horizontal px-1">
                 <li><a>Home</a></li>
                 @guest

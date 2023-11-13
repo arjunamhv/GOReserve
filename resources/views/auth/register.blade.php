@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('auth')
+@section('container')
 <div class="register-container">
     <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
         <div class="w-75">
