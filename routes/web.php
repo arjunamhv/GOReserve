@@ -36,8 +36,22 @@ Route::get('/register', [AuthController::class, 'registerForm'])->name('register
 Route::post('/user/register', [AuthController::class, 'register'])->name('user.register');
 
 
+// Google Login
+Route::get('/google/redirect', [AuthController::class, 'redirectToGoogle'])->name('google.redirect');
+Route::get('/google/callback', [AuthController::class, 'handleGoogleCallback'])->name('google.callback');
+// Forgot Password
+Route::get('/forgot-password', [AuthController::class, 'showForgetPasswordForm'])->name('forgot.password.get');
+Route::post('/forgot-password', [AuthController::class, 'submitForgetPasswordForm'])->name('forgot.password.post');
+Route::get('/reset-password/{token}', [AuthController::class, 'showResetPasswordForm'])->name('reset.password.get');
+Route::post('/reset-password', [AuthController::class, 'submitResetPasswordForm'])->name('reset.password.post');
+
 Route::get('/blog', [BlogController::class, 'blog'])->name('blog');
 Route::get('/detailblog', [BlogController::class, 'detailblog'])->name('detailblog');
 Route::get('/faq', [BlogController::class, 'faq'])->name('faq');
 Route::get('/welcome', [BlogController::class, 'welcome'])->name('welcome');
+
+Route::middleware(['user-role'])->group(function () {
+    // Isi route
+});
+?>
 

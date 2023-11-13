@@ -19,19 +19,6 @@
         <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
             <div class="w-75">
                 <div class="card-body">
-                    <div id="app">
-                        @if(session('success'))
-                            <div class="success-message">
-                                {{ session('success') }}
-                            </div>
-                        @endif
-
-                        @if(session('error'))
-                            <div class="error-message">
-                                {{ session('error') }}
-                            </div>
-                        @endif
-                    </div>
                     <form action="/user/register" method="POST">
                         @csrf
                         <div class="w-100 d-flex justify-content-between mb-4">
@@ -72,7 +59,7 @@
                         </div>
 
                         <div>
-                            <a href="/register" name="login-google" value="login-google" type="submit"
+                            <a href="{{ route('google.redirect') }}" name="login-google" value="login-google" type="submit"
                                 class="w-100 google-btn my-3 btn bg-light"
                                 style="padding: 20px;
                             border-radius: 20px;">
