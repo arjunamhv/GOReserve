@@ -1,6 +1,21 @@
 @extends('layouts.app')
 
+<<<<<<< HEAD
+@section('container')
+<section class="px-32 py-16">
+    <div class="w-full px-4">
+        <div class="max-w-xl mx-auto text-center mb-16">
+          <h4 class="font-medium text-lg text-sky-800 mb-2">GOReserve</h4>
+          <h2
+            class="font-bold text-dark text-2xl mb-4 sm:text-3xl lg:text-4xl dark:text-white tracking-widest"
+          >
+            ABOUT US
+          </h2>
+        </div>
+      </div>
+=======
 @section('content')
+>>>>>>> 2417658c9e58206153a36ca9e6bd31760a98f722
     <div class="container">
         <!-- About Us -->
         <div class="col-md-12" style="margin-bottom: 3em">
@@ -217,5 +232,5 @@
                 </div>
             </div>
         </div>
-
+</section>
 @endsection
