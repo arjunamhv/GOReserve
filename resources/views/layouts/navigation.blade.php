@@ -38,11 +38,10 @@
                 class="w-24"></a>
 
         {{-- dekstop --}}
-<<<<<<< HEAD
-        <div class="px-4 hidden md:flex">            
-=======
+
+        <div class="px-4 hidden md:flex">
         <div class="hidden md:flex">
->>>>>>> 2417658c9e58206153a36ca9e6bd31760a98f722
+
             <ul class="menu menu-horizontal px-1">
                 <li><a href="/welcome">Home</a></li>
                 <li><a href="/about">About</a></li>

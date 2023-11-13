@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<<<<<<< HEAD
-@section('container')
-=======
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,7 +28,6 @@
             </div>
         @endif
     </div>
->>>>>>> 2417658c9e58206153a36ca9e6bd31760a98f722
     <div class="login-container">
         <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
             <div class="w-50 pb-5">

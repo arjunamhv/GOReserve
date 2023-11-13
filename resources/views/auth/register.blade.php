@@ -1,42 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-@section('container')
-<div class="register-container">
-    <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
-        <div class="w-75">
-            <div class="card-body">
-                <form action="" method="POST">
-                    <div class="w-100 d-flex justify-content-between mb-4">
-                        <div class="form-group has-icon" style="width: 45%;">
-                            <label class="text-light fw-bold" for="first-name">First Name</label>
-                            <span class="fa-solid fa-user form-control-feedback pt-3 text-light"></span>
-                            <input type="text" class="w-100 text-light custom-input ps-5 p-4" id="first-name"
-                                placeholder="First Name">
-                        </div>
-                        <div class="form-group has-icon" style="width: 45%;">
-                            <label class="text-light fw-bold" for="last-name">Last Name</label>
-                            <span class="fa-solid fa-lock form-control-feedback pt-3 text-light"></span>
-                            <input type="text" class="w-100 text-light custom-input ps-5 p-4" id="last-name"
-                                placeholder="Last Name">
-                        </div>
-                    </div>
-                    <div class="mb-4">
-                        <label class="text-light fw-bold" for="email">Email</label>
-                        <div class="form-group has-icon">
-                            <span class="fa-solid fa-envelope form-control-feedback pt-3 text-light"></span>
-                            <input type="email" class="w-100 text-light custom-input ps-5 p-4" id="email"
-                                name="email" placeholder="Email">
-                        </div>
-                    </div>
-                    <div class="mb-5">
-                        <label class="text-light fw-bold" for="email">Password</label>
-                        <div class="form-group has-icon">
-                            <span class="fa-solid fa-lock form-control-feedback pt-3 text-light"></span>
-                            <input type="password" class="w-100  text-light custom-input ps-5 p-4"
-                                id="password" placeholder="Password">
-                        </div>
-                    </div>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
