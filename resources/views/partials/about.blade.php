@@ -1,6 +1,5 @@
 @extends('layouts.app')
 
-<<<<<<< HEAD
 @section('container')
 <section class="px-32 py-16">
     <div class="w-full px-4">
@@ -13,9 +12,7 @@
           </h2>
         </div>
       </div>
-=======
 @section('content')
->>>>>>> 2417658c9e58206153a36ca9e6bd31760a98f722
     <div class="container">
         <!-- About Us -->
         <div class="col-md-12" style="margin-bottom: 3em">
