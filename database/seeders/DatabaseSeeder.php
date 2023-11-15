@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(GORSeeder::class);
         $this->call(TypeSeeder::class);
         $this->call(FieldSeeder::class);
+        $this->call(IndoRegionSeeder::class);
     }
 }
