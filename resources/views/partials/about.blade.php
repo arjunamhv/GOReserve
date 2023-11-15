@@ -12,7 +12,6 @@
           </h2>
         </div>
       </div>
-@section('content')
     <div class="container">
         <!-- About Us -->
         <div class="col-md-12" style="margin-bottom: 3em">
