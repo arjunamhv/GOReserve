@@ -16,7 +16,7 @@ use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('landing');
 
 Route::get('/about', function () {
     return view('partials.about');
