@@ -1,6 +1,5 @@
 <nav class="navbar bg-neutral text-base-100 sticky top-0 z-10">
     <div class="navbar-start w-9/12">
-
         {{-- mobile --}}
         <div class="dropdown">
             <label tabindex="0" class="btn btn-ghost md:hidden">
@@ -10,7 +9,7 @@
                 @auth
                     <ul tabindex="0"
                         class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><a href="{{ route('home') }}">Home</a></li>
+                        <li><a href="{{ route('') }}">Home</a></li>
                         <li><a>My Tickets</a></li>
                         <li><a>Chats</a></li>
                         @if (auth()->user()->is_admin)
@@ -22,10 +21,10 @@
                 @else
                     <ul tabindex="0"
                         class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><a href="{{ url('/') }}">Home</a></li>
-                        <li><a>About us</a></li>
-                        <li><a>Contact</a></li>
-                        <li><a>Blog</a></li>
+                        <li><a href="{{ url('') }}">Home</a></li>
+                        <li><a href="{{ url('about') }}">About us</a></li>
+                        <li><a href="{{ url('contact') }}">Contact</a></li>
+                        <li><a href="{{ url('blog') }}">Blog</a></li>
                         <li><a href="{{ route('login') }}">Login</a></li>
                         @if (Route::has('register'))
                             <li><a href="{{ route('register') }}">Register</a></li>
@@ -41,15 +40,15 @@
         {{-- dekstop --}}
         <div class="hidden md:flex">
             <ul class="menu menu-horizontal px-0">
-                <li><a href="{{ url('/') }}">Home</a></li>
+                <li><a href="{{ url('') }}">Home</a></li>
                 @auth
-                    <li><a>My Tickets</a></li>
-                    <li><a>Chats</a></li>
+                    <li><a href="{{ url('myticket') }}">My Tickets</a></li>
+                    <li><a href="{{ url('') }}">Chats</a></li>
                 @endauth
                 @guest
-                    <li><a>About Us</a></li>
-                    <li><a>Contact</a></li>
-                    <li><a>Blog</a></li>
+                    <li><a href="{{ url('about') }}">About Us</a></li>
+                    <li><a href="{{ url('contact') }}">Contact</a></li>
+                    <li><a href="{{ url('blog') }}">Blog</a></li>
                 @endguest
             </ul>
         </div>
