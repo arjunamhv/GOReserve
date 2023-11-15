@@ -3,6 +3,12 @@
 use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RegistergorController;
+use App\Http\Controllers\DashboardAdminController;
+use App\Http\Controllers\MyGORController;
+use App\Http\Controllers\GorController;
+use App\Http\Controllers\FieldController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -81,4 +87,12 @@ Route::get('/welcome', [BlogController::class, 'welcome'])->name('welcome');
 Route::middleware(['user-role'])->group(function () {
     // Isi route
 });
+Route::get('/registergor', [RegistergorController::class, 'Form'])->name('registergor');
+Route::resource('gor', GorController::class);
+Route::resource('field', FieldController::class);
+Route::post('/getcity', [RegistergorController::class, 'getcity'])->name('getCity');
+Route::post('/getdistrict', [RegistergorController::class, 'getdistrict'])->name('getDistrict');
+Route::post('/getsubdistrict', [RegistergorController::class, 'getsubdistrict'])->name('getSubDistrict');
+Route::get('/admin-dashboard', [DashboardAdminController::class, 'index'])->name('admin-dashboard');
+Route::get('mygor/{id}', [MyGORController::class, 'show'])->name('mygor.show');
 ?>
