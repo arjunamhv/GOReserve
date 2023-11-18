@@ -5,7 +5,7 @@
         <div class="inline-block w-full md:w-1/2 p-5 pl-6 min-w-sm">
             <h1 class="text-4xl font-bold p-1">Find and book sports facilities near you</h1>
             <p class="p-1">GOReserve is the easiest way to find and book sports facilities. With our platform, you can
-                quickly search for available sports halls and make hassle-free reservations.</p>
+                quickly search for available sports halls and make hassle-free reservations with GOReserve</p>
                 @auth
                 <button class="btn btn-primary">Search GOR</button>
                 <button class="btn btn-outline btn-primary">Learn More</button>
