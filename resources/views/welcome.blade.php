@@ -155,13 +155,13 @@
                 <a href="/detailblog" class="card w-96 bg-base-100 shadow-xl">
                     <figure><img src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg" alt="Shoes" /></figure>
                     <div class="card-body">
-                        <h2 class="card-title">Lorem, ipsum dolor.</h2>
-                        <p class="text-sm text-base-300">by diva</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, et amet. Aspernatur hic dignissimos, dolorem debitis accusamus modi vel quod ratione quibusdam culpa exercitationem soluta!</p>
+                        <h2 class="card-title">Mengupas Ruang Olahraga: Kesehatan dan Kesejahteraan yang Didapatkan</h2>
+                        <p class="text-sm text-base-300">by Divaa</p>
+                        <p>Ruang olahraga sering kali menjadi elemen yang terlupakan dalam kehidupan sehari-hari kita yang sibuk. Namun, dalam blog ini, kita akan membongkar manfaat besar yang bisa didapatkan dari ruang olahraga...</p>
                         <div class="flex justify-between">
                             <span class="text-xs"><i class="fa-regular fa-clock"></i> 3 minutes ago </span>
                             <span class="text-xs"><i class="fa-regular fa-eye"></i> 3000 views</span>
-                            <span class="text-xs">Nov, 02 2023</span>
+                            <span class="text-xs">Jan, 01 2023</span>
                         </div>
                     </div>
                 </a>
