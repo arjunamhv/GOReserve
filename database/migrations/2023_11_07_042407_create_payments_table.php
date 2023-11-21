@@ -13,11 +13,9 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('booking_id')->references('id')->on('bookings');
+            $table->foreignId('booking_id');
             $table->integer('amount');
-            $table->date('booking_date');
-            $table->timestamp('payment_time');
-            $table->enum('status' , ['Belum Bayar','Sudah Bayar'])->default('Belum Bayar');
+            $table->integer('ticket_number')->nullable()->unique();
             $table->timestamps();
         });
     }

@@ -17,7 +17,8 @@ return new class extends Migration
             $table->foreignId('field_id')->references('id')->on('fields');
             $table->date('booking_date');
             $table->time('start_time');
-            $table->unsignedInteger('duration');
+            $table->integer('duration');
+            $table->string('status')->default('Belum Bayar');
             $table->timestamps();
         });
     }

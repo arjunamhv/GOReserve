@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('gor_id')->references('id')->on('gors');
             $table->string('name');
             $table->string('type');
+            $table->integer('price');
             $table->timestamps();
         });
     }

@@ -12,13 +12,23 @@
                 X
             </button>
         </div>
-    @endif
+        @elseif(session()->has('error'))
+        <div class="w-1/2 flex justify-between mx-auto bg-red-100 border-l-4 border-red-500 text-red-700 p-4 relative" role="alert">
+            {{ session('error') }}
+            <button
+                class=" text-red-600 hover:text-red-400 font-bold text-medium"
+                onclick="this.parentElement.style.display='none'"
+            >
+                X
+            </button>
+        </div>
+        @endif
         <div class="w-full rounded-3xl bg-slate-300 p-4 mb-10">
             <h1 class="text-center text-3xl font-bold text-slate-800 mb-4">{{ $gor->name }}</h1>
             <div class="flex items-center justify-between">
                 <img src="{{ asset('../img/login-image.png') }}" alt="lapang" class="w-2/5 h-[400px] rounded-xl">
                 <div class="w-1/2">
-                    <form method="POST" action="{{ route('store', ['gor' => $gor->name]) }}">
+                    <form method="POST" action="{{ route('store', ['gor' => $gor->slug]) }}">
                         @csrf
                         <div class="mb-2 text-left">
                             <p class="text-base font-bold text-slate-800">
@@ -35,12 +45,12 @@
                                     @if(old('field') == $field->id)
                                     <option value="{{ $field->id }}" selected>{{ $field->name }}</option>
                                     @else
-                                    <option value="{{ $field->id }}">{{ $field->name }}</option>
+                                    <option value="{{ $field->id }}">{{ $field->name }} - Rp. {{ $field->price }}</option>
                                     @endif
                                 @endforeach
                             </select>
                         </div>
-                        <div class="mb-10 flex justify-between items-center">
+                        <div class="flex justify-between items-center">
                             <div class="">
                             <p class="text-base font-bold text-slate-800">
                                 Jadwal
@@ -58,16 +68,16 @@
                                 Durasi (jam)
                             </p>
                             <input type="number" name="duration" id="duration" min="1" max="12" class="bg-slate-200 text-dark p-2 rounded-md focus:outline-none focus:ring-primary focus-ring1 focus:border-primary" required>
-                            </div>
                         </div>
-                        <button type="submit" class="text-lg font-bold text-white bg-sky-800 py-3 px-24 rounded-2xl hover:shadow-lg hover:opacity-50 transition duration-300 ease-in-out">SUBMIT</button>
+                        </div>
+                        <button type="submit" class="mt-10 text-lg font-bold text-white bg-sky-800 py-3 px-24 rounded-2xl hover:shadow-lg hover:opacity-50 transition duration-300 ease-in-out">SUBMIT</button>
                     </form>
                 </div>
             </div>
         </div>            
             @if (session('success'))    
             {{-- summary --}}
-            <form action="{{ route('transaction', ['gor' => $gor->name]) }}" method="POST">
+            <form action="{{ route('transaction', ['gor' => $gor->slug]) }}" method="POST">
                 @csrf
                 <input type="hidden" name="booking_id" value="{{ $formData['booking_id'] }}">
                 <input type="hidden" name="booking_date" value="{{ $formData['booking_date'] }}">
@@ -86,6 +96,10 @@
                         <p class="text-blue-800 text-xl font-bold">Rp. {{ number_format($formData['price'], 2, ',', '.') }}</p>
                     </div>
                     <div class="flex justify-between">
+                        <label class="flex items-center space-x-2">
+                            <input type="checkbox" class="form-checkbox h-4 w-4 text-sky-600" required>
+                            <span class="text-slate-800">I agree to the terms and conditions</span>
+                        </label>
                         <button type="submit" class="text-md font-semibold text-white bg-sky-800 py-2 px-4 rounded-2xl hover:shadow-lg hover:opacity-50 transition duration-300 ease-in-out">ORDER</button>
                     </div>
                 </div>

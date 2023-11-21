@@ -6,8 +6,14 @@
             <h1 class="text-4xl font-bold p-1">Find and book sports facilities near you</h1>
             <p class="p-1">GOReserve is the easiest way to find and book sports facilities. With our platform, you can
                 quickly search for available sports halls and make hassle-free reservations.</p>
-                <button class="btn btn-primary" onclick="window.location.href='register'">Sign up</button>
-                <button class="btn btn-outline btn-primary" onclick="window.location.href='login'">Login</button>
+                @auth
+                <button class="btn btn-primary">Search GOR</button>
+                <button class="btn btn-outline btn-primary">Learn More</button>
+                @endauth
+                @guest
+                <a class="btn btn-primary" href="{{ url('register') }}">Sign up</a>
+                <a class="btn btn-outline btn-primary" href="{{ url('login') }}">Login</a>
+                @endguest
         </div>
         <div class="inline-block w-full md:w-1/2 p-5 min-w-sm">
             <img src="{{ asset('/assets/images/landing1.jpg') }}" alt="Landing.img">
@@ -128,8 +134,20 @@
             <div class="absolute w-full top-1/2 text-center m-auto">
                 <h1 class="text-4xl font-bold p-1">Find and book sports hall</h1>
                 <p class="p-1">Discover the nearest sports hall and start booking your favorite activities</p>
+<<<<<<< HEAD
                 <button class="btn btn-outline btn-primary">Search</button>
                 <button class="btn btn-primary">learn more</button>
+=======
+                @auth
+                <button class="btn btn-outline btn-primary">Search</button>
+                <button class="btn btn-primary">learn more</button>
+                @endauth
+                @guest
+                <a class="btn btn-outline btn-primary" href="{{ url('register') }}">Sign up</a>
+                <a class="btn btn-primary" href="{{ url('login') }}">Login</a>
+                @endguest
+
+>>>>>>> 614215d2351f77bbeceae10946b351721a471381
             </div>
         </div>
     </section>

@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users');
             $table->string('name');
+            $table->string('slug')->unique();
             $table->string('address');
-            $table->string('opening_hour');
-            $table->decimal('price'); //
+            $table->time('opening_hour');
+            $table->time('closing_hour');
             $table->timestamps();
         });
     }
