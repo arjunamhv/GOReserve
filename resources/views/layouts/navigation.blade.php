@@ -5,7 +5,7 @@
             <label tabindex="0" class="btn btn-ghost md:hidden">
                 <i class="fa-solid fa-bars"></i>
             </label>
-            @if (Route::has('login'))
+            @if (Route::has('auth/login'))
                 @auth
                     <ul tabindex="0"
                         class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
@@ -52,7 +52,7 @@
                 @endguest
             </ul>
         </div>
-        @if (Route::has('login'))
+        @if (Route::has('auth/login'))
             @auth
                 <div class="hidden md:flex">
                     <ul class="menu menu-horizontal px-0">
@@ -85,7 +85,7 @@
                     </div>
                 </label>
                 <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                    <li><a>Profile</a></li>
+                    <li><a href="{{ route('profile.edit') }}">Profile</a></li>
                     <form method="POST" action="{{ route('logout') }}">
                         <li>
                             @csrf
