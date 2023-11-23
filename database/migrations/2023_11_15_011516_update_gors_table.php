@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('gors', function (Blueprint $table) {
-            $table->string('gor_banner')->after('user_id');
-            $table->string('gor_photos')->after('gor_banner');
-            $table->string('contact')->after('address');
-            $table->string('facility')->after('opening_hour');
+            $table->string('gor_banner')->after('user_id')->nullable();
+            $table->string('gor_photos')->after('gor_banner')->nullable();
+            $table->string('contact')->after('address')->nullable();
+            $table->string('facility')->after('opening_hour')->nullable();
         });
     }
 

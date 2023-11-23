@@ -21,18 +21,22 @@ class FieldSeeder extends Seeder
             [
                 'name' => 'Lapangan Badminton 1',
                 'type' => 1,
+                'price' => 25000
             ],
             [
                 'name' => 'Lapangan Basket Indoor 1',
                 'type' => 2,
+                'price' => 35000
             ],
             [
                 'name' => 'Lapangan Futsal 1',
                 'type' => 3,
+                'price' => 35000
             ],
             [
                 'name' => 'Meja Pingpong 1',
                 'type' => 4,
+                'price' => 25000
             ],
         ];
 
@@ -41,6 +45,7 @@ class FieldSeeder extends Seeder
             $newField->gor()->associate($gor);
             $newField->name = $field['name'];
             $newField->type = $field['type'];
+            $newField->price = $field['price'];
             $newField->save();
         }
     }

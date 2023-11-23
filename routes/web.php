@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistergorController;
 use App\Http\Controllers\DashboardAdminController;
@@ -11,6 +10,12 @@ use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Symfony\Component\HttpKernel\Profiler\Profile;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\TicketController;
+use App\Http\Controllers\SportHallController;
+use App\Http\Controllers\RegistergorController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,47 +30,51 @@ use Symfony\Component\HttpKernel\Profiler\Profile;
 
 Route::get('/', function () {
     return view('welcome');
-})->name('landing');
+});
 
 Route::get('/about', function () {
-    return view('partials.about');
+    return view('about');
 });
 
 Route::get('/contact', function () {
-    return view('partials.contact');
+      return view('partials.contact');
 });
 
-Route::get('/sporthall', function () {
-    return view('partials.sporthall');
-});
+// Route::get('/transaksi', function () {
+//     return view('partials.order.transaksi');
+// })->middleware(['auth', 'verified']);
 
-Route::get('/sporthall/detail', function () {
-    return view('partials.detail.sporthall-detail');
-});
+// Route::get('/transaksi/add', function () {
+//     return view('partials.order.add');
+// })->middleware(['auth', 'verified']);
 
-Route::get('/order', function () {
-    return view('partials.order.sporthall-order');
-})->middleware(['auth', 'verified']);
+// Route::get('/transaksi/input', function () {
+//     return view('partials.order.transaksi2');
+// })->middleware(['auth', 'verified']);
 
-Route::get('/transaksi', function () {
-    return view('partials.order.transaksi');
-})->middleware(['auth', 'verified']);
+// sporthall
+Route::get('/sporthall', [SportHallController::class,'index']);
+Route::get('/sporthall/{gor:slug}', [SportHallController::class,'show']);
+Route::get('/sporthall/{gor:slug}/order', [SportHallController::class, 'order'])->middleware(['auth', 'verified']);
+Route::post('/sporthall/{gor:slug}/order', [SportHallController::class, 'store'])->name('store')->middleware(['auth', 'verified']);
+Route::post('/sporthall/{gor:slug}/transaction', [SportHallController::class, 'transaction'])->name('transaction')->middleware(['auth', 'verified']);
 
-Route::get('/transaksi/add', function () {
-    return view('partials.order.add');
-})->middleware(['auth', 'verified']);
+Route::get('/myticket', [TicketController::class, 'index'])->middleware(['auth', 'verified']);
+Route::get('/myticket/{payment:id}', [TicketController::class, 'show'])->middleware(['auth', 'verified']);
 
-Route::get('/transaksi/input', function () {
-    return view('partials.order.transaksi2');
-})->middleware(['auth', 'verified']);
+Route::get('/login', [AuthController::class, 'index'])->name('login.form');
+Route::get('/user/login', [AuthController::class, 'login'])->name('user.login');
+Route::get('/register', [AuthController::class, 'registerForm'])->name('register.form');
+Route::post('/user/register', [AuthController::class, 'register'])->name('user.register');
 
-Route::get('/myticket', function () {
-    return view('partials.myticket  ');
-})->middleware(['auth', 'verified']);
-
-Route::get('/myticket/detail', function () {
-    return view('partials.detail.myticket-detail');
-})->middleware(['auth', 'verified']);
+// Google Login
+Route::get('/google/redirect', [AuthController::class, 'redirectToGoogle'])->name('google.redirect');
+Route::get('/google/callback', [AuthController::class, 'handleGoogleCallback'])->name('google.callback');
+// Forgot Password
+Route::get('/forgot-password', [AuthController::class, 'showForgetPasswordForm'])->name('forgot.password.get');
+Route::post('/forgot-password', [AuthController::class, 'submitForgetPasswordForm'])->name('forgot.password.post');
+Route::get('/reset-password/{token}', [AuthController::class, 'showResetPasswordForm'])->name('reset.password.get');
+Route::post('/reset-password', [AuthController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 
 Route::get('/blog', [BlogController::class, 'blog'])->name('blog');
 Route::get('/detailblog', [BlogController::class, 'detailblog'])->name('detailblog');

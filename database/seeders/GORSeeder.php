@@ -26,7 +26,9 @@ class GORSeeder extends Seeder
                 'kode_pos' => '12810',
                 'detail' => 'Jalan Tebet Raya No. 45A'
             ]);
-            $gor->opening_hour = '08:00 - 20:00';
+            $gor->slug = 'gor-olahraga-hebat';
+            $gor->opening_hour = '08:00';
+            $gor->closing_hour = '20:00';
 
             // Mengaitkan GOR dengan User ID = 2
             $gor->user_id = $user->id;

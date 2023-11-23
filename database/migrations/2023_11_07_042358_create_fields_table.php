@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('fields', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('gor_id');
+            $table->foreignId('gor_id')->references('id')->on('gors');
             $table->string('name');
             $table->string('type');
+            $table->integer('price');
             $table->timestamps();
         });
     }

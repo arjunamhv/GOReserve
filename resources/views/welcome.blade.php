@@ -136,16 +136,14 @@
             <div class="absolute w-full top-1/2 text-center m-auto">
                 <h1 class="text-4xl font-bold p-1">Find and book sports hall</h1>
                 <p class="p-1">Discover the nearest sports hall and start booking your favorite activities</p>
-                @if (Route::has('login'))
-                @auth
-                <button class="btn btn-outline btn-primary">Search</button>
-                <button class="btn btn-primary">learn more</button>
-                @endauth
-                @guest
-                <a class="btn btn-outline btn-primary" href="{{ route('register') }}">Sign up</a>
-                <a class="btn btn-primary" href="{{ route('login') }}">Login</a>
-                @endguest
-                @endif
+                  @auth
+                    <button class="btn btn-outline btn-primary">Search</button>
+                    <button class="btn btn-primary">learn more</button>
+                  @endauth
+                  @guest
+                    <a class="btn btn-outline btn-primary" href="{{ route('register') }}">Sign up</a>
+                    <a class="btn btn-primary" href="{{ route('login') }}">Login</a>
+                  @endguest
             </div>
         </div>
     </section>

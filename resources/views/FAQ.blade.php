@@ -88,8 +88,8 @@
                     </svg>
                 </a>
                 <div x-show="isOpen" @click.away="isOpen = false" class="mt-3" :class="{'text-gray-600' : isOpen == true}">
-                    <p>Select an available payment method
-                        <br>Enter payment details and confirm the order after verification.</p>
+                    <li>Select an available payment method</li>
+                    <li>Enter payment details and confirm the order after verification.</li>
                 </div>
             </div>
 
@@ -174,5 +174,4 @@ function scrollHandler(element = null) {
 
 </script>
 </body>
-@include('layouts.footer')
 @endsection

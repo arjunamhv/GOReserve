@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('gors', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->references('id')->on('users');
             $table->string('name');
+            $table->string('slug')->unique();
             $table->string('address');
-            $table->string('opening_hour');
+            $table->time('opening_hour');
+            $table->time('closing_hour');
             $table->timestamps();
         });
     }
