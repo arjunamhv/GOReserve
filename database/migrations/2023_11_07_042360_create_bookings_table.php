@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('field_id');
+            $table->foreignId('user_id')->references('id')->on('users');
+            $table->foreignId('field_id')->references('id')->on('fields');
             $table->date('booking_date');
-            $table->string('start_time');
-            $table->string('duration');
+            $table->time('start_time');
+            $table->integer('duration');
+            $table->string('status')->default('Belum Bayar');
             $table->timestamps();
         });
     }

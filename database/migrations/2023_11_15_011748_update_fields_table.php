@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('fields', function (Blueprint $table) {
-            $table->string('field_banner')->after('id');
-            $table->string('field_photos')->after('field_banner');
+            $table->string('field_banner')->after('id')->nullable();
+            $table->string('field_photos')->after('field_banner')->nullable();
         });
     }
 

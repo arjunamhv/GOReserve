@@ -14,7 +14,7 @@
  
 <style>
     * {
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'poppins' ;
     }
 </style>   
 
@@ -33,7 +33,7 @@
                 
                     <div class="text-4xl text-neutral-950 mb-8">Frequently asked questions.</div>
                     <div class="mb-2">Have questions about our platform? </div>
-                    <div class="font-thin text-gray-600">We have answers! Here are some general responses that may be helpful.</div>
+                    <div class="font-small text-gray-400">We have answers! Here are some general responses that may be helpful.</div>
                     </div>
                 </div>
                 <div class="md:w-2/3 py-12 ">
@@ -88,8 +88,8 @@
                     </svg>
                 </a>
                 <div x-show="isOpen" @click.away="isOpen = false" class="mt-3" :class="{'text-gray-600' : isOpen == true}">
-                    <p>Select an available payment method
-                        <br>Enter payment details and confirm the order after verification.</p>
+                    <li>Select an available payment method</li>
+                    <li>Enter payment details and confirm the order after verification.</li>
                 </div>
             </div>
 
@@ -133,82 +133,6 @@
                     </p>
                 </div>
             </div>
-
-            <div class="item px-6 py-6" x-data="{isOpen : false}">
-                <a href="#" class="flex items-center justify-between" @click.prevent="isOpen = true">
-                    <h4 :class="{'text-green-400 font-medium' : isOpen == true}">Lorem Ipsum ?</h4>
-                    <svg 
-                    :class="{'transform rotate-180' : isOpen == true}"
-                    class="w-5 h-5 text-gray-500"
-                        fill="none" stroke-linecap="round" 
-                        stroke-linejoin="round" stroke-width="2" 
-                        viewBox="0 0 24 24" stroke="currentColor">
-                        <path d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </a>
-                <div x-show="isOpen" @click.away="isOpen = false" class="mt-3" :class="{'text-gray-600' : isOpen == true}">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                </div>
-            </div>
-            
-            <div class="item px-6 py-6" x-data="{isOpen : false}">
-                <a href="#" class="flex items-center justify-between" @click.prevent="isOpen = true">
-                    <h4 :class="{'text-green-400 font-medium' : isOpen == true}">Lorem Ipsum ?</h4>
-                    <svg 
-                    :class="{'transform rotate-180' : isOpen == true}"
-                    class="w-5 h-5 text-gray-500"
-                        fill="none" stroke-linecap="round" 
-                        stroke-linejoin="round" stroke-width="2" 
-                        viewBox="0 0 24 24" stroke="currentColor">
-                        <path d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </a>
-                <div x-show="isOpen" @click.away="isOpen = false" class="mt-3" :class="{'text-gray-600' : isOpen == true}">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                </div>
-            </div>
-            
-            <div class="item px-6 py-6" x-data="{isOpen : false}">
-                <a href="#" class="flex items-center justify-between" @click.prevent="isOpen = true">
-                    <h4 :class="{'text-green-400 font-medium' : isOpen == true}">Lorem Ipsum ?</h4>
-                    <svg 
-                    :class="{'transform rotate-180' : isOpen == true}"
-                    class="w-5 h-5 text-gray-500"
-                        fill="none" stroke-linecap="round" 
-                        stroke-linejoin="round" stroke-width="2" 
-                        viewBox="0 0 24 24" stroke="currentColor">
-                        <path d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </a>
-                <div x-show="isOpen" @click.away="isOpen = false" class="mt-3" :class="{'text-gray-600' : isOpen == true}">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                </div>
-            </div>
-
-            <div class="item px-6 py-6" x-data="{isOpen : false}">
-                <a href="#" class="flex items-center justify-between" @click.prevent="isOpen = true">
-                    <h4 :class="{'text-green-400 font-medium' : isOpen == true}">Lorem Ipsum ?</h4>
-                    <svg 
-                    :class="{'transform rotate-180' : isOpen == true}"
-                    class="w-5 h-5 text-gray-500"
-                        fill="none" stroke-linecap="round" 
-                        stroke-linejoin="round" stroke-width="2" 
-                        viewBox="0 0 24 24" stroke="currentColor">
-                        <path d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </a>
-                <div x-show="isOpen" @click.away="isOpen = false" class="mt-3" :class="{'text-gray-600' : isOpen == true}">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                </div>
-            </div>
-        </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 </article>
 
 <div
@@ -250,5 +174,4 @@ function scrollHandler(element = null) {
 
 </script>
 </body>
-@include('layouts.footer')
 @endsection

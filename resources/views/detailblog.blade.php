@@ -8,9 +8,9 @@
             <!-- Post header -->
             <header class="mb-3">
                 <!-- Post title -->
-                <h1 class="font-bold text-4xl mb-1">Mengupas Ruang Olahraga: Kesehatan dan Kesejahteraan yang Didapatkan</h1>
+                <h1 class="font-bold text-3xl mb-1 mx-8">Mengupas Ruang Olahraga: Kesehatan dan Kesejahteraan yang Didapatkan</h1>
                 <!-- Post meta content -->
-                <div class="text-gray-500 italic mb-2">Posted on January 1, 2023 by Divaa</div>
+                <div class="text-gray-500 italic mb-2 mx-4">Posted on January 1, 2023 by Divaa</div>
             </header>
             <!-- Preview image figure -->
             <figure>
@@ -74,5 +74,4 @@
   }
 </style>
 </html>
-@include('layouts.footer')
 @endsection

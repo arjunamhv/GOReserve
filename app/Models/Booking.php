@@ -12,18 +12,18 @@ class Booking extends Model
     protected $guarded = ['id'];
 
     public function user() {
-        $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function ticket() {
-        $this->hasOne(Ticket::class);
+        return $this->hasOne(Ticket::class);
     }
 
     public function payment() {
-        $this->hasOne(Payment::class);
+        return $this->hasOne(Payment::class);
     }
 
     public function field() {
-        $this->belongsTo(Field::class, 'field_id');
+        return $this->belongsTo(Field::class, 'field_id');
     }
 }

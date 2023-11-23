@@ -1,13 +1,16 @@
 <?php
 
-use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GorController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\FieldController;
+use App\Http\Controllers\MyGORController;
+use App\Http\Controllers\TicketController;
+use App\Http\Controllers\SportHallController;
 use App\Http\Controllers\RegistergorController;
 use App\Http\Controllers\DashboardAdminController;
-use App\Http\Controllers\MyGORController;
-use App\Http\Controllers\GorController;
-use App\Http\Controllers\FieldController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,48 +25,25 @@ use App\Http\Controllers\FieldController;
 
 Route::get('/', function () {
     return view('welcome');
-})->name('landing');
+});
 
 Route::get('/about', function () {
-    return view('partials.about');
+    return view('about');
 });
 
 Route::get('/contact', function () {
-    return view('partials.contact');
+    return view('contact');
 });
 
-Route::get('/sporthall', function () {
-    return view('partials.sporthall');
-});
+// sporthall
+Route::get('/sporthall', [SportHallController::class,'index']);
+Route::get('/sporthall/{gor:slug}', [SportHallController::class,'show']);
+Route::get('/sporthall/{gor:slug}/order', [SportHallController::class, 'order']);
+Route::post('/sporthall/{gor:slug}/order', [SportHallController::class, 'store'])->name('store');
+Route::post('/sporthall/{gor:slug}/transaction', [SportHallController::class, 'transaction'])->name('transaction');
 
-Route::get('/sporthall/detail', function () {
-    return view('partials.detail.sporthall-detail');
-});
-
-Route::get('/order', function () {
-    return view('partials.order.sporthall-order');
-});
-
-Route::get('/transaksi', function () {
-    return view('partials.order.transaksi');
-});
-
-Route::get('/transaksi/add', function () {
-    return view('partials.order.add');
-});
-
-Route::get('/transaksi/input', function () {
-    return view('partials.order.transaksi2');
-});
-
-Route::get('/myticket', function () {
-    return view('partials.myticket  ');
-});
-
-Route::get('/myticket/detail', function () {
-    return view('partials.detail.myticket-detail');
-});
-
+Route::get('/myticket', [TicketController::class, 'index']);
+Route::get('/myticket/{payment:id}', [TicketController::class, 'show']);
 
 Route::get('/login', [AuthController::class, 'index'])->name('login.form');
 Route::get('/user/login', [AuthController::class, 'login'])->name('user.login');
@@ -87,6 +67,7 @@ Route::get('/welcome', [BlogController::class, 'welcome'])->name('welcome');
 Route::middleware(['user-role'])->group(function () {
     // Isi route
 });
+
 Route::get('/registergor', [RegistergorController::class, 'Form'])->name('registergor');
 Route::resource('gor', GorController::class);
 Route::resource('field', FieldController::class);

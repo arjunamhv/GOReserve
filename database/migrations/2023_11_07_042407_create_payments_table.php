@@ -14,10 +14,8 @@ return new class extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('booking_id');
-            $table->double('amount');
-            $table->date('booking_date');
-            $table->dateTime('payment_time');
-            $table->string('status');
+            $table->integer('amount');
+            $table->integer('ticket_number')->nullable()->unique();
             $table->timestamps();
         });
     }
