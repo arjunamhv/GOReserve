@@ -13,22 +13,6 @@ use Illuminate\Support\Facades\Storage;
 class FieldController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(StoreFieldRequest $request)
@@ -102,7 +86,7 @@ class FieldController extends Controller
             $path = 'images/fieldbanner/' . $filename;
             Storage::disk('public')->put($path, file_get_contents($fieldbanner));
             $field->field_banner = $filename;
-        }else{
+        } else {
             $filename = $field->field_banner;
         }
 
@@ -116,7 +100,7 @@ class FieldController extends Controller
                 Storage::disk('public')->put($photoPath, file_get_contents($photo));
                 $photoPaths[] = $photoPath;
             }
-        }else{
+        } else {
             $photoPaths = json_decode($field->field_photos);
         }
 
@@ -135,7 +119,12 @@ class FieldController extends Controller
     public function destroy($id)
     {
         $field = Field::find($id);
+        Storage::disk('public')->delete('images/fieldbanner/' . $field->field_banner);
+        $photoPaths = json_decode($field->field_photos);
+        foreach ($photoPaths as $path) {
+            Storage::disk('public')->delete($path);
+        }
         $field->delete();
-        return redirect()->route('mygor.show', ['id' => $field->gor_id])->with('success', 'lapangan berhasil dihapus');
+        return redirect()->route('mygor.show', ['id' => $field->gor_id])->with('success', 'Lapangan berhasil dihapus');
     }
 }

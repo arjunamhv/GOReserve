@@ -146,7 +146,7 @@
                 <div class="grid grid-cols-1 gap-4 md:grid-cols-5 md:gap-0">
                     <div class="form-control col-span-2">
                         <input type="time" name="inpstartTime" placeholder="Type here"
-                            value="{{ $gorData->opening_hour['startTime'] }}"
+                            value="{{ $gorData->opening_hour }}"
                             class="error-check @error('inpstarttime') border-error @enderror input input-bordered w-full" />
                         @error('inpstarttime')
                             <div class="text-error">{{ $message }}</div>
@@ -157,7 +157,7 @@
                     </div>
                     <div class="form-control col-span-2">
                         <input type="time" name="inpendTime" placeholder="Type here"
-                            value="{{ $gorData->opening_hour['endTime'] }}"
+                            value="{{ $gorData->closing_hour }}"
                             class="error-check @error('inpendtime') border-error @enderror input input-bordered w-full" />
                         @error('inpendtime')
                             <div class="text-error">{{ $message }}</div>

@@ -16,14 +16,14 @@ class UserSeeder extends Seeder
     {
         $user = new User();
         $user->name = 'User'; 
-        $user->email = 'user@example.com'; 
-        $user->password = Hash::make('123456'); 
+        $user->email = 'user@laravel.com'; 
+        $user->password = Hash::make('12345678'); 
         $user->save();
 
         $admin = new User();
         $admin->name = 'Admin'; 
-        $admin->email = 'admin@example.com'; 
-        $admin->password = Hash::make('123456'); 
+        $admin->email = 'admin@laravel.com'; 
+        $admin->password = Hash::make('12345678'); 
         $admin->is_admin = true; 
         $admin->save();
     }

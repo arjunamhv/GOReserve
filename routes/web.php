@@ -14,7 +14,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\SportHallController;
-use App\Http\Controllers\RegistergorController;
+use App\Http\Controllers\AccountingController;
+
 
 
 /*
@@ -30,7 +31,7 @@ use App\Http\Controllers\RegistergorController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('landing');
 
 Route::get('/about', function () {
     return view('about');
@@ -62,19 +63,6 @@ Route::post('/sporthall/{gor:slug}/transaction', [SportHallController::class, 't
 Route::get('/myticket', [TicketController::class, 'index'])->middleware(['auth', 'verified']);
 Route::get('/myticket/{payment:id}', [TicketController::class, 'show'])->middleware(['auth', 'verified']);
 
-Route::get('/login', [AuthController::class, 'index'])->name('login.form');
-Route::get('/user/login', [AuthController::class, 'login'])->name('user.login');
-Route::get('/register', [AuthController::class, 'registerForm'])->name('register.form');
-Route::post('/user/register', [AuthController::class, 'register'])->name('user.register');
-
-// Google Login
-Route::get('/google/redirect', [AuthController::class, 'redirectToGoogle'])->name('google.redirect');
-Route::get('/google/callback', [AuthController::class, 'handleGoogleCallback'])->name('google.callback');
-// Forgot Password
-Route::get('/forgot-password', [AuthController::class, 'showForgetPasswordForm'])->name('forgot.password.get');
-Route::post('/forgot-password', [AuthController::class, 'submitForgetPasswordForm'])->name('forgot.password.post');
-Route::get('/reset-password/{token}', [AuthController::class, 'showResetPasswordForm'])->name('reset.password.get');
-Route::post('/reset-password', [AuthController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 
 Route::get('/blog', [BlogController::class, 'blog'])->name('blog');
 Route::get('/detailblog', [BlogController::class, 'detailblog'])->name('detailblog');
@@ -85,13 +73,16 @@ Route::middleware(['auth', 'verified', 'is_admin'])->group(function () {
     Route::get('/admin-dashboard', [DashboardAdminController::class, 'index'])->name('admin-dashboard');
 });
 
-Route::get('/registergor', [RegistergorController::class, 'Form'])->name('registergor');
-Route::resource('gor', GorController::class);
-Route::resource('field', FieldController::class);
-Route::post('/getcity', [RegistergorController::class, 'getcity'])->name('getCity');
-Route::post('/getdistrict', [RegistergorController::class, 'getdistrict'])->name('getDistrict');
-Route::post('/getsubdistrict', [RegistergorController::class, 'getsubdistrict'])->name('getSubDistrict');
-Route::get('mygor/{id}', [MyGORController::class, 'show'])->name('mygor.show');
+Route::get('/registergor', [RegistergorController::class, 'Form'])->name('registergor')->middleware(['auth', 'verified']);
+Route::resource('gor', GorController::class)->middleware(['auth', 'verified']);
+Route::resource('field', FieldController::class)->middleware(['auth', 'verified']);
+Route::post('/getcity', [RegistergorController::class, 'getcity'])->name('getCity')->middleware(['auth', 'verified']);
+Route::post('/getdistrict', [RegistergorController::class, 'getdistrict'])->name('getDistrict')->middleware(['auth', 'verified']);
+Route::post('/getsubdistrict', [RegistergorController::class, 'getsubdistrict'])->name('getSubDistrict')->middleware(['auth', 'verified']);
+Route::get('mygor/{id}', [MyGORController::class, 'show'])->name('mygor.show')->middleware(['auth', 'verified']);
+Route::resource('accounting', AccountingController::class)->middleware(['auth', 'verified']);
+
+
 
 Route::get('/home', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('home');
 
@@ -107,3 +98,18 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+// Route::get('/login', [AuthController::class, 'index'])->name('login.form');
+// Route::get('/user/login', [AuthController::class, 'login'])->name('user.login');
+// Route::get('/register', [AuthController::class, 'registerForm'])->name('register.form');
+// Route::post('/user/register', [AuthController::class, 'register'])->name('user.register');
+
+// // Google Login
+// Route::get('/google/redirect', [AuthController::class, 'redirectToGoogle'])->name('google.redirect');
+// Route::get('/google/callback', [AuthController::class, 'handleGoogleCallback'])->name('google.callback');
+// // Forgot Password
+// Route::get('/forgot-password', [AuthController::class, 'showForgetPasswordForm'])->name('forgot.password.get');
+// Route::post('/forgot-password', [AuthController::class, 'submitForgetPasswordForm'])->name('forgot.password.post');
+// Route::get('/reset-password/{token}', [AuthController::class, 'showResetPasswordForm'])->name('reset.password.get');
+// Route::post('/reset-password', [AuthController::class, 'submitResetPasswordForm'])->name('reset.password.post');

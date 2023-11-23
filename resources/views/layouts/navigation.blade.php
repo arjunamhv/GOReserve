@@ -5,7 +5,7 @@
             <label tabindex="0" class="btn btn-ghost md:hidden">
                 <i class="fa-solid fa-bars"></i>
             </label>
-            @if (Route::has('auth/login'))
+            @if (Route::has('login'))
                 @auth
                     <ul tabindex="0"
                         class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
@@ -34,8 +34,8 @@
             @endif
         </div>
         {{-- end --}}
-        <a class="btn btn-ghost normal-case text-xl"><img src="{{ asset('assets/images/logo4.png') }}" alt="Logo"
-                class="w-24"></a>
+        <a class="btn btn-ghost normal-case text-xl"><img src="{{ asset('assets/images/logo.png') }}" alt="Logo"
+                class="w-28"></a>
 
         {{-- dekstop --}}
         <div class="hidden md:flex">
@@ -52,7 +52,7 @@
                 @endguest
             </ul>
         </div>
-        @if (Route::has('auth/login'))
+        @if (Route::has('login'))
             @auth
                 <div class="hidden md:flex">
                     <ul class="menu menu-horizontal px-0">

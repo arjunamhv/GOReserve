@@ -2,7 +2,7 @@
     <div class="navbar-start w-full md:w-9/12">
         <label for="my-drawer" class="btn btn-ghost drawer-button"><i class="fa-solid fa-bars"></i></label>
 
-        <a class="btn btn-ghost normal-case text-xl"><img src="{{ asset('assets/images/logo4.png') }}" alt="Logo" class="w-24"></a>
+        <a class="btn btn-ghost normal-case text-xl"><img src="{{ asset('assets/images/logo.png') }}" alt="Logo" class="w-28"></a>
 
         {{-- dekstop --}}
         <div class="flex">

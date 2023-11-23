@@ -51,7 +51,9 @@
                             class="error-check @error('inpprovinsi') border-error @enderror select select-bordered">
                             <option disabled selected>Pick one</option>
                             @foreach ($provinces as $provinsi)
-                                <option value="{{ $provinsi->id }}">{{ $provinsi->name }}</option>
+                                <option value="{{ $provinsi->id }}"
+                                    {{ old('inpprovinsi') == $provinsi->id ? 'selected' : '' }}>{{ $provinsi->name }}
+                                </option>
                             @endforeach
                         </select>
                         @error('inpprovinsi')
@@ -107,7 +109,7 @@
                     @enderror
                 </div>
             </div>
-            
+
             <div class="form-control my-5">
                 <label for="gorcontact" class="label">
                     <span class="label-text">GOR Contact</span>
@@ -126,7 +128,7 @@
                 <div class="grid grid-cols-1 gap-4 md:grid-cols-5 md:gap-0">
                     <div class="form-control col-span-2">
                         <input type="time" name="inpstartTime" placeholder="Type here"
-                            value="{{ old('inpstartTime') }}"
+                            value="{{ old('inpstartTime') ? date('H:i', strtotime(old('inpstartTime'))) : '' }}"
                             class="error-check @error('inpstarttime') border-error @enderror input input-bordered w-full" />
                         @error('inpstarttime')
                             <div class="text-error">{{ $message }}</div>
@@ -136,7 +138,8 @@
                         <span>Sampai</span>
                     </div>
                     <div class="form-control col-span-2">
-                        <input type="time" name="inpendTime" placeholder="Type here" value="{{ old('inpendTime') }}"
+                        <input type="time" name="inpendTime" placeholder="Type here"
+                            value="{{ old('inpendTime') ? date('H:i', strtotime(old('inpendTime'))) : '' }}"
                             class="error-check @error('inpendtime') border-error @enderror input input-bordered w-full" />
                         @error('inpendtime')
                             <div class="text-error">{{ $message }}</div>
@@ -152,14 +155,15 @@
                     <input type="text" name="inpfacilities[]" placeholder="Type here"
                         value="{{ implode(',', old('inpfacilities', [])) }}" class="input input-bordered col-span-10" />
                     <button type="button" class="btn btn-sm btn-primary col-span-2 my-auto" id="addFacilityBtn"><i
-                            class="fa-solid fa-plus inline md:hidden"></i><span class="hidden md:inline">Add more</span></button>
+                            class="fa-solid fa-plus inline md:hidden"></i><span class="hidden md:inline">Add
+                            more</span></button>
                 </div>
             </div>
-            <input type="hidden" name="user_id" value="{{ 1 }}"> {{-- value="{{ Auth::user()->id }}" --}}
+            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
             <button type="submit" class="btn btn-block btn-primary">Register</button>
         </form>
     </div>
-        
+
     <script>
         // image preview handling
         function previewPhotos(input) {
@@ -206,9 +210,6 @@
             }
         }
 
-
-
-
         // error input handling
         var fileInputs = document.querySelectorAll('.error-check');
         fileInputs.forEach(function(input) {
@@ -237,6 +238,7 @@
         $(function() {
             $('#provinsi').on('change', function() {
                 let id_province = $('#provinsi').val();
+                console.log(id_province);
 
                 $.ajax({
                     type: 'POST',

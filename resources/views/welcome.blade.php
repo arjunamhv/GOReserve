@@ -1,4 +1,4 @@
-@extends('layouts.guest')
+@extends('layouts.app')
 
 @section('content')
     <section class="md:flex flex-row justify-between items-center flex-wrap">
@@ -6,16 +6,16 @@
             <h1 class="text-4xl font-bold p-1">Find and book sports facilities near you</h1>
             <p class="p-1">GOReserve is the easiest way to find and book sports facilities. With our platform, you can
                 quickly search for available sports halls and make hassle-free reservations.</p>
-                @if (Route::has('login'))
+            @if (Route::has('login'))
                 @auth
-                <button class="btn btn-primary">Search GOR</button>
-                <button class="btn btn-outline btn-primary">Learn More</button>
+                    <a href="{{ url('sporthall') }}" class="btn btn-primary">Search GOR</a>
+                    <button class="btn btn-outline btn-primary">Learn More</button>
                 @endauth
                 @guest
-                <a class="btn btn-primary" href="{{ route('register') }}">Sign up</a>
-                <a class="btn btn-outline btn-primary" href="{{ route('login') }}">Login</a>
+                    <a class="btn btn-primary" href="{{ route('register') }}">Sign up</a>
+                    <a class="btn btn-outline btn-primary" href="{{ route('login') }}">Login</a>
                 @endguest
-                @endif
+            @endif
         </div>
         <div class="inline-block w-full md:w-1/2 p-5 min-w-sm">
             <img src="{{ asset('/assets/images/landing1.jpg') }}" alt="Landing.img">
@@ -69,8 +69,6 @@
     <section class="pb-5">
         <h1 class="text-center text-4xl font-bold m-5">Sports hall gallery</h1>
         <p class="text-center text-sm m-2">Explore popular sports hall near you</p>
-
-
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div class="grid gap-4">
                 <div>
@@ -136,14 +134,14 @@
             <div class="absolute w-full top-1/2 text-center m-auto">
                 <h1 class="text-4xl font-bold p-1">Find and book sports hall</h1>
                 <p class="p-1">Discover the nearest sports hall and start booking your favorite activities</p>
-                  @auth
+                @auth
                     <button class="btn btn-outline btn-primary">Search</button>
                     <button class="btn btn-primary">learn more</button>
-                  @endauth
-                  @guest
+                @endauth
+                @guest
                     <a class="btn btn-outline btn-primary" href="{{ route('register') }}">Sign up</a>
                     <a class="btn btn-primary" href="{{ route('login') }}">Login</a>
-                  @endguest
+                @endguest
             </div>
         </div>
     </section>
@@ -154,11 +152,14 @@
         <div class="carousel rounded-box w-full overflow-x-auto">
             <div class="carousel-item p-5">
                 <a href="/detailblog" class="card w-96 bg-base-100 shadow-xl">
-                    <figure><img src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg" alt="Shoes" /></figure>
+                    <figure><img src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg"
+                            alt="Shoes" /></figure>
                     <div class="card-body">
                         <h2 class="card-title">Mengupas Ruang Olahraga: Kesehatan dan Kesejahteraan yang Didapatkan</h2>
                         <p class="text-sm text-base-300">by Divaa</p>
-                        <p>Ruang olahraga sering kali menjadi elemen yang terlupakan dalam kehidupan sehari-hari kita yang sibuk. Namun, dalam blog ini, kita akan membongkar manfaat besar yang bisa didapatkan dari ruang olahraga...</p>
+                        <p>Ruang olahraga sering kali menjadi elemen yang terlupakan dalam kehidupan sehari-hari kita yang
+                            sibuk. Namun, dalam blog ini, kita akan membongkar manfaat besar yang bisa didapatkan dari ruang
+                            olahraga...</p>
                         <div class="flex justify-between">
                             <span class="text-xs"><i class="fa-regular fa-clock"></i> 3 minutes ago </span>
                             <span class="text-xs"><i class="fa-regular fa-eye"></i> 3000 views</span>
@@ -167,7 +168,7 @@
                     </div>
                 </a>
             </div>
-            
+
             <div class="carousel-item p-5">
                 <div class="card w-96 bg-base-100 shadow-xl">
                     <figure><img src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg"
@@ -175,9 +176,13 @@
                     <div class="card-body">
                         <h2 class="card-title">Lorem, ipsum dolor.</h2>
                         <p class="text-sm text-base-300">by diva</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, et amet. Aspernatur hic dignissimos, dolorem debitis accusamus modi vel quod ratione quibusdam culpa exercitationem soluta!</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, et amet. Aspernatur hic
+                            dignissimos, dolorem debitis accusamus modi vel quod ratione quibusdam culpa exercitationem
+                            soluta!</p>
                         <div class="flex justify-between">
-                            <span class="text-xs"><i class="fa-regular fa-clock"></i> 3 minutes ago </span><span class="text-xs"><i class="fa-regular fa-eye"></i> 3000 views</span><span class="text-xs">Nov, 02 2023</span>
+                            <span class="text-xs"><i class="fa-regular fa-clock"></i> 3 minutes ago </span><span
+                                class="text-xs"><i class="fa-regular fa-eye"></i> 3000 views</span><span
+                                class="text-xs">Nov, 02 2023</span>
                         </div>
                     </div>
                 </div>
@@ -189,9 +194,13 @@
                     <div class="card-body">
                         <h2 class="card-title">Lorem, ipsum dolor.</h2>
                         <p class="text-sm text-base-300">by diva</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, et amet. Aspernatur hic dignissimos, dolorem debitis accusamus modi vel quod ratione quibusdam culpa exercitationem soluta!</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, et amet. Aspernatur hic
+                            dignissimos, dolorem debitis accusamus modi vel quod ratione quibusdam culpa exercitationem
+                            soluta!</p>
                         <div class="flex justify-between">
-                            <span class="text-xs"><i class="fa-regular fa-clock"></i> 3 minutes ago </span><span class="text-xs"><i class="fa-regular fa-eye"></i> 3000 views</span><span class="text-xs">Nov, 02 2023</span>
+                            <span class="text-xs"><i class="fa-regular fa-clock"></i> 3 minutes ago </span><span
+                                class="text-xs"><i class="fa-regular fa-eye"></i> 3000 views</span><span
+                                class="text-xs">Nov, 02 2023</span>
                         </div>
                     </div>
                 </div>
@@ -203,9 +212,13 @@
                     <div class="card-body">
                         <h2 class="card-title">Lorem, ipsum dolor.</h2>
                         <p class="text-sm text-base-300">by diva</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, et amet. Aspernatur hic dignissimos, dolorem debitis accusamus modi vel quod ratione quibusdam culpa exercitationem soluta!</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, et amet. Aspernatur hic
+                            dignissimos, dolorem debitis accusamus modi vel quod ratione quibusdam culpa exercitationem
+                            soluta!</p>
                         <div class="flex justify-between">
-                            <span class="text-xs"><i class="fa-regular fa-clock"></i> 3 minutes ago </span><span class="text-xs"><i class="fa-regular fa-eye"></i> 3000 views</span><span class="text-xs">Nov, 02 2023</span>
+                            <span class="text-xs"><i class="fa-regular fa-clock"></i> 3 minutes ago </span><span
+                                class="text-xs"><i class="fa-regular fa-eye"></i> 3000 views</span><span
+                                class="text-xs">Nov, 02 2023</span>
                         </div>
                     </div>
                 </div>
@@ -217,9 +230,13 @@
                     <div class="card-body">
                         <h2 class="card-title">Lorem, ipsum dolor.</h2>
                         <p class="text-sm text-base-300">by diva</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, et amet. Aspernatur hic dignissimos, dolorem debitis accusamus modi vel quod ratione quibusdam culpa exercitationem soluta!</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, et amet. Aspernatur hic
+                            dignissimos, dolorem debitis accusamus modi vel quod ratione quibusdam culpa exercitationem
+                            soluta!</p>
                         <div class="flex justify-between">
-                            <span class="text-xs"><i class="fa-regular fa-clock"></i> 3 minutes ago </span><span class="text-xs"><i class="fa-regular fa-eye"></i> 3000 views</span><span class="text-xs">Nov, 02 2023</span>
+                            <span class="text-xs"><i class="fa-regular fa-clock"></i> 3 minutes ago </span><span
+                                class="text-xs"><i class="fa-regular fa-eye"></i> 3000 views</span><span
+                                class="text-xs">Nov, 02 2023</span>
                         </div>
                     </div>
                 </div>
@@ -231,9 +248,13 @@
                     <div class="card-body">
                         <h2 class="card-title">Lorem, ipsum dolor.</h2>
                         <p class="text-sm text-base-300">by diva</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, et amet. Aspernatur hic dignissimos, dolorem debitis accusamus modi vel quod ratione quibusdam culpa exercitationem soluta!</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, et amet. Aspernatur hic
+                            dignissimos, dolorem debitis accusamus modi vel quod ratione quibusdam culpa exercitationem
+                            soluta!</p>
                         <div class="flex justify-between">
-                            <span class="text-xs"><i class="fa-regular fa-clock"></i> 3 minutes ago </span><span class="text-xs"><i class="fa-regular fa-eye"></i> 3000 views</span><span class="text-xs">Nov, 02 2023</span>
+                            <span class="text-xs"><i class="fa-regular fa-clock"></i> 3 minutes ago </span><span
+                                class="text-xs"><i class="fa-regular fa-eye"></i> 3000 views</span><span
+                                class="text-xs">Nov, 02 2023</span>
                         </div>
                     </div>
                 </div>
@@ -245,9 +266,13 @@
                     <div class="card-body">
                         <h2 class="card-title">Lorem, ipsum dolor.</h2>
                         <p class="text-sm text-base-300">by diva</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, et amet. Aspernatur hic dignissimos, dolorem debitis accusamus modi vel quod ratione quibusdam culpa exercitationem soluta!</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, et amet. Aspernatur hic
+                            dignissimos, dolorem debitis accusamus modi vel quod ratione quibusdam culpa exercitationem
+                            soluta!</p>
                         <div class="flex justify-between">
-                            <span class="text-xs"><i class="fa-regular fa-clock"></i> 3 minutes ago </span><span class="text-xs"><i class="fa-regular fa-eye"></i> 3000 views</span><span class="text-xs">Nov, 02 2023</span>
+                            <span class="text-xs"><i class="fa-regular fa-clock"></i> 3 minutes ago </span><span
+                                class="text-xs"><i class="fa-regular fa-eye"></i> 3000 views</span><span
+                                class="text-xs">Nov, 02 2023</span>
                         </div>
                     </div>
                 </div>

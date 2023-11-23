@@ -78,14 +78,14 @@
             <div class="grid grid-cols-1 gap-4 md:grid-cols-5 md:gap-0">
                 <div class="form-control col-span-2">
                     <input type="time" placeholder="Type here" class="input input-bordered w-full"
-                        value="{{ $gorData->opening_hour['startTime'] }}" disabled />
+                        value="{{ $gorData->opening_hour }}" disabled />
                 </div>
                 <div class="text-center my-auto">
                     <span>Sampai</span>
                 </div>
                 <div class="form-control col-span-2">
                     <input type="time" placeholder="Type here" class="input input-bordered w-full"
-                        value="{{ $gorData->opening_hour['endTime'] }}" disabled />
+                        value="{{ $gorData->closing_hour }}" disabled />
                 </div>
             </div>
         </div>
