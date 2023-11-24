@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="mytheme">
 
 <head>
     <meta charset="utf-8">
@@ -22,6 +22,7 @@
     <!-- Scripts -->
     @vite('resources/css/app.css')
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="font-poppins antialiased">

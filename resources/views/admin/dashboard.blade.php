@@ -7,7 +7,6 @@
             <i class="fa-solid fa-circle-info"></i><span>{{ session('message') }}</span>
         </div>
     @endif
-
     <h1 class="text-xl m-5 mb-1">Aktifitas Pemesanan Terkini</h1>
     <div class="carousel rounded-box w-full overflow-x-auto">
         @foreach ($bookings as $booking)
@@ -78,5 +77,26 @@
         @endforeach
     </div>
 
-    <h1 class="text-xl m-5 mb-1">Booking Schedule</h1>
+    <h1 class="text-xl m-5 mb-1">Statistik Keuangan</h1>
+    <div class="stats stats-vertical lg:stats-horizontal shadow m-5">
+        <div class="stat">
+          <div class="stat-title">Total Pendapatan</div>
+          <div class="stat-value my-1">{{ $totalAmount }}</div>
+          <div class="stat-desc">Since {{ $sevenDaysAgo }} Until now</div>
+        </div>
+        
+        <div class="stat">
+          <div class="stat-title">Total Transaksi</div>
+          <div class="stat-value my-1">{{ $totalTransaksi }}</div>
+          <div class="stat-desc">↗︎ 400 (22%)</div>
+        </div>
+      </div>
+
+    <h1 class="text-xl m-5 mb-1">Statistik Pengunjung</h1>
+    <div class="p-6 m-5 bg-white rounded shadow">
+        {!! $chart->container() !!}
+    </div>
+    <script src="{{ $chart->cdn() }}"></script>
+
+    {{ $chart->script() }}
 @endsection

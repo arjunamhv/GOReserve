@@ -72,10 +72,9 @@ class GorController extends Controller
             'detailAlamat' => $detailAlamat,
         ];
 
-        // opening_hour
-        $startTime = $validate['inpstartTime'];
-        $endTime = $validate['inpendTime'];
-        $openingHour = $startTime . '-' . $endTime;
+
+        //slug
+        $slug =  Str::slug($validate['inpgorname']). '-' . uniqid();
 
         $gor = new Gor();
         $gor->user_id = $request->user_id;
@@ -91,8 +90,9 @@ class GorController extends Controller
         $user = User::find($request->user_id);
         $user->is_admin = true;
         $user->save();
+        
+        return redirect()->route('admin-dashboard')->with('message', 'Registrasi GOR Berhasil!');
 
-        return redirect()->route('admin-dashboard')->with('success', 'berhasil menambahkan data');
     }
 
     /**

@@ -2,8 +2,7 @@
 
 @section('content')
     <h1 class="text-center text-4xl font-bold m-5">Add Field</h1>
-
-    <div class="m-10">
+     <div class="m-10">
         <form method="POST" action="{{ url('field') }}" enctype="multipart/form-data">
             @csrf
             <div class="my-5">
@@ -52,6 +51,19 @@
                     @endforeach
                 </select>
                 @error('inpfieldtype')
+                    <div class="text-error">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="form-control my-5">
+                <label for="fieldprice" class="label">
+                    <span class="label-text">Field Price</span>
+                </label>
+                <div class="join">
+                    <div class="btn join-item btn-primary no-animation">Rp. </div>
+                    <input type="number" name="inpfieldprice" placeholder="Type here" value="{{ old('inpfieldprice') }}"
+                    class="error-check @error('inpfieldprice') border-error @enderror input input-bordered join-item w-full" />
+                </div>
+                @error('inpfieldprice')
                     <div class="text-error">{{ $message }}</div>
                 @enderror
             </div>
