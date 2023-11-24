@@ -15,6 +15,8 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\SportHallController;
 use App\Http\Controllers\AccountingController;
+use App\Http\Controllers\LandingController;
+use App\Http\Controllers\ScanController;
 
 
 
@@ -29,9 +31,11 @@ use App\Http\Controllers\AccountingController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('landing');
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('landing');
+Route::get('/', [LandingController::class,'index'])->name('landing');
+
 
 Route::get('/about', function () {
     return view('about');
@@ -97,19 +101,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/scan', function(){
+    return view('admin.scancheck');
+})->name('scan')->middleware('auth');
+Route::post('/scancheck', [ScanController::class, 'scancheck'])->name('scancheck')->middleware('auth');
+
 require __DIR__.'/auth.php';
-
-
-// Route::get('/login', [AuthController::class, 'index'])->name('login.form');
-// Route::get('/user/login', [AuthController::class, 'login'])->name('user.login');
-// Route::get('/register', [AuthController::class, 'registerForm'])->name('register.form');
-// Route::post('/user/register', [AuthController::class, 'register'])->name('user.register');
-
-// // Google Login
-// Route::get('/google/redirect', [AuthController::class, 'redirectToGoogle'])->name('google.redirect');
-// Route::get('/google/callback', [AuthController::class, 'handleGoogleCallback'])->name('google.callback');
-// // Forgot Password
-// Route::get('/forgot-password', [AuthController::class, 'showForgetPasswordForm'])->name('forgot.password.get');
-// Route::post('/forgot-password', [AuthController::class, 'submitForgetPasswordForm'])->name('forgot.password.post');
-// Route::get('/reset-password/{token}', [AuthController::class, 'showResetPasswordForm'])->name('reset.password.get');
-// Route::post('/reset-password', [AuthController::class, 'submitResetPasswordForm'])->name('reset.password.post');

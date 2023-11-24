@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Booking;
 use App\Models\Type;
 use Carbon\Carbon;
+use App\Charts\VisitorStats;
 use Illuminate\Http\Request;
 
 class DashboardAdminController extends Controller
 {
-    public function index()
+    public function index(VisitorStats $chart)
     {
         $fiveDaysToGo = Carbon::now()->addDays(5)->endOfDay();
 
@@ -22,8 +23,18 @@ class DashboardAdminController extends Controller
             $type = Type::find($typeId);        
             $booking->field_type = $type->name;
         }
+        $data['chart'] = $chart->build();
+        $totalTransaksi = Booking::whereNotIn('status', ['New', 'Cancled'])->count();
+        $getTotalAmount = Booking::whereNotIn('bookings.status', ['New', 'Canceled'])
+        ->join('payments', 'bookings.id', '=', 'payments.booking_id')
+        ->sum('payments.amount');
+        $totalAmount = 'Rp ' . number_format($getTotalAmount, 0, ',', '.');
 
-        return view('admin.dashboard', compact('bookings'));
+        $getSevenDaysAgo = Carbon::now()->subDays(7);
+        // Format tanggal jika diperlukan
+        $sevenDaysAgo = $getSevenDaysAgo->format('d-m-Y');
+
+        return view('admin.dashboard', $data, compact('bookings', 'totalTransaksi', 'totalAmount', 'sevenDaysAgo'));
     }
 }
        

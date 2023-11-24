@@ -24,9 +24,10 @@ class StoreFieldRequest extends FormRequest
         return [
             'inpfieldbanner' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'inpfieldphotos' => 'required',
-            'inpfieldphotos.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'inpfieldphotos.*' => 'image|mimes:jpeg,png,jpg,gif,svg',
             'inpfieldname' => 'required',
             'inpfieldtype' => 'required',
+            'inpfieldprice' => 'required|numeric',
             'gor_id'=> 'required',
         ];
     }
@@ -42,6 +43,8 @@ class StoreFieldRequest extends FormRequest
             'inpfieldphotos.*.mimes' => ':attribute harus berupa gambar dengan format jpeg, png, jpg',
             'inpfieldname.required' => ':attribute harus diisi',
             'inpfieldtype.required' => ':attribute harus diisi',
+            'inpfieldprice.required' => ':attribute harus diisi',
+            'inpfieldprice.numeric' => ':attribute harus berupa angka',
         ];
     }
     public function attributes(): array
@@ -51,6 +54,7 @@ class StoreFieldRequest extends FormRequest
             'inpfieldphotos' => 'Foto',
             'inpfieldname' => 'Nama Lapangan',
             'inpfieldtype' => 'Tipe Lapangan',
+            'inpfieldprice' => 'Harga',
         ];
     }
 }

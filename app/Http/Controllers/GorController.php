@@ -58,7 +58,7 @@ class GorController extends Controller
         ];
 
         //slug
-        $slug =  Str::slug($validate['inpgorname']);
+        $slug =  Str::slug($validate['inpgorname']). '-' . uniqid();
 
         $gor = new Gor();
         $gor->user_id = $request->user_id;
@@ -77,7 +77,7 @@ class GorController extends Controller
         $user->is_admin = true;
         $user->save();
         
-        return redirect()->route('admin-dashboard')->with('success', 'berhasil menambahkan data');
+        return redirect()->route('admin-dashboard')->with('message', 'Registrasi GOR Berhasil!');
     }
 
     /**

@@ -1,27 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="md:flex flex-row justify-between items-center flex-wrap">
-        <div class="inline-block w-full md:w-1/2 p-5 pl-6 min-w-sm">
-            <h1 class="text-4xl font-bold p-1">Find and book sports facilities near you</h1>
-            <p class="p-1">GOReserve is the easiest way to find and book sports facilities. With our platform, you can
-                quickly search for available sports halls and make hassle-free reservations.</p>
-            @if (Route::has('login'))
-                @auth
-                    <a href="{{ url('sporthall') }}" class="btn btn-primary">Search GOR</a>
-                    <button class="btn btn-outline btn-primary">Learn More</button>
-                @endauth
-                @guest
-                    <a class="btn btn-primary" href="{{ route('register') }}">Sign up</a>
-                    <a class="btn btn-outline btn-primary" href="{{ route('login') }}">Login</a>
-                @endguest
-            @endif
-        </div>
-        <div class="inline-block w-full md:w-1/2 p-5 min-w-sm">
-            <img src="{{ asset('/assets/images/landing1.jpg') }}" alt="Landing.img">
+    <section>
+        <div style="background-image: url('{{ asset('/assets/images/CTA.jpg') }}');"
+            class="relative h-screen bg-no-repeat bg-cover bg-center bg-fixed">
+            <div class="absolute inset-0 bg-black bg-opacity-20">
+                <div class="absolute w-full top-1/3 text-center m-auto">
+                    <h1 class="text-4xl font-bold p-1 text-white">Find and book sports hall</h1>
+                    <p class="p-1 text-white">Discover the nearest sports hall and start booking your favorite activities</p>
+                    @auth
+                        <a href="{{ url('sporthall') }}" class="btn btn-outline btn-primary">Search</a>
+                        <a href="#section2" class="btn btn-primary">learn more</a>
+                    @endauth
+                    @guest
+                        <a class="btn btn-outline btn-primary" href="{{ route('register') }}">Sign up</a>
+                        <a class="btn btn-primary" href="{{ route('login') }}">Login</a>
+                    @endguest
+                </div>
+            </div>
         </div>
     </section>
-    <section class="md:flex flex-row justify-between items-center flex-wrap">
+    <section class="md:flex flex-row justify-between items-center flex-wrap my-5" id="section2">
         <div class="inline-block w-full md:w-1/2 p-5 min-w-sm">
             <img src="{{ asset('/assets/images/landing2.jpg') }}" alt="Landing.img">
         </div>
@@ -34,7 +33,20 @@
         </div>
     </section>
     <section class="md:flex flex-row justify-between items-center flex-wrap">
-        <div class="inline-block w-full md:w-1/2 p-5 pl-6 min-w-sm">
+        <div class="inline-block w-full md:w-1/2 p-5 min-w-sm order-2 md:order-2">
+            <div class="carousel w-full">
+                <div id="item1" class="carousel-item w-full">
+                    <img src="{{ asset('/assets/images/feature (1).jpeg') }}" alt="Feature.img">
+                </div>
+                <div id="item2" class="carousel-item w-full">
+                    <img src="{{ asset('/assets/images/feature (2).jpeg') }}" alt="Feature.img">
+                </div>
+                <div id="item3" class="carousel-item w-full">
+                    <img src="{{ asset('/assets/images/feature (3).jpeg') }}" alt="Feature.img">
+                </div>
+            </div>
+        </div>
+        <div class="inline-block w-full md:w-1/2 p-5 pl-6 min-w-sm order-1 md:order-1">
             <a href="#item1">
                 <h1 class="text-lg font-bold p-1">Discover Sports Facilities Near You</h1>
                 <p class=" text-xs p-1">GOReserve allows you to easily find, book, and pay for sports facilities from
@@ -52,18 +64,23 @@
                     options, ensuring that your transactions are protected and hassle-free.</p>
             </a>
         </div>
+    </section>
+    <section class="md:flex flex-row justify-between items-center flex-wrap">
         <div class="inline-block w-full md:w-1/2 p-5 min-w-sm">
-            <div class="carousel w-full">
-                <div id="item1" class="carousel-item w-full">
-                    <img src="{{ asset('/assets/images/feature (1).jpeg') }}" alt="Feature.img">
-                </div>
-                <div id="item2" class="carousel-item w-full">
-                    <img src="{{ asset('/assets/images/feature (2).jpeg') }}" alt="Feature.img">
-                </div>
-                <div id="item3" class="carousel-item w-full">
-                    <img src="{{ asset('/assets/images/feature (3).jpeg') }}" alt="Feature.img">
-                </div>
-            </div>
+            <img src="{{ asset('/assets/images/landing1.jpg') }}" alt="Landing.img">
+        </div>
+        <div class="inline-block w-full md:w-1/2 p-5 pl-6 min-w-sm">
+            <h1 class="text-4xl font-bold p-1">Start finding and book sports facilities near you</h1>
+            <p class="p-1">GOReserve is the easiest way to find and book sports facilities. With our platform, you can
+                quickly search for available sports halls and make hassle-free reservations.</p>
+            @auth
+                <a href="{{ url('sporthall') }}" class="btn btn-primary">Search GOR</a>
+                <button class="btn btn-outline btn-primary">Learn More</button>
+            @endauth
+            @guest
+                <a class="btn btn-primary" href="{{ route('register') }}">Sign up</a>
+                <a class="btn btn-outline btn-primary" href="{{ route('login') }}">Login</a>
+            @endguest
         </div>
     </section>
     <section class="pb-5">
@@ -73,79 +90,62 @@
             <div class="grid gap-4">
                 <div>
                     <img class="h-auto max-w-full rounded-lg"
-                        src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg" alt="">
+                        src="{{ asset('assets/images/gallery1.jpg') }}" alt="">
                 </div>
                 <div>
                     <img class="h-auto max-w-full rounded-lg"
-                        src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg" alt="">
+                    src="{{ asset('assets/images/gallery2.jpg') }}" alt="">
                 </div>
                 <div>
                     <img class="h-auto max-w-full rounded-lg"
-                        src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg" alt="">
-                </div>
-            </div>
-            <div class="grid gap-4">
-                <div>
-                    <img class="h-auto max-w-full rounded-lg"
-                        src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg" alt="">
-                </div>
-                <div>
-                    <img class="h-auto max-w-full rounded-lg"
-                        src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg" alt="">
-                </div>
-                <div>
-                    <img class="h-auto max-w-full rounded-lg"
-                        src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg" alt="">
+                    src="{{ asset('assets/images/gallery3.jpg') }}" alt="">
                 </div>
             </div>
             <div class="grid gap-4">
                 <div>
                     <img class="h-auto max-w-full rounded-lg"
-                        src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg" alt="">
+                    src="{{ asset('assets/images/gallery4.jpg') }}" alt="">
                 </div>
                 <div>
                     <img class="h-auto max-w-full rounded-lg"
-                        src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg" alt="">
+                    src="{{ asset('assets/images/gallery5.jpg') }}" alt="">
                 </div>
                 <div>
                     <img class="h-auto max-w-full rounded-lg"
-                        src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg" alt="">
+                    src="{{ asset('assets/images/gallery6.jpg') }}" alt="">
                 </div>
             </div>
             <div class="grid gap-4">
                 <div>
                     <img class="h-auto max-w-full rounded-lg"
-                        src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg" alt="">
+                    src="{{ asset('assets/images/gallery7.jpg') }}" alt="">
                 </div>
                 <div>
                     <img class="h-auto max-w-full rounded-lg"
-                        src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt="">
+                    src="{{ asset('assets/images/gallery8.jpg') }}" alt="">
                 </div>
                 <div>
                     <img class="h-auto max-w-full rounded-lg"
-                        src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg" alt="">
+                    src="{{ asset('assets/images/gallery9.jpg') }}" alt="">
+                </div>
+            </div>
+            <div class="grid gap-4">
+                <div>
+                    <img class="h-auto max-w-full rounded-lg"
+                    src="{{ asset('assets/images/gallery10.jpg') }}" alt="">
+                </div>
+                <div>
+                    <img class="h-auto max-w-full rounded-lg"
+                    src="{{ asset('assets/images/gallery11.jpg') }}" alt="">
+                </div>
+                <div>
+                    <img class="h-auto max-w-full rounded-lg"
+                    src="{{ asset('assets/images/gallery12.jpg') }}" alt="">
                 </div>
             </div>
         </div>
     </section>
-    <section>
-        <div style="background-image: url('{{ asset('/assets/images/CTA.jpg') }}');"
-            class="relative h-screen bg-no-repeat bg-cover bg-center bg-fixed">
-            <div class="absolute w-full top-1/2 text-center m-auto">
-                <h1 class="text-4xl font-bold p-1">Find and book sports hall</h1>
-                <p class="p-1">Discover the nearest sports hall and start booking your favorite activities</p>
-                @auth
-                    <button class="btn btn-outline btn-primary">Search</button>
-                    <button class="btn btn-primary">learn more</button>
-                @endauth
-                @guest
-                    <a class="btn btn-outline btn-primary" href="{{ route('register') }}">Sign up</a>
-                    <a class="btn btn-primary" href="{{ route('login') }}">Login</a>
-                @endguest
-            </div>
-        </div>
-    </section>
-    <section>
+    <section class="my-5 mt-10">
         <p class="text-center text-sm m-2">Articles</p>
         <h1 class="text-center text-4xl font-bold m-5">Discover the Benefits of Sports</h1>
         <p class="text-center text-sm m-2">Stay active and healthy with sports</p>
@@ -168,7 +168,6 @@
                     </div>
                 </a>
             </div>
-
             <div class="carousel-item p-5">
                 <div class="card w-96 bg-base-100 shadow-xl">
                     <figure><img src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg"

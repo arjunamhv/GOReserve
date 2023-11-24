@@ -8,6 +8,7 @@ use App\Models\Type;
 use App\Http\Requests\StoreFieldRequest;
 use App\Http\Requests\UpdateFieldRequest;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 
 class FieldController extends Controller
@@ -18,7 +19,6 @@ class FieldController extends Controller
     public function store(StoreFieldRequest $request)
     {
         $validate = $request->validated();
-
         //field banner
         $fieldbanner = $validate['inpfieldbanner'];
         $filename = time() . '_' . $fieldbanner->getClientOriginalName();
@@ -34,19 +34,16 @@ class FieldController extends Controller
             Storage::disk('public')->put($photoPath, file_get_contents($photo));
             $photoPaths[] = $photoPath;
         }
-
         $field = new Field();
         $field->field_banner = $filename;
         $field->field_photos = json_encode($photoPaths);
         $field->gor_id = (int) $validate['gor_id'];
         $field->name = $validate['inpfieldname'];
         $field->type = (int) $validate['inpfieldtype'];
-
-        dd($field);
+        $field->price = (int) $validate['inpfieldprice'];
         $field->save();
 
-        $gor = Gor::where('id', $request->gor_id)->first();
-        return redirect()->route('mygor.show', ['id' => $gor->id])->with('success', 'lapangan berhasil ditambahkan');
+        return redirect()->route('mygor.show', ['id' => Auth::user()->id])->with('success', 'lapangan berhasil ditambahkan');
     }
 
     /**
@@ -110,7 +107,7 @@ class FieldController extends Controller
         $field->type = (int) $validate['inpfieldtype'];
         $field->save();
 
-        return redirect()->route('mygor.show', ['id' => $field->gor_id])->with('success', 'lapangan berhasil diupdate');
+        return redirect()->route('mygor.show', ['id' => Auth::user()->id])->with('success', 'lapangan berhasil diupdate');
     }
 
     /**
@@ -125,6 +122,6 @@ class FieldController extends Controller
             Storage::disk('public')->delete($path);
         }
         $field->delete();
-        return redirect()->route('mygor.show', ['id' => $field->gor_id])->with('success', 'Lapangan berhasil dihapus');
+        return redirect()->route('mygor.show', ['id' => Auth::user()->id])->with('success', 'Lapangan berhasil dihapus');
     }
 }

@@ -24,7 +24,7 @@ class UpdateFieldRequest extends FormRequest
         return [
             'inpfieldbanner' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'inpfieldphotos' => 'nullable|array',
-            'inpfieldphotos.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'inpfieldphotos.*' => 'image|mimes:jpeg,png,jpg,gif,svg',
             'inpfieldname' => 'required|string|max:255',
             'inpfieldtype' => 'required|integer',
         ];
@@ -38,7 +38,6 @@ class UpdateFieldRequest extends FormRequest
             'inpfieldphotos.array' => 'Foto harus berupa gambar',
             'inpfieldphotos.*.image' => 'Foto harus berupa gambar',
             'inpfieldphotos.*.mimes' => 'Foto harus berupa gambar dengan format jpeg, png, jpg, gif, svg',
-            'inpfieldphotos.*.max' => 'Ukuran foto maksimal 2MB',
             'inpfieldname.required' => 'Nama lapangan harus diisi',
             'inpfieldname.string' => 'Nama lapangan harus berupa string',
             'inpfieldname.max' => 'Nama lapangan maksimal 255 karakter',

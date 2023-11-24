@@ -9,7 +9,16 @@ class Field extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
+    protected $table = 'fields';
+    
+    protected $fillable = [
+        'field_banner',
+        'field_photos',
+        'gor_id',
+        'name',
+        'type',
+        'price'
+    ];
 
     public function booking() {
         return $this->hasOne(Booking::class);
@@ -20,7 +29,7 @@ class Field extends Model
     }
 
     public function type() {
-        return $this->hasOne(Type::class, 'type');
+        return $this->belongsTo(Type::class, 'type', 'id');
     }
 
     public function rating() {

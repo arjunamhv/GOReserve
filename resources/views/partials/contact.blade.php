@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('container')
+@section('content')
 <section class="px-32 py-16">
     <div class="w-full px-4">
         <div class="max-w-xl mx-auto text-center mb-16">

@@ -60,6 +60,19 @@
                     <div class="text-error">{{ $message }}</div>
                 @enderror
             </div>
+            <div class="form-control my-5">
+                <label for="fieldprice" class="label">
+                    <span class="label-text">Field Price</span>
+                </label>
+                <div class="join">
+                    <div class="btn join-item btn-primary no-animation">Rp. </div>
+                    <input type="number" name="inpfieldprice" placeholder="Type here" value="{{ $field->price }}"
+                    class="error-check @error('inpfieldprice') border-error @enderror input input-bordered join-item w-full" />
+                </div>
+                @error('inpfieldprice')
+                    <div class="text-error">{{ $message }}</div>
+                @enderror
+            </div>
             <button type="submit" class="btn btn-block btn-primary my-5">Update</button>
         </form>
     </div>

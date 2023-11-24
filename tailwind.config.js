@@ -19,6 +19,23 @@ module.exports = {
     plugins: [require("daisyui"), forms],
 
     daisyui: {
-        themes: ["light", "dark"],
+        themes: [
+            {
+                mytheme: {
+                    primary: "#27374D",
+                    secondary: "#27374D",
+                    accent: "#4EB8D0",
+                    neutral: "#27374D",
+                    "base-100": "#ffffff",
+                    error: "#9F2C2C",
+                    success: "#3A8059",
+                    warning: "#E9A63F",
+                    info: "#3D9BD9"
+                },
+            },
+            "light",
+            "dark",
+            "cupcake",
+        ],
     },
 };
