@@ -17,14 +17,14 @@
             <div class="w-full rounded-3xl bg-slate-300 py-4 px-4">
                 <a href="/sporthall/{{ $gor->slug }}">
                     <div class="flex items-center justify-between">
-                        <img src="{{ asset('storage/images/gorbanner/' . $gor->gor_banner) }}" alt="lapang" class="w-2/5 rounded-xl">
+                        <img src="../img/login-image.png" alt="lapang" class="w-2/5 rounded-xl">
                         <div class="text-center mx-auto">
                             <h1 class="text-4xl font-bold text-slate-800">{{ $gor->name }}</h1>
                             <div class="flex items-center justify-center my-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#1e293b" class="bi bi-geo-alt-fill mr-2" viewBox="0 0 16 16">
                                     <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
                                 </svg>
-                                <h3 class="text-xl font-semibold text-slate-800">{{ $gor->address['kota'] }}</h3>
+                                <h3 class="text-xl font-semibold text-slate-800">{{ json_decode($gor->address)->kota }}</h3>
                             </div>
                             @foreach ($gor->field as $field)
                                 <div class="flex items-center justify-start mb-2">

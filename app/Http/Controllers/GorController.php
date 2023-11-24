@@ -13,10 +13,25 @@ use App\Models\District;
 use App\Models\Village;
 
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 class GorController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -57,6 +72,7 @@ class GorController extends Controller
             'detailAlamat' => $detailAlamat,
         ];
 
+
         //slug
         $slug =  Str::slug($validate['inpgorname']). '-' . uniqid();
 
@@ -65,11 +81,9 @@ class GorController extends Controller
         $gor->gor_banner = $filename;
         $gor->gor_photos = json_encode($photoPaths);
         $gor->name = $validate['inpgorname'];
-        $gor->slug = $slug;
         $gor->address = json_encode($alamat);
         $gor->contact = $validate['inpgorcontact'];
-        $gor->opening_hour = $validate['inpstartTime'];
-        $gor->closing_hour = $validate['inpendTime'];
+        $gor->opening_hour = $openingHour;
         $gor->facility = json_encode($request->inpfacilities);
         $gor->save();
 
@@ -78,6 +92,15 @@ class GorController extends Controller
         $user->save();
         
         return redirect()->route('admin-dashboard')->with('message', 'Registrasi GOR Berhasil!');
+
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(Gor $gor)
+    {
+        //
     }
 
     /**
@@ -91,6 +114,14 @@ class GorController extends Controller
         }
         if ($gorData && isset($gorData->gor_photos)) {
             $gorData->gor_photos = json_decode($gorData->gor_photos, true);
+        }
+        if ($gorData && isset($gorData->opening_hour)) {
+            $separatedTimes = explode('-', $gorData->opening_hour);
+
+            $gorData->opening_hour = [
+                'startTime' => $separatedTimes[0],
+                'endTime' => $separatedTimes[1]
+            ];
         }
         if ($gorData && isset($gorData->facility)) {
             $gorData->facility = json_decode($gorData->facility, true);
@@ -162,12 +193,19 @@ class GorController extends Controller
         $gor->name = $validate['inpgorname'];
         $gor->address = json_encode($alamat);
         $gor->contact = $validate['inpgorcontact'];
-        $gor->opening_hour = $validate['inpstartTime'];
-        $gor->closing_hour = $validate['inpendTime'];
+        $gor->opening_hour = $openingHour;
         $gor->facility = json_encode($request->inpfacilities);
         $gor->save();
 
         return redirect()->route('mygor.show', ['id' => $gor->user_id])->with('success', 'berhasil mengupdate data');
 
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Gor $gor)
+    {
+        //
     }
 }

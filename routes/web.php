@@ -42,7 +42,7 @@ Route::get('/about', function () {
 });
 
 Route::get('/contact', function () {
-      return view('partials.contact');
+      return view('contact');
 });
 
 // Route::get('/transaksi', function () {
