@@ -1,4 +1,4 @@
-<nav class="navbar bg-neutral text-base-100 sticky top-0 z-10">
+<nav class="navbar bg-neutral text-base-100 sticky top-0 z-10 px-32">
     <div class="navbar-start w-9/12">
         {{-- mobile --}}
         <div class="dropdown">
@@ -34,7 +34,7 @@
             @endif
         </div>
         {{-- end --}}
-        <a class="btn btn-ghost normal-case text-xl"><img src="{{ asset('assets/images/logo.png') }}" alt="Logo"
+        <a href='{{ route('landing') }}' class="btn btn-ghost normal-case text-xl"><img src="{{ asset('assets/images/logo.png') }}" alt="Logo"
                 class="w-28"></a>
 
         {{-- dekstop --}}

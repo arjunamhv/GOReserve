@@ -25,6 +25,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
 </head>
 <body class="bg-white font-family-karla">
+    <section class="px-32 py-16">
 
             <div class="flex items-center text-lg no-underline text-white pr-6">
                 <a class="" href="#">
@@ -46,11 +47,16 @@
 
     <!-- Text Header -->
     <header class="w-full container mx-auto">
-        <div class="flex flex-col items-center py-12">
-            <a class="font-bold text-gray-800 uppercase hover:text-gray-700 text-5xl" href="#">
-                GoReserve Blog
-            </a>
-        </div>
+        <div class="w-full px-4">
+            <div class="max-w-xl mx-auto text-center mb-16">
+              <h4 class="font-medium text-lg text-sky-800 mb-2">GOReserve</h4>
+              <h2
+                class="font-bold text-dark text-2xl mb-4 sm:text-3xl lg:text-4xl tracking-widest"
+              >
+                OUR BLOG
+              </h2>
+            </div>
+          </div>
     </header>
 
     <!-- Topic Nav -->
@@ -165,6 +171,7 @@
             </div>
         </aside>
     </div>
+</section>
     <script>
         function getCarouselData() {
             return {

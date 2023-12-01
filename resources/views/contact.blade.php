@@ -6,7 +6,7 @@
         <div class="max-w-xl mx-auto text-center mb-16">
           <h4 class="font-medium text-lg text-sky-800 mb-2">GOReserve</h4>
           <h2
-            class="font-bold text-dark text-2xl mb-4 sm:text-3xl lg:text-4xl dark:text-white tracking-widest"
+            class="font-bold text-dark text-2xl mb-4 sm:text-3xl lg:text-4xl tracking-widest"
           >
             CONTACT
           </h2>

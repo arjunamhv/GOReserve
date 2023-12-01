@@ -11,8 +11,9 @@ class TicketController extends Controller
 {
 
     public function index(){
+        
         return view("myticket", [
-            'payment' => Payment::latest()->paginate(7)->withQueryString()
+            'payment' => Payment::latest()->paginate(4)->withQueryString()
         ]);
     }
 
@@ -32,7 +33,7 @@ class TicketController extends Controller
         if($hashed == $request->signature_key){
             if($request->transaction_status == 'capture'){
                 $payment = Payment::find($request->order_id);
-                $payment->booking->update(['status' => 'Sudah Bayar']);
+                $payment->booking->update(['status' => 'Paid']);
                 $newNumber = generate();
                 $exists = Payment::where('ticket_number', $newNumber)->exists();
                 if($exists){

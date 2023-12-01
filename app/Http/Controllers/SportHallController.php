@@ -13,8 +13,8 @@ class SportHallController extends Controller
 {
     public function index(){
         return view("sporthall", [
-            'gors'=> Gor::all()
-    ]);
+            'gors'=> Gor::latest()->filter(request(['search']))->paginate(7)->withQueryString()
+        ]);
     }
 
     public function show(Gor $gor){
@@ -29,6 +29,28 @@ class SportHallController extends Controller
             "formData" => session('formData', [])
             ] );
     }
+
+    public function checkschedule(Gor $gor){
+        return view("partials.order.sporthall-check", [
+            "gor" => $gor,
+        ]);
+    }
+
+    public function check(Request $request, Gor $gor){
+        $validatedData = $request->validate([
+            "field_id" => "required",
+            "booking_date" => "required"
+        ]);
+
+        $bookings = Booking::whereDate('booking_date', $validatedData['booking_date']) //mengambil data tanggal booking
+        ->where('field_id', $validatedData['field_id'])->get();
+
+        $field = Field::find($validatedData['field_id'])->name;
+
+        return redirect()->route('check', ['gor' => $gor->slug])->with(["success" => "sudah aman", 'booking' => $bookings, 'date' => $validatedData['booking_date'], 'field' => $field]);
+    }
+
+    
 
     public function store(Request $request){
         
@@ -55,14 +77,34 @@ class SportHallController extends Controller
         //menenetukan akhir waktu booking
         $endtime = strtotime($validatedData['start_time']. ' + '. $validatedData['duration'] .' hours');
 
+        //get data field dan gor
         $field = Field::find($validatedData['field_id'])->gor_id;
         $gor = Gor::find($field);
 
+        //prepare query
+        $starttime = $validatedData['start_time'];
+        $endTime = date('H:i', strtotime($validatedData['start_time']) + $validatedData['duration'] * 3600);//membuat endtime dari inputan duration pengguna
+        $validatedData['end_time'] = $endTime;
+
+        //cek waktu booking apakah tersedia atau tidak
+        $bookings = Booking::whereDate('booking_date', $validatedData['booking_date']) //mengambil data tanggal booking
+            ->where('field_id', $validatedData['field_id'])->where(function($query) use ($starttime, $endTime){ //pengecekan where nested
+            $query->whereBetween('start_time', [$starttime, $endTime])->orWhereBetween('end_time', [$starttime, $endTime])//cek rentang waktu booking baru dari mulai ke berhenti
+            ->orWhere(function($query2) use ($starttime, $endTime){//pengecekan kedua untuk rentang waktu
+                $query2->where('start_time', '<', $starttime)//cek apakah terdapat start_time yang waktunya lebih awal dari starttime booking baru
+                ->where('start_time', '>=', $endTime);//cek start_time booking lain juga harus lebih akhir dari end time booking baru
+            });
+        })->exists();
+
+        //validasi dari banyak kemungkinan
         if(strtotime($validatedData['start_time']) < strtotime($gor->opening_hour) || strtotime($validatedData['start_time']) > strtotime($gor->closing_hour)){
             return redirect()->back()->with("error", "Booking diluar jam buka");
         }
         elseif($endtime > strtotime($gor->closing_hour)){
             return redirect()->back()->with("error", "Durasi melebihi jam tutup");
+        }
+        elseif($bookings){
+            return redirect()->back()->with("error", "Lapangan sudah dibooking");
         }
         
         // Membuat record baru dalam tabel Booking berdasarkan data yang divalidasi
@@ -73,7 +115,7 @@ class SportHallController extends Controller
             'field_name' => $booking->field->name,
             'username' => $booking->user->name,
             'start_time' => $booking->start_time,
-            'end_time' => date('H:i',strtotime($booking->start_time) + $booking->duration * 3600),
+            'end_time' => $booking->end_time,
             'price' =>  $booking->field->price * $booking->duration,
             'booking_date' => $booking->booking_date,
             'booking_id' => $booking->id
@@ -83,9 +125,15 @@ class SportHallController extends Controller
         return redirect()->route('store', ['gor' => $booking->field->gor->slug])->with("success", "Data tersimpan!");
     }
 
-    public function transaction(Request $request, $gor){
-        $payment = Payment::create($request->all());
+    public function transaction(Request $request){
+        $payment = Payment::firstOrNew([
+            'booking_id' => $request->input('booking_id'),
+            'amount' => $request->input('amount'),
+        ]);
 
+        if (!$payment->exists) {
+            $payment = Payment::create($request->all());
+        }
         // Set your Merchant Server Key
         \Midtrans\Config::$serverKey = config('midtrans.server_key');
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).

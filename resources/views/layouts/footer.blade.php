@@ -1,4 +1,4 @@
-<footer class="footer p-10 bg-neutral text-neutral-content">
+<footer class="footer px-32 py-10 bg-neutral text-neutral-content">
     <aside>
 <img src="{{ asset('/assets/images/logo.png') }}" class="w-52" alt="Logo.png">
 <p>GOReserve Ltd.<br/>Discover and book sports facilities with ease on GOReserve </p>
