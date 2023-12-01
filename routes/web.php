@@ -10,13 +10,13 @@ use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Symfony\Component\HttpKernel\Profiler\Profile;
-use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\SportHallController;
 use App\Http\Controllers\AccountingController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\ScanController;
+
 
 
 
@@ -31,9 +31,6 @@ use App\Http\Controllers\ScanController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// })->name('landing');
 Route::get('/', [LandingController::class,'index'])->name('landing');
 
 
@@ -45,28 +42,19 @@ Route::get('/contact', function () {
       return view('contact');
 });
 
-// Route::get('/transaksi', function () {
-//     return view('partials.order.transaksi');
-// })->middleware(['auth', 'verified']);
-
-// Route::get('/transaksi/add', function () {
-//     return view('partials.order.add');
-// })->middleware(['auth', 'verified']);
-
-// Route::get('/transaksi/input', function () {
-//     return view('partials.order.transaksi2');
-// })->middleware(['auth', 'verified']);
-
-// sporthall
+// sporthall -> auth (middleware)
 Route::get('/sporthall', [SportHallController::class,'index']);
 Route::get('/sporthall/{gor:slug}', [SportHallController::class,'show']);
-Route::get('/sporthall/{gor:slug}/order', [SportHallController::class, 'order'])->middleware(['auth', 'verified']);
-Route::post('/sporthall/{gor:slug}/order', [SportHallController::class, 'store'])->name('store')->middleware(['auth', 'verified']);
-Route::post('/sporthall/{gor:slug}/transaction', [SportHallController::class, 'transaction'])->name('transaction')->middleware(['auth', 'verified']);
+Route::get('/sporthall/{gor:slug}/check', [SportHallController::class, 'checkschedule']);
+Route::post('/sporthall/{gor:slug}/check', [SportHallController::class, 'check'])->name('check');
+Route::get('/sporthall/{gor:slug}/order', [SportHallController::class, 'order']);
+Route::post('/sporthall/{gor:slug}/search', [SportHallController::class, 'search'])->name('search');
+Route::post('/sporthall/{gor:slug}/order', [SportHallController::class, 'store'])->name('store');
+Route::post('/sporthall/{gor:slug}/transaction', [SportHallController::class, 'transaction'])->name('transaction');
 
-Route::get('/myticket', [TicketController::class, 'index'])->middleware(['auth', 'verified']);
-Route::get('/myticket/{payment:id}', [TicketController::class, 'show'])->middleware(['auth', 'verified']);
-
+//myticket
+Route::get('/myticket', [TicketController::class, 'index']);
+Route::get('/myticket/{payment:id}', [TicketController::class, 'show']);
 
 Route::get('/blog', [BlogController::class, 'blog'])->name('blog');
 Route::get('/detailblog', [BlogController::class, 'detailblog'])->name('detailblog');
@@ -107,3 +95,5 @@ Route::get('/scan', function(){
 Route::post('/scancheck', [ScanController::class, 'scancheck'])->name('scancheck')->middleware('auth');
 
 require __DIR__.'/auth.php';
+
+//minuss rating, navbar SPORTHALL, middleware halaman sporthall dan myticket, responsive

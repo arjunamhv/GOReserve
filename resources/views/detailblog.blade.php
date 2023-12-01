@@ -1,6 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
+<section class="px-32 py-16">
+    <div class="w-full px-4">
+        <div class="max-w-xl mx-auto text-center mb-16">
+          <h4 class="font-medium text-lg text-sky-800 mb-2">GOReserve</h4>
+          <h2
+            class="font-bold text-dark text-2xl mb-4 sm:text-3xl lg:text-4xl tracking-widest"
+          >
+            DETAILS BLOG
+          </h2>
+        </div>
+      </div>
     <div class="container mt-4">
     <div class="row">
         <!-- Post content -->
@@ -8,9 +19,9 @@
             <!-- Post header -->
             <header class="mb-3">
                 <!-- Post title -->
-                <h1 class="font-bold text-3xl mb-1 mx-8">Mengupas Ruang Olahraga: Kesehatan dan Kesejahteraan yang Didapatkan</h1>
+                <h1 class="font-bold text-3xl mb-1">Mengupas Ruang Olahraga: Kesehatan dan Kesejahteraan yang Didapatkan</h1>
                 <!-- Post meta content -->
-                <div class="text-gray-500 italic mb-2 mx-4">Posted on January 1, 2023 by Divaa</div>
+                <div class="text-gray-500 italic mb-2">Posted on January 1, 2023 by Divaa</div>
             </header>
             <!-- Preview image figure -->
             <figure>
@@ -66,7 +77,7 @@
         </article>
     </div>
 </div>
-
+</section>
 <style>
   .full-width-image {
         width: 100%;
