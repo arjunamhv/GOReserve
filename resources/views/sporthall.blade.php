@@ -25,7 +25,7 @@
         
           @if($gors->count())
           @foreach ($gors as $gor)
-            <div class="w-full rounded-3xl bg-slate-300 py-4 px-4 mb-10">
+            <div class="w-full rounded-3xl bg-slate-300 py-4 px-4 mb-10" style="box-shadow: 0 0 10px rgb(205, 201, 201);">
                 <a href="/sporthall/{{ $gor->slug }}">
                     <div class="flex items-center justify-start">
                         <img src="../img/login-image.png" alt="lapang" class="w-2/5 rounded-xl mr-12">

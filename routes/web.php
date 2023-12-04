@@ -52,6 +52,28 @@ Route::post('/sporthall/{gor:slug}/search', [SportHallController::class, 'search
 Route::post('/sporthall/{gor:slug}/order', [SportHallController::class, 'store'])->name('store')->middleware(['auth', 'verified']);;
 Route::post('/sporthall/{gor:slug}/transaction', [SportHallController::class, 'transaction'])->name('transaction')->middleware(['auth', 'verified']);
 
+// sporthall -> auth (middleware)
+Route::get('/sporthall', [SportHallController::class,'index']);
+Route::get('/sporthall/{gor:slug}', [SportHallController::class,'show']);
+
+Route::get('/sporthall/{gor:slug}/check', [SportHallController::class, 'checkschedule']);
+Route::post('/sporthall/{gor:slug}/check', [SportHallController::class, 'check'])->name('check');
+Route::get('/sporthall/{gor:slug}/order', [SportHallController::class, 'order']);
+Route::post('/sporthall/{gor:slug}/search', [SportHallController::class, 'search'])->name('search');
+Route::post('/sporthall/{gor:slug}/order', [SportHallController::class, 'store'])->name('store');
+Route::post('/sporthall/{gor:slug}/transaction', [SportHallController::class, 'transaction'])->name('transaction');
+
+
+Route::get('/sporthall/{gor:slug}/order', [SportHallController::class, 'order'])->middleware(['auth', 'verified']);
+Route::post('/sporthall/{gor:slug}/order', [SportHallController::class, 'store'])->name('store')->middleware(['auth', 'verified']);
+Route::post('/sporthall/{gor:slug}/transaction', [SportHallController::class, 'transaction'])->name('transaction')->middleware(['auth', 'verified']);
+
+Route::get('/myticket', [TicketController::class, 'index'])->middleware(['auth', 'verified']);
+Route::get('/myticket/{payment:id}', [TicketController::class, 'show'])->middleware(['auth', 'verified']);
+Route::get('/rating', [TicketController::class, 'rating'])->name('rating');
+Route::post('review-store', [TicketController::class, 'reviewstore'])->name('review.store');
+
+
 //myticket
 Route::get('/myticket', [TicketController::class, 'index'])->middleware(['auth', 'verified']);
 Route::get('/myticket/{payment:id}', [TicketController::class, 'show'])->middleware(['auth', 'verified']);

@@ -1,35 +1,34 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="py-12">
+    <section class="py-8 md:py-12 lg:py-16">
         <div class="w-full px-4">
-            <div class="max-w-xl mx-auto text-center mb-16">
-              <h4 class="font-medium text-lg text-sky-800 mb-2">GOReserve</h4>
-              <h2
-                class="font-bold text-dark text-2xl mb-4 sm:text-3xl lg:text-4xl tracking-widest"
-              >
-                TICKET DETAILS
-              </h2>
+            <div class="max-w-xl mx-auto text-center mb-8">
+                <h4 class="font-medium text-lg text-sky-800 mb-2">GOReserve</h4>
+                <h2 class="font-bold text-dark text-xl md:text-3xl lg:text-4xl tracking-widest mb-4">
+                    TICKET DETAILS
+                </h2>
             </div>
-          </div>
-        <div class="py-12 px-24 flex justify-between">
-            <div class="w-1/4 border border-slate-800 rounded-lg p-4 flex flex-col justify-center items-center">
+        </div>
+
+        <div class="py-8 px-4 md:px-24 flex flex-col md:flex-row items-center justify-between">
+            <div class="w-full md:w-1/4 border border-slate-800 rounded-lg p-4 mb-4 md:mb-0 flex flex-col justify-center items-center">
                 <p class="text-center mb-3 pb-2">QR CODE</p>
                 @if($payment->ticket_number)
-                <div class="px-4">
-                    {!! DNS2D::getBarcodeHTML('$payment->ticket_number', 'QRCODE', 8, 8) !!}
-                </div>
+                    <div class="px-4">
+                        {!! DNS2D::getBarcodeHTML('$payment->ticket_number', 'QRCODE', 8, 8) !!}
+                    </div>
                 @else
-                <div class="text-center my-auto">
-                    <form action="{{ route('transaction', ['gor' => $payment->booking->field->gor->slug]) }}" method="POST" class="mb-3">
-                        @csrf
-                        <input type="hidden" name="booking_id" value="{{ $payment->booking->id }}">
-                        <input type="hidden" name="booking_date" value="{{ $payment->booking->booking_date }}">
-                        <input type="hidden" name="amount" value="{{ $payment->amount }}">
-                        <button type="submit" class="text-md font-semibold text-white bg-sky-800 py-2 px-4 rounded-2xl hover:shadow-lg hover:opacity-50 transition duration-300 ease-in-out">BAYAR SEKARANG</button>
-                    </form>
-                    <p class="text-sm font-sm text-red-400 mb-2">ticket not found!</p>
-                </div>
+                    <div class="text-center my-auto">
+                        <form action="{{ route('transaction', ['gor' => $payment->booking->field->gor->slug]) }}" method="POST" class="mb-3">
+                            @csrf
+                            <input type="hidden" name="booking_id" value="{{ $payment->booking->id }}">
+                            <input type="hidden" name="booking_date" value="{{ $payment->booking->booking_date }}">
+                            <input type="hidden" name="amount" value="{{ $payment->amount }}">
+                            <button type="submit" class="text-md font-semibold text-white bg-sky-800 py-2 px-4 rounded-2xl hover:shadow-lg hover:opacity-50 transition duration-300 ease-in-out">BAYAR SEKARANG</button>
+                        </form>
+                        <p class="text-sm font-sm text-red-400 mb-2">ticket not found!</p>
+                    </div>
                 @endif
             </div>
             <div class="w-[70%] border border-slate-800 rounded-lg py-4">
