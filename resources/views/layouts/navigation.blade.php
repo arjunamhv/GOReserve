@@ -1,4 +1,4 @@
-<nav class="navbar bg-neutral text-base-100 sticky top-0 z-10 px-32">
+<nav class="navbar bg-neutral text-base-100 sticky top-0 z-10 px-12 lg:px-32">
     <div class="navbar-start w-9/12">
         {{-- mobile --}}
         <div class="dropdown">
