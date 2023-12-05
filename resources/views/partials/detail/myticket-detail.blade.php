@@ -12,8 +12,8 @@
               </h2>
             </div>
           </div>
-        <div class="py-12 px-24 flex justify-between">
-            <div class="w-1/4 border border-slate-800 rounded-lg p-4 flex flex-col justify-center items-center">
+        <div class="px-12 lg:py-12 lg:px-24 lg:flex justify-between">
+            <div class="w-1/2 mx-auto mb-5 lg:mb-0 lg:w-1/4 lg:mx-0 border border-slate-800 rounded-lg p-4 flex flex-col justify-center items-center">
                 <p class="text-center mb-3 pb-2">QR CODE</p>
                 @if($payment->ticket_number)
                 <div class="px-4">
@@ -32,30 +32,30 @@
                 </div>
                 @endif
             </div>
-            <div class="w-[70%] border border-slate-800 rounded-lg py-4">
-                <p class="text-center border-b mb-3 text-base font-bold text-slate-800 pb-4">NOTED : Don't show QR Code to everyone!</p>
-                <div class="flex items-center">
-                    <div class="w-1/2 flex justify-between border-r">
-                        <div class="p-4">
+            <div class="w-full lg:w-[70%] border border-slate-800 rounded-lg py-4">
+                <p class="text-center border-b mb-3 text-base font-bold text-slate-800 lg:pb-4">NOTED : Don't show QR Code to everyone!</p>
+                <div class="px-4 lg:flex lg:px-0 items-center">
+                    <div class="w-full lg:w-1/2 flex justify-between border-r">
+                        <div class="lg:p-4">
                             <p class="text-base font-small text-gray-500 mb-2">Booking ID</p>
                             <p class="text-lg font-medium text-slate-800 mb-4">{{ $payment->booking->id }}</p>
                             <p class="text-base font-small text-gray-500 mb-2">Name</p>
-                            <p class="text-lg font-medium text-slate-800 mb-2">{{ $payment->booking->user->name }}</p>
+                            <p class="text-lg font-medium text-slate-800 mb-4 lg:mb-2">{{ $payment->booking->user->name }}</p>
                         </div>
-                        <div class="p-4">
-                            <p class="text-base font-small text-gray-500 mb-2">Category</p>
-                            <p class="text-lg font-medium text-slate-800 mb-4">{{ $payment->booking->field->name }}</p>
-                            <p class="text-base font-small text-gray-500 mb-2">Status</p>
+                        <div class="lg:p-4">
+                            <p class="text-right lg:text-left text-base font-small text-gray-500 mb-2">Category</p>
+                            <p class="text-right lg:text-left text-lg font-medium text-slate-800 mb-4">{{ $payment->booking->field->name }}</p>
+                            <p class="text-right lg:text-left text-base font-small text-gray-500 mb-2">Status</p>
                             @if ($payment->booking->status === 'Paid' || $payment->booking->status === 'Check In')
-                                <p class="text-lg font-medium text-green-500 mb-2">{{ $payment->booking->status }}</p>
+                                <p class="text-right lg:text-left text-lg font-medium text-green-500 lg:mb-2">{{ $payment->booking->status }}</p>
                             @else
-                                <p class="text-lg font-medium text-red-500 mb-2">{{ $payment->booking->status }}</p>
+                                <p class="text-right lg:text-left text-lg font-medium text-red-500 lg:mb-2">{{ $payment->booking->status }}</p>
                             @endif
                         </div>
                     </div>
-                    <div class="w-1/2">
-                        <div class="p-4">
-                            <p class="text-base font-small text-gray-500 mb-2">GOR</p>
+                    <div class="w-full lg:w-1/2">
+                        <div class="lg:p-4">
+                            <p class="text-base font-small text-gray-500 mb-2">Nama GOR</p>
                             <p class="text-lg font-medium text-slate-800 mb-4">{{ $payment->booking->field->gor->name }}</p>
                             <div class="w-full flex justify-between items-center">
                                 <div class="mb-2">
@@ -72,7 +72,7 @@
                 </div>
             </div>
         </div>
-        <div class="px-24 text-right">
+        <div class="px-12 pt-12 lg:pt-0 lg:px-24 text-right">
          <a href="/myticket" class="text-md font-semibold text-white bg-sky-800 py-2 px-4 rounded-2xl hover:shadow-lg hover:opacity-50 transition duration-300 ease-in-out">Kembali</a>
         </div>
     </section>

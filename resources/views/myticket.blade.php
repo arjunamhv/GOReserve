@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="py-12 px-32">
+    <section class="py-12 px-12 lg:px-32">
         <div class="w-full px-4">
             <div class="max-w-xl mx-auto text-center mb-16">
               <h4 class="font-medium text-lg text-sky-800 mb-2">GOReserve</h4>
@@ -16,9 +16,9 @@
         @if($payment->count())
             @foreach ($payment as $ticket)
             {{-- ada tiket --}}
-            <div class="mx-auto w-[80%] mb-10">
+            <div class="mx-auto w-full lg:w-[80%] mb-10">
                 <div class="border border-slate-300 rounded-lg shadow-md p-4 flex justify-between items-center">
-                    <img src="../img/login-image.png" alt="lapang" class="w-[300px] h-[200px] rounded-xl">
+                    <img src="../img/login-image.png" alt="lapang" class="hidden lg:block w-[300px] h-[200px] rounded-xl">
                     <div>
                         <p class="text-base font-semibold text-slate-800 mb-2"> Nama : {{ $ticket->booking->user->name }}</p>
                         <p class="text-base font-semibold text-slate-800 mb-2"> Gor : {{ $ticket->booking->field->gor->name }}</p>

@@ -30,7 +30,7 @@ module.exports = {
                     error: "#9F2C2C",
                     success: "#3A8059",
                     warning: "#E9A63F",
-                    info: "#3D9BD9"
+                    info: "#3D9BD9",
                 },
             },
             "light",
