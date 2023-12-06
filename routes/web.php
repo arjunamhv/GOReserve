@@ -53,14 +53,14 @@ Route::post('/sporthall/{gor:slug}/order', [SportHallController::class, 'store']
 Route::post('/sporthall/{gor:slug}/transaction', [SportHallController::class, 'transaction'])->name('transaction')->middleware(['auth', 'verified']);
 
 // sporthall -> auth (middleware)
-Route::get('/sporthall', [SportHallController::class,'index']);
-Route::get('/sporthall/{gor:slug}', [SportHallController::class,'show']);
+Route::get('/sporthall', [SportHallController::class,'index'])->middleware(['auth', 'verified']);
+Route::get('/sporthall/{gor:slug}', [SportHallController::class,'show'])->middleware(['auth', 'verified']);
 
-Route::get('/sporthall/{gor:slug}/check', [SportHallController::class, 'checkschedule']);
-Route::post('/sporthall/{gor:slug}/check', [SportHallController::class, 'check'])->name('check');
-Route::get('/sporthall/{gor:slug}/order', [SportHallController::class, 'order']);
-Route::post('/sporthall/{gor:slug}/search', [SportHallController::class, 'search'])->name('search');
-Route::post('/sporthall/{gor:slug}/order', [SportHallController::class, 'store'])->name('store');
+Route::get('/sporthall/{gor:slug}/check', [SportHallController::class, 'checkschedule'])->middleware(['auth', 'verified']);
+Route::post('/sporthall/{gor:slug}/check', [SportHallController::class, 'check'])->name('check')->middleware(['auth', 'verified']);
+Route::get('/sporthall/{gor:slug}/order', [SportHallController::class, 'order'])->middleware(['auth', 'verified']);
+Route::post('/sporthall/{gor:slug}/search', [SportHallController::class, 'search'])->name('search')->middleware(['auth', 'verified']);
+Route::post('/sporthall/{gor:slug}/order', [SportHallController::class, 'store'])->name('store')->middleware(['auth', 'verified']);
 Route::post('/sporthall/{gor:slug}/transaction', [SportHallController::class, 'transaction'])->name('transaction');
 
 
@@ -118,5 +118,3 @@ Route::get('/scan', function(){
 Route::post('/scancheck', [ScanController::class, 'scancheck'])->name('scancheck')->middleware('auth');
 
 require __DIR__.'/auth.php';
-
-//minuss rating, navbar SPORTHALL, middleware halaman sporthall dan myticket, responsive
