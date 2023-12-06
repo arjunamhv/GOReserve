@@ -2,12 +2,12 @@
 
 @section('content')
     <section class="py-12">
-        <div class="w-full px-24">
-            <a href="/myticket" class="text-lg font-semibold text-sky-800 flex items-center hover:opacity-50 transition duration-300 ease-in-out "><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+        <div class="w-full px-6 lg:px-32">
+            <a href="/myticket" class="text-lg mb-5 lg:mb-0 font-semibold text-sky-800 flex items-center hover:opacity-50 transition duration-300 ease-in-out "><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5"/>
                 </svg>
                 Kembali</a>
-            <div class="max-w-xl mx-auto text-center mb-10">
+            <div class="max-w-xl mx-auto text-center mb-16">
               <h4 class="font-medium text-lg text-sky-800 mb-2">GOReserve</h4>
               <h2
                 class="font-bold text-dark text-2xl mb-4 sm:text-3xl lg:text-4xl tracking-widest"
@@ -122,7 +122,7 @@
         </div>
     </div>
 @else
-        <div class="bg-white" style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
+        <div class="bg-white" style="display: flex; justify-content: center; align-items: center;">
             <form class="py-4 px-5" action="{{ route('review.store') }}" style="box-shadow: 0 0 10px rgb(160, 141, 141); width: 80%;" method="POST" autocomplete="off">
                 @csrf
                 <h2 class="text-center text-2xl font-bold text-dark mb-4">Write a Review</h2>

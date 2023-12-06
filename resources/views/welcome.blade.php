@@ -20,7 +20,7 @@
             </div>
         </div>
     </section>
-    <section class="md:flex flex-row justify-between items-center flex-wrap my-5 px-12 lg:px-32" id="section2">
+    <section class="md:flex flex-row justify-between items-center flex-wrap my-5 px-2 lg:px-32" id="section2">
         <div class="inline-block w-full md:w-1/2 p-5 min-w-sm">
             <img src="{{ asset('/assets/images/landing2.jpg') }}" alt="Landing.img">
         </div>
@@ -32,7 +32,7 @@
             <li class="p-1">Conveniently pay for your sports facility reservation.</li>
         </div>
     </section>
-    <section class="md:flex flex-row justify-between items-center flex-wrap px-12 lg:px-32">
+    <section class="md:flex flex-row justify-between items-center flex-wrap px-2 lg:px-32">
         <div class="inline-block w-full md:w-1/2 p-5 min-w-sm order-2 md:order-2">
             <div class="carousel w-full">
                 <div id="item1" class="carousel-item w-full">
@@ -65,7 +65,7 @@
             </a>
         </div>
     </section>
-    <section class="md:flex flex-row justify-between items-center flex-wrap px-12 lg:px-32">
+    <section class="md:flex flex-row justify-between items-center flex-wrap px-2 lg:px-32">
         <div class="inline-block w-full md:w-1/2 p-5 min-w-sm">
             <img src="{{ asset('/assets/images/landing1.jpg') }}" alt="Landing.img">
         </div>
@@ -83,7 +83,7 @@
             @endguest
         </div>
     </section>
-    <section class="pb-5 px-12 lg:px-32">
+    <section class="pb-5 px-2 lg:px-32">
         <h1 class="text-center text-4xl font-bold m-5">Sports hall gallery</h1>
         <p class="text-center text-sm m-2">Explore popular sports hall near you</p>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -145,7 +145,7 @@
             </div>
         </div>
     </section>
-    <section class="my-5 mt-10 px-12 lg:px-32">
+    <section class="my-5 mt-10 px-2 lg:px-32">
         <p class="text-center text-sm m-2">Articles</p>
         <h1 class="text-center text-4xl font-bold m-5">Discover the Benefits of Sports</h1>
         <p class="text-center text-sm m-2">Stay active and healthy with sports</p>
