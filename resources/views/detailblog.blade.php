@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="px-12 lg:px-32 py-16">
+<section class="px-6 lg:px-32 py-16">
     <div class="w-full px-4">
         <div class="max-w-xl mx-auto text-center mb-16">
           <h4 class="font-medium text-lg text-sky-800 mb-2">GOReserve</h4>
@@ -19,9 +19,9 @@
             <!-- Post header -->
             <header class="mb-3">
                 <!-- Post title -->
-                <h1 class="font-bold text-3xl mb-1">Mengupas Ruang Olahraga: Kesehatan dan Kesejahteraan yang Didapatkan</h1>
+                <h1 class="font-bold text-xl lg:text-3xl mb-1">Mengupas Ruang Olahraga: Kesehatan dan Kesejahteraan yang Didapatkan</h1>
                 <!-- Post meta content -->
-                <div class="text-gray-500 italic mb-2">Posted on January 1, 2023 by Divaa</div>
+                <div class="text-xs lg:text-base text-gray-500 italic mb-2">Posted on January 1, 2023 by Divaa</div>
             </header>
             <!-- Preview image figure -->
             <figure>
@@ -36,30 +36,30 @@
                         tidak hanya dari segi fisik, tetapi juga aspek kesejahteraan kita. Mari kita lihat bagaimana ruang
                         olahraga dapat menjadi kunci untuk hidup yang lebih sehat dan bahagia.</p>
                     <p>1. Fisik yang Sehat :</p>
-                    <ul class="list-disc pl-8">
+                    <ul class="list-disc pl-4 lg:pl-8">
                         <li>Penjelasan tentang berolahraga secara teratur dapat meredakan stres dan meningkatkan mood.</li>
                         <li>Manfaat olahraga dalam melepaskan endorfin yang membantu merasa lebih bahagia dan santai.</li>
                     </ul>
                     <p>2. Olahraga untuk Menjaga Kesehatan Tubuh:</p>
-                    <ul class="list-disc pl-8">
+                    <ul class="list-disc pl-4 lg:pl-8">
                         <li>Penjelasan tentang peningkatan kekuatan, daya tahan, dan kesehatan jantung yang didapat dari
                             berolahraga secara rutin.</li>
                         <li>Mengurangi risiko penyakit jantung, obesitas, dan masalah kesehatan lainnya dengan menjadikan
                             olahraga sebagai bagian dari gaya hidup.</li>
                     </ul>
                     <p>3. Kreativitas dan Produktivitas:</p>
-                    <ul class="list-disc pl-8">
+                    <ul class="list-disc pl-4 lg:pl-8">
                         <li>Bagaimana berolahraga dapat meningkatkan kreativitas dan produktivitas sehari-hari.</li>
                         <li>Cara olahraga membantu meningkatkan fokus dan kemampuan pemecahan masalah.</li>
                     </ul>
                     <p>4. Ruang Olahraga di Rumah: Investasi dalam Kesehatan Anda:</p>
-                    <ul class="list-disc pl-8">
+                    <ul class="list-disc pl-4 lg:pl-8">
                         <li>Manfaat memiliki ruang olahraga pribadi di rumah, termasuk kenyamanan dan fleksibilitas dalam
                             berolahraga.</li>
                         <li>Bagaimana investasi ini berkontribusi pada perbaikan kesehatan dan kesejahteraan jangka panjang.</li>
                     </ul>
                     <p>5. Tips Memulai Ruang Olahraga Pribadi:</p>
-                    <ul class="list-disc pl-8">
+                    <ul class="list-disc pl-4 lg:pl-8">
                         <li>Panduan praktis tentang bagaimana memulai ruang olahraga pribadi, termasuk pemilihan peralatan
                             dan pengaturan jadwal.</li>
                         <li>Ide-ide kreatif untuk menciptakan ruang olahraga yang sesuai dengan anggaran dan kebutuhan

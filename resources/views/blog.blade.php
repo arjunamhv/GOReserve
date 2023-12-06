@@ -25,7 +25,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
 </head>
 <body class="bg-white font-family-karla">
-    <section class="px-12 lg:px-32 py-16">
+    <section class="px-2 lg:px-32 py-16">
 
             <div class="flex items-center text-lg no-underline text-white pr-6">
                 <a class="" href="#">
@@ -94,8 +94,8 @@
                 </a>
                 <div class="bg-white flex flex-col justify-start p-6">
                     <a class="text-blue-700 text-sm font-bold uppercase pb-4">Sport</a>
-                    <a class="text-3xl font-bold hover:text-gray-700 pb-4">Mengupas Ruang Olahraga: Kesehatan dan Kesejahteraan yang Didapatkan</a>
-                    <p href="#" class="text-sm pb-3">
+                    <a class="text-xl lg:text-3xl font-bold hover:text-gray-700 pb-4">Mengupas Ruang Olahraga: Kesehatan dan Kesejahteraan yang Didapatkan</a>
+                    <p href="#" class="text-xs lg:text-sm pb-3">
                         By <a class="font-semibold hover:text-gray-800">Divaa</a>, Published on January 1th, 2023
                     </p>
                     <a class="pb-6">Ruang olahraga sering kali menjadi elemen yang terlupakan dalam kehidupan sehari-hari kita yang sibuk..</a>
@@ -110,8 +110,8 @@
                 </a>
                 <div class="bg-white flex flex-col justify-start p-6">
                     <a class="text-blue-700 text-sm font-bold uppercase pb-4">Health</a>
-                    <a class="text-3xl font-bold hover:text-gray-700 pb-4">Olahraga 10 Menit Bisa Selamatkan Jiwa dan Buat Umur Lebih Panjang</a>
-                    <p href="#" class="text-sm pb-3">
+                    <a class="text-xl lg:text-3xl font-bold hover:text-gray-700 pb-4">Olahraga 10 Menit Bisa Selamatkan Jiwa dan Buat Umur Lebih Panjang</a>
+                    <p href="#" class="text-xs lg:text-sm pb-3">
                         By <a class="font-semibold hover:text-gray-800">Divaa</a>, Published on Nov 22th, 2021
                     </p>
                     <a class="pb-6">Hasil penelitian terbaru menemukan fakta yang menakjubkan jika kita lebih rutin berolahraga..</a>
@@ -126,8 +126,8 @@
                 </a>
                 <div class="bg-white flex flex-col justify-start p-6">
                     <a class="text-blue-700 text-sm font-bold uppercase pb-4">Sports</a>
-                    <a class="text-3xl font-bold hover:text-gray-700 pb-4">Mudah, 13 Contoh Olahraga Ringan Cocok untuk Di Rumah!</a>
-                    <p href="#" class="text-sm pb-3">
+                    <a class="text-xl lg;text-3xl font-bold hover:text-gray-700 pb-4">Mudah, 13 Contoh Olahraga Ringan Cocok untuk Di Rumah!</a>
+                    <p href="#" class="text-xs lg:text-sm pb-3">
                         By <a class="font-semibold hover:text-gray-800">Divaa</a>, Published on Des 16nd, 2021
                     </p>
                     <a class="pb-6">Olahraga ringan merupakan sebuah latihan yang memerlukan lebih sedikit tenaga.Jika dibandingkan dengan latihan level berat...</a>

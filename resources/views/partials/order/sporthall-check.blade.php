@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="py-16 px-12 lg:px-32">
-    <a href="/sporthall/{{ $gor->slug }}" class="text-lg font-semibold text-sky-800 flex items-center hover:opacity-50 transition duration-300 ease-in-out "><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+<section class="py-16 px-6 lg:px-32">
+    <a href="/sporthall/{{ $gor->slug }}" class="text-lg mb-5 lg:mb-0 font-semibold text-sky-800 flex items-center hover:opacity-50 transition duration-300 ease-in-out "><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5"/>
         </svg>
         Kembali</a>
@@ -16,7 +16,7 @@
         </h2>
         </div>
     </div>
-    <div class="w-[80%] lg:w-[60%] mx-auto rounded-3xl bg-slate-300 p-4 mb-10">
+    <div class="w-full lg:w-[60%] mx-auto rounded-3xl bg-slate-300 p-4 mb-10">
             <h1 class="text-center text-2xl lg:text-3xl font-bold text-sky-800 mb-5">{{ $gor->name }}</h1>
             <div class="w-full mx-auto">
                 <form method="POST" action="{{ route('check', ['gor' => $gor->slug]) }}">
@@ -38,8 +38,8 @@
                         <p class="text-base font-bold text-slate-800">
                             Jadwal
                         </p>
-                        <input type="date" name="booking_date" id="booking_date" class="w-full bg-slate-200 text-dark p-2 rounded-md focus:outline-none focus:ring-primary focus-ring1 focus:border-primary" required>
-                        <button type="submit" class="w-full mt-10 text-md font-semibold text-white bg-sky-800 py-3 px-28 rounded-xl hover:shadow-lg hover:opacity-50 transition duration-300 ease-in-out">SUBMIT</button>
+                        <input type="date" name="booking_date" id="booking_date" class="w-full text-sm lg:text-base bg-slate-200 text-dark p-2 rounded-md focus:outline-none focus:ring-primary focus-ring1 focus:border-primary" required>
+                        <button type="submit" class="w-full mt-10 text-md font-semibold text-white bg-sky-800 py-3 px-12 lg:px-28 rounded-xl hover:shadow-lg hover:opacity-50 transition duration-300 ease-in-out">SUBMIT</button>
                     </form>
             </div>
 
@@ -54,14 +54,14 @@
                 @if(session('booking') && count(session('booking')) > 0)
                     @foreach (session('booking') as $bookings)
                     <div class="bg-gray-200 p-4 rounded-md mb-4 flex justify-between items-center">
-                            <p class="text-gray-700"><span class="font-semibold">Name:</span> {{ $bookings->user->name }}</p>
-                            <p class="text-gray-700"><span class="font-semibold">Time:</span> {{ date('H:i', strtotime($bookings->start_time)) }} - {{ date('H:i', strtotime($bookings->end_time)) }}</p>
+                            <p class="text-gray-700 text-xs lg:text-base"><span class="text-sm lg:text-base font-semibold">Name:</span> {{ $bookings->user->name }}</p>
+                            <p class="text-gray-700 text-xs lg:text-base"><span class="text-sm lg:text-base font-semibold">Time:</span> {{ date('H:i', strtotime($bookings->start_time)) }} - {{ date('H:i', strtotime($bookings->end_time)) }}</p>
                             @if ($bookings->status === 'Unpaid' ||$bookings->status === 'Canceled')
-                            <p class="text-red-700"><span class="font-semibold text-gray-700">Status:</span> {{ $bookings->status }}</p>
+                            <p class="text-red-700 text-xs lg:text-base"><span class="text-sm lg:text-base font-semibold text-gray-700">Status:</span> {{ $bookings->status }}</p>
                             @elseif($bookings->status === 'Paid' || $bookings->status === 'CheckIn')
-                            <p class="text-green-700"><span class="font-semibold text-gray-700">Status:</span> {{ $bookings->status }}</p>
+                            <p class="text-green-700 text-xs lg:text-base"><span class="text-sm lg:text-base font-semibold text-gray-700">Status:</span> {{ $bookings->status }}</p>
                             @else
-                            <p class="text-yellow-700"><span class="font-semibold text-gray-700">Status:</span> {{ $bookings->status }}</p>
+                            <p class="text-yellow-700 text-xs lg:text-base"><span class="text-sm lg:text-base font-semibold text-gray-700">Status:</span> {{ $bookings->status }}</p>
                             @endif
                     </div>
                     @endforeach

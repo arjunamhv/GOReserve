@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="px-12 lg:px-32 py-16">
+<section class="px-2 lg:px-32 py-16">
     <div class="w-full px-4">
         <div class="max-w-xl mx-auto text-center mb-16">
           <h4 class="font-medium text-lg text-sky-800 mb-2">GOReserve</h4>

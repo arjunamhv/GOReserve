@@ -52,6 +52,7 @@ Route::post('/sporthall/{gor:slug}/search', [SportHallController::class, 'search
 Route::post('/sporthall/{gor:slug}/order', [SportHallController::class, 'store'])->name('store')->middleware(['auth', 'verified']);;
 Route::post('/sporthall/{gor:slug}/transaction', [SportHallController::class, 'transaction'])->name('transaction')->middleware(['auth', 'verified']);
 
+
 Route::get('/myticket', [TicketController::class, 'index'])->middleware(['auth', 'verified']);
 Route::get('/myticket/{payment:id}', [TicketController::class, 'show'])->middleware(['auth', 'verified']);
 Route::get('/rating', [TicketController::class, 'rating'])->name('rating')->middleware(['auth', 'verified']);
