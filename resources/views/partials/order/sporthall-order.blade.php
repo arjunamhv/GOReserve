@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="py-16 px-4 lg:px-32">
-        <a href="/sporthall/{{ $gor->slug }}" class="text-lg mb-5 lg:mb-0 font-semibold text-sky-800 flex items-center hover:opacity-50 transition duration-300 ease-in-out "><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+        <a href="/sporthall/{{ $gor->slug }}" class="text-sm lg:text-lg mb-5 lg:mb-0 font-semibold text-sky-800 flex items-center hover:opacity-50 transition duration-300 ease-in-out "><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5"/>
             </svg>
             Kembali</a>
@@ -40,7 +40,7 @@
         <div class="w-full lg:mx-0 rounded-3xl bg-slate-300 p-4 mb-10">
             <h1 class="text-center text-xl lg:text-3xl font-bold text-slate-800 mb-4">{{ $gor->name }}</h1>
             <div class="block lg:flex items-center justify-between">
-                <img src="{{ asset('../img/login-image.png') }}" alt="lapang" class="w-full h-[250px] mb-2 lg:mb-0 lg:w-2/5 lg:h-[400px] rounded-xl">
+                <img src="{{ asset('../img/login-image.png') }}" alt="lapang" class="hidden lg:block w-2/5 h-[400px] rounded-xl">
                 <div class="lg:w-1/2">
                     <form method="POST" action="{{ route('store', ['gor' => $gor->slug]) }}">
                         @csrf

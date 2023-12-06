@@ -7,10 +7,11 @@
             </label>
             @if (Route::has('login'))
                 @auth
-                    <ul tabindex="0"
-                        class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+
+                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white rounded-box w-52 text-neutral">
                         <li><a href="{{ url('') }}">Home</a></li>
                         <li><a href="{{ url('myticket') }}">My Tickets</a></li>
+
                         <li><a>Chats</a></li>
                         @if (auth()->user()->is_admin)
                             <li><a href="{{ route('admin-dashboard') }}">My Gor</a></li>
@@ -19,9 +20,10 @@
                         @endif
                     </ul>
                 @else
-                    <ul tabindex="0"
-                        class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><a href="{{ url('') }}">Home</a></li>
+
+                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white rounded-box w-52 text-neutral">
+                       <li><a href="{{ url('') }}">Home</a></li>
+
                         <li><a href="{{ url('about') }}">About us</a></li>
                         <li><a href="{{ url('contact') }}">Contact</a></li>
                         <li><a href="{{ url('blog') }}">Blog</a></li>
@@ -84,7 +86,7 @@
                         {{ Auth::user()->name }} <i class="fa-solid fa-caret-down"></i>
                     </div>
                 </label>
-                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white rounded-box w-52 text-neutral">
                     <li><a href="{{ route('profile.edit') }}">Profile</a></li>
                     <form method="POST" action="{{ route('logout') }}">
                         <li>
