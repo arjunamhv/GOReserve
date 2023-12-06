@@ -43,7 +43,7 @@ Route::get('/contact', function () {
 });
 
 //sporthall
-Route::get('/sporthall', [SportHallController::class,'index'])->middleware(['auth', 'verified']);
+Route::get('/sporthall', [SportHallController::class,'index'])->name('sporthall')->middleware(['auth', 'verified']);
 Route::get('/sporthall/{gor:slug}', [SportHallController::class,'show'])->middleware(['auth', 'verified']);
 Route::get('/sporthall/{gor:slug}/check', [SportHallController::class, 'checkschedule'])->middleware(['auth', 'verified']);
 Route::post('/sporthall/{gor:slug}/check', [SportHallController::class, 'check'])->name('check')->middleware(['auth', 'verified']);
@@ -52,26 +52,10 @@ Route::post('/sporthall/{gor:slug}/search', [SportHallController::class, 'search
 Route::post('/sporthall/{gor:slug}/order', [SportHallController::class, 'store'])->name('store')->middleware(['auth', 'verified']);;
 Route::post('/sporthall/{gor:slug}/transaction', [SportHallController::class, 'transaction'])->name('transaction')->middleware(['auth', 'verified']);
 
-// sporthall -> auth (middleware)
-Route::get('/sporthall', [SportHallController::class,'index'])->middleware(['auth', 'verified']);
-Route::get('/sporthall/{gor:slug}', [SportHallController::class,'show'])->middleware(['auth', 'verified']);
-
-Route::get('/sporthall/{gor:slug}/check', [SportHallController::class, 'checkschedule'])->middleware(['auth', 'verified']);
-Route::post('/sporthall/{gor:slug}/check', [SportHallController::class, 'check'])->name('check')->middleware(['auth', 'verified']);
-Route::get('/sporthall/{gor:slug}/order', [SportHallController::class, 'order'])->middleware(['auth', 'verified']);
-Route::post('/sporthall/{gor:slug}/search', [SportHallController::class, 'search'])->name('search')->middleware(['auth', 'verified']);
-Route::post('/sporthall/{gor:slug}/order', [SportHallController::class, 'store'])->name('store')->middleware(['auth', 'verified']);
-Route::post('/sporthall/{gor:slug}/transaction', [SportHallController::class, 'transaction'])->name('transaction');
-
-
-Route::get('/sporthall/{gor:slug}/order', [SportHallController::class, 'order'])->middleware(['auth', 'verified']);
-Route::post('/sporthall/{gor:slug}/order', [SportHallController::class, 'store'])->name('store')->middleware(['auth', 'verified']);
-Route::post('/sporthall/{gor:slug}/transaction', [SportHallController::class, 'transaction'])->name('transaction')->middleware(['auth', 'verified']);
-
 Route::get('/myticket', [TicketController::class, 'index'])->middleware(['auth', 'verified']);
 Route::get('/myticket/{payment:id}', [TicketController::class, 'show'])->middleware(['auth', 'verified']);
-Route::get('/rating', [TicketController::class, 'rating'])->name('rating');
-Route::post('review-store', [TicketController::class, 'reviewstore'])->name('review.store');
+Route::get('/rating', [TicketController::class, 'rating'])->name('rating')->middleware(['auth', 'verified']);
+Route::post('review-store', [TicketController::class, 'reviewstore'])->name('review.store')->middleware(['auth', 'verified']);
 
 
 //myticket
