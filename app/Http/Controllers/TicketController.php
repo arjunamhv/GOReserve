@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Ticket;
 use App\Models\Booking;
 use App\Models\Payment;
+use App\Models\Rating;
 use Illuminate\Http\Request;
 
 class TicketController extends Controller
@@ -16,6 +17,28 @@ class TicketController extends Controller
             'payment' => Payment::latest()->paginate(4)->withQueryString()
         ]);
     }
+
+    public function rating() {
+        return view('partials.detail.rating-detail');
+    }
+
+    public function reviewstore(Request $request){
+        $request->validate([
+            'booking_id' => 'required',
+            'comment' => 'required',
+            'rating' => 'required|numeric',
+            'service_id' => 'required',
+        ]);
+        
+        $review = new Rating();
+        $review->booking_id = $request->input('booking_id');
+        $review->comments = $request->input('comment');
+        $review->star_rating = $request->input('rating');
+        $review->service_id = $request->service_id;
+        $review->save();
+        return redirect()->back()->with('flash_msg_success', 'Your review has been submitted successfully.');
+}
+
 
     public function show(Payment $payment){
         return view('partials.detail.myticket-detail', [

@@ -7,15 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rating extends Model
 {
-    use HasFactory;
+    protected $fillable = ['booking_id', 'comments', 'star_rating', 'status', 'updated_at', 'created_at'];
 
-    protected $guarded = ['id'];
-
-    public function user() {
-        return $this->belongsTo(User::class, 'user_id');
-    }
-
-    public function field() {
-        return $this->belongsTo(Field::class, 'field_id');
+    public function booking() {
+        return $this->belongsTo(Booking::class, 'booking_id');
     }
 }
+

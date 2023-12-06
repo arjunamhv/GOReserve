@@ -25,7 +25,7 @@
             </header>
             <!-- Preview image figure -->
             <figure>
-                <img src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg" class="w-full"
+                <img src="https://akcdn.detik.net.id/visual/2022/02/21/ilustrasi-pria-jogging_169.jpeg?w=650&q=90" class="w-full"
                     alt="Shoes">
             </figure>
             <!-- Post content -->
