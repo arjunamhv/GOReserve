@@ -11,7 +11,7 @@
                         class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                         <li><a href="{{ url('') }}">Home</a></li>
                         <li><a href="{{ url('myticket') }}">My Tickets</a></li>
-                        <li><a href="{{ url('registergor') }}">Register Gor</a></li>
+                        <li><a>Chats</a></li>
                         @if (auth()->user()->is_admin)
                             <li><a href="{{ route('admin-dashboard') }}">My Gor</a></li>
                         @else
@@ -43,7 +43,7 @@
                 <li><a href="{{ url('') }}">Home</a></li>
                 @auth
                     <li><a href="{{ url('myticket') }}">My Tickets</a></li>
-                    <li><a href="{{ url('registergor') }}">Register Gor</a></li>
+                    <li><a>Chats</a></li>
                 @endauth
                 @guest
                     <li><a href="{{ url('about') }}">About Us</a></li>
