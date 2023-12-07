@@ -1,4 +1,4 @@
-<nav class="navbar bg-neutral text-base-100 sticky top-0 z-10">
+<nav class="navbar bg-neutral text-base-100 sticky top-0 z-10 px-2 lg:px-32">
     <div class="navbar-start w-9/12">
         {{-- mobile --}}
         <div class="dropdown">
@@ -7,20 +7,21 @@
             </label>
             @if (Route::has('login'))
                 @auth
-                    <ul tabindex="0"
-                        class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><a href="{{ route('landing') }}">Home</a></li>
-                        <li><a>My Tickets</a></li>
+                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white rounded-box w-52 text-neutral">
+                        <li><a href="{{ url('') }}">Home</a></li>
+                        <li><a href="{{ url('myticket') }}">My Tickets</a></li>
                         @if (auth()->user()->is_admin)
                             <li><a href="{{ route('admin-dashboard') }}">My Gor</a></li>
                         @else
                             <li><a href="{{ route('registergor') }}">Register your GOR</a></li>
+                            <li><a href="{{ route('sporthall') }}">Find Sporthall</a></li>
                         @endif
                     </ul>
                 @else
-                    <ul tabindex="0"
-                        class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><a href="{{ url('landing') }}">Home</a></li>
+
+                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white rounded-box w-52 text-neutral">
+                       <li><a href="{{ url('') }}">Home</a></li>
+
                         <li><a href="{{ url('about') }}">About us</a></li>
                         <li><a href="{{ url('contact') }}">Contact</a></li>
                         <li><a href="{{ url('blog') }}">Blog</a></li>
@@ -33,7 +34,7 @@
             @endif
         </div>
         {{-- end --}}
-        <a class="btn btn-ghost normal-case text-xl"><img src="{{ asset('assets/images/logo.png') }}" alt="Logo"
+        <a href='{{ route('landing') }}' class="btn btn-ghost normal-case text-xl"><img src="{{ asset('assets/images/logo.png') }}" alt="Logo"
                 class="w-28"></a>
 
         {{-- dekstop --}}
@@ -58,6 +59,7 @@
                             <li><a href="{{ route('admin-dashboard') }}">My GOR</a></li>
                         @else
                             <li><a href="{{ route('registergor') }}">Register your GOR</a></li>
+                            <li><a href="{{ route('sporthall') }}">Sporthall</a></li>
                         @endif
                     </ul>
                 </div>
@@ -82,7 +84,7 @@
                         {{ Auth::user()->name }} <i class="fa-solid fa-caret-down"></i>
                     </div>
                 </label>
-                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white rounded-box w-52 text-neutral">
                     <li><a href="{{ route('profile.edit') }}">Profile</a></li>
                     <form method="POST" action="{{ route('logout') }}">
                         <li>

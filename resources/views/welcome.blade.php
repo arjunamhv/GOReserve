@@ -20,7 +20,7 @@
             </div>
         </div>
     </section>
-    <section id="featureSection" class="md:flex flex-row justify-between items-center flex-wrap my-5">
+    <section id="featureSection" class="md:flex flex-row justify-between items-center flex-wrap my-5 px-2 lg:px-32">
         <div id="featureSectionImg" class="opacity-0 inline-block w-full md:w-1/2 p-5 min-w-sm">
             <img src="{{ asset('/assets/images/landing2.jpg') }}" alt="Landing.img">
         </div>
@@ -32,7 +32,7 @@
             <li class="p-1">Conveniently pay for your sports facility reservation.</li>
         </div>
     </section>
-    <section id="featuresListSection" class="md:flex flex-row justify-between items-center flex-wrap">
+    <section id="featuresListSection" class="md:flex flex-row justify-between items-center flex-wrap px-2 lg:px-32">
         <div id="featuresListSectionImg" class="opacity-0 inline-block w-full md:w-1/2 p-5 min-w-sm order-2 md:order-2">
             <div class="carousel w-full">
                 <div id="item1" class="carousel-item w-full">
@@ -66,7 +66,7 @@
             </a>
         </div>
     </section>
-    <section id="ctaSection" class="md:flex flex-row justify-between items-center flex-wrap">
+    <section id="ctaSection" class="md:flex flex-row justify-between items-center flex-wrap px-2 lg:px-32">
         <div id="ctaSectionImg" class="opacity-0 inline-block w-full md:w-1/2 p-5 min-w-sm">
             <img src="{{ asset('/assets/images/landing1.jpg') }}" alt="Landing.img">
         </div>
@@ -84,7 +84,7 @@
             @endguest
         </div>
     </section>
-    <section id="gallerySection" class="pb-5">
+    <section id="gallerySection" class="pb-5 px-2 lg:px-32">
         <div id="galleryHead" class="opacity-0 mb-1">
             <h1 class="text-center text-4xl font-bold m-5">Sports hall gallery</h1>
             <p class="text-center text-sm m-2">Explore popular sports hall near you</p>
@@ -196,7 +196,7 @@
             </div>
         </div>
     </section>
-    <section id="blogSection" class="my-5 mt-10">
+    <section id="blogSection" class="my-5 mt-10 px-2 lg:px-32">
         <div id="blogHead" class="opacity-0">
             <p class="text-center text-sm m-2">Articles</p>
             <h1 class="text-center text-4xl font-bold m-5">Discover the Benefits of Sports</h1>
@@ -205,14 +205,13 @@
         <div class="carousel rounded-box w-full overflow-x-auto">
             <div class="carousel-item p-5">
                 <a href="/detailblog" class="card w-96 bg-base-100 shadow-xl">
-                    <figure><img src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg"
+                    <figure><img src="https://akcdn.detik.net.id/visual/2022/02/21/ilustrasi-pria-jogging_169.jpeg?w=650&q=90"
                             alt="Shoes" /></figure>
                     <div class="card-body">
                         <h2 class="card-title">Mengupas Ruang Olahraga: Kesehatan dan Kesejahteraan yang Didapatkan</h2>
                         <p class="text-sm text-base-300">by Divaa</p>
                         <p>Ruang olahraga sering kali menjadi elemen yang terlupakan dalam kehidupan sehari-hari kita yang
-                            sibuk. Namun, dalam blog ini, kita akan membongkar manfaat besar yang bisa didapatkan dari ruang
-                            olahraga...</p>
+                            sibuk...</p>
                         <div class="flex justify-between">
                             <span class="text-xs"><i class="fa-regular fa-clock"></i> 3 minutes ago </span>
                             <span class="text-xs"><i class="fa-regular fa-eye"></i> 3000 views</span>
@@ -222,114 +221,101 @@
                 </a>
             </div>
             <div class="carousel-item p-5">
-                <div class="card w-96 bg-base-100 shadow-xl">
-                    <figure><img src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg"
+                <a href="/detailblog" class="card w-96 bg-base-100 shadow-xl">
+                    <figure><img src="https://awsimages.detik.net.id/community/media/visual/2019/09/18/b331ecec-24af-4d21-b979-144bbc7f032b_169.jpeg?w=700&q=90"
                             alt="Shoes" /></figure>
                     <div class="card-body">
-                        <h2 class="card-title">Lorem, ipsum dolor.</h2>
-                        <p class="text-sm text-base-300">by diva</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, et amet. Aspernatur hic
-                            dignissimos, dolorem debitis accusamus modi vel quod ratione quibusdam culpa exercitationem
-                            soluta!</p>
+                        <h2 class="card-title">Olahraga 10 Menit Bisa Selamatkan Jiwa dan Buat Umur Lebih Panjang</h2>
+                        <p class="text-sm text-base-300">by Divaa</p>
+                        <p>Hasil penelitian terbaru menemukan fakta yang menakjubkan jika kita lebih rutin berolahraga...</p>
                         <div class="flex justify-between">
                             <span class="text-xs"><i class="fa-regular fa-clock"></i> 3 minutes ago </span><span
                                 class="text-xs"><i class="fa-regular fa-eye"></i> 3000 views</span><span
-                                class="text-xs">Nov, 02 2023</span>
+                                class="text-xs">Nov, 22 2021</span>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="carousel-item p-5">
-                <div class="card w-96 bg-base-100 shadow-xl">
-                    <figure><img src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg"
+                <a href="/detailblog" class="card w-96 bg-base-100 shadow-xl">
+                    <figure><img src="https://cdn1-production-images-kly.akamaized.net/kgkX4K8PyXEaiZO7YV9peHqfTIM=/1280x720/smart/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/3181233/original/032396100_1594872164-crop-young-sportswoman-tying-shoelaces-on-sneakers-4498555.jpg"
                             alt="Shoes" /></figure>
                     <div class="card-body">
-                        <h2 class="card-title">Lorem, ipsum dolor.</h2>
-                        <p class="text-sm text-base-300">by diva</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, et amet. Aspernatur hic
-                            dignissimos, dolorem debitis accusamus modi vel quod ratione quibusdam culpa exercitationem
-                            soluta!</p>
+                        <h2 class="card-title">Mudah, 13 Contoh Olahraga Ringan Cocok untuk Di Rumah!</h2>
+                        <p class="text-sm text-base-300">by Divaa</p>
+                        <p>Olahraga ringan merupakan sebuah latihan yang memerlukan lebih sedikit tenaga.Jika dibandingkan dengan latihan level berat...</p>
                         <div class="flex justify-between">
                             <span class="text-xs"><i class="fa-regular fa-clock"></i> 3 minutes ago </span><span
                                 class="text-xs"><i class="fa-regular fa-eye"></i> 3000 views</span><span
-                                class="text-xs">Nov, 02 2023</span>
+                                class="text-xs">Des, 16 2021</span>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="carousel-item p-5">
-                <div class="card w-96 bg-base-100 shadow-xl">
-                    <figure><img src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg"
+                <a href="/detailblog" class="card w-96 bg-base-100 shadow-xl">
+                    <figure><img src="https://awsimages.detik.net.id/community/media/visual/2019/09/18/b331ecec-24af-4d21-b979-144bbc7f032b_169.jpeg?w=700&q=90"
                             alt="Shoes" /></figure>
                     <div class="card-body">
-                        <h2 class="card-title">Lorem, ipsum dolor.</h2>
-                        <p class="text-sm text-base-300">by diva</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, et amet. Aspernatur hic
-                            dignissimos, dolorem debitis accusamus modi vel quod ratione quibusdam culpa exercitationem
-                            soluta!</p>
+                        <h2 class="card-title">Olahraga 10 Menit Bisa Selamatkan Jiwa dan Buat Umur Lebih Panjang</h2>
+                        <p class="text-sm text-base-300">by Divaa</p>
+                        <p>Hasil penelitian terbaru menemukan fakta yang menakjubkan jika kita lebih rutin berolahraga...</p>
                         <div class="flex justify-between">
                             <span class="text-xs"><i class="fa-regular fa-clock"></i> 3 minutes ago </span><span
                                 class="text-xs"><i class="fa-regular fa-eye"></i> 3000 views</span><span
-                                class="text-xs">Nov, 02 2023</span>
+                                class="text-xs">Nov, 22 2021</span>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="carousel-item p-5">
-                <div class="card w-96 bg-base-100 shadow-xl">
-                    <figure><img src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg"
+                <a href="/detailblog" class="card w-96 bg-base-100 shadow-xl">
+                    <figure><img src="https://awsimages.detik.net.id/community/media/visual/2019/09/18/b331ecec-24af-4d21-b979-144bbc7f032b_169.jpeg?w=700&q=90"
                             alt="Shoes" /></figure>
                     <div class="card-body">
-                        <h2 class="card-title">Lorem, ipsum dolor.</h2>
-                        <p class="text-sm text-base-300">by diva</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, et amet. Aspernatur hic
-                            dignissimos, dolorem debitis accusamus modi vel quod ratione quibusdam culpa exercitationem
-                            soluta!</p>
+                        <h2 class="card-title">Olahraga 10 Menit Bisa Selamatkan Jiwa dan Buat Umur Lebih Panjang</h2>
+                        <p class="text-sm text-base-300">by Divaa</p>
+                        <p>Hasil penelitian terbaru menemukan fakta yang menakjubkan jika kita lebih rutin berolahraga...</p>
                         <div class="flex justify-between">
                             <span class="text-xs"><i class="fa-regular fa-clock"></i> 3 minutes ago </span><span
                                 class="text-xs"><i class="fa-regular fa-eye"></i> 3000 views</span><span
-                                class="text-xs">Nov, 02 2023</span>
+                                class="text-xs">Nov, 22 2021</span>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="carousel-item p-5">
-                <div class="card w-96 bg-base-100 shadow-xl">
-                    <figure><img src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg"
+                <a href="/detailblog" class="card w-96 bg-base-100 shadow-xl">
+                    <figure><img src="https://awsimages.detik.net.id/community/media/visual/2019/09/18/b331ecec-24af-4d21-b979-144bbc7f032b_169.jpeg?w=700&q=90"
                             alt="Shoes" /></figure>
                     <div class="card-body">
-                        <h2 class="card-title">Lorem, ipsum dolor.</h2>
-                        <p class="text-sm text-base-300">by diva</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, et amet. Aspernatur hic
-                            dignissimos, dolorem debitis accusamus modi vel quod ratione quibusdam culpa exercitationem
-                            soluta!</p>
+                        <h2 class="card-title">Olahraga 10 Menit Bisa Selamatkan Jiwa dan Buat Umur Lebih Panjang</h2>
+                        <p class="text-sm text-base-300">by Divaa</p>
+                        <p>Hasil penelitian terbaru menemukan fakta yang menakjubkan jika kita lebih rutin berolahraga...</p>
                         <div class="flex justify-between">
                             <span class="text-xs"><i class="fa-regular fa-clock"></i> 3 minutes ago </span><span
                                 class="text-xs"><i class="fa-regular fa-eye"></i> 3000 views</span><span
-                                class="text-xs">Nov, 02 2023</span>
+                                class="text-xs">Nov, 22 2021</span>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="carousel-item p-5">
-                <div class="card w-96 bg-base-100 shadow-xl">
-                    <figure><img src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg"
+                <a href="/detailblog" class="card w-96 bg-base-100 shadow-xl">
+                    <figure><img src="https://awsimages.detik.net.id/community/media/visual/2019/09/18/b331ecec-24af-4d21-b979-144bbc7f032b_169.jpeg?w=700&q=90"
                             alt="Shoes" /></figure>
                     <div class="card-body">
-                        <h2 class="card-title">Lorem, ipsum dolor.</h2>
-                        <p class="text-sm text-base-300">by diva</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, et amet. Aspernatur hic
-                            dignissimos, dolorem debitis accusamus modi vel quod ratione quibusdam culpa exercitationem
-                            soluta!</p>
+                        <h2 class="card-title">Olahraga 10 Menit Bisa Selamatkan Jiwa dan Buat Umur Lebih Panjang</h2>
+                        <p class="text-sm text-base-300">by Divaa</p>
+                        <p>Hasil penelitian terbaru menemukan fakta yang menakjubkan jika kita lebih rutin berolahraga...</p>
                         <div class="flex justify-between">
                             <span class="text-xs"><i class="fa-regular fa-clock"></i> 3 minutes ago </span><span
                                 class="text-xs"><i class="fa-regular fa-eye"></i> 3000 views</span><span
-                                class="text-xs">Nov, 02 2023</span>
+                                class="text-xs">Nov, 22 2021</span>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
-        </div>
     </section>
 
     <script>

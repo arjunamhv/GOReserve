@@ -10,12 +10,13 @@ use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Symfony\Component\HttpKernel\Profiler\Profile;
-use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\SportHallController;
 use App\Http\Controllers\AccountingController;
 use App\Http\Controllers\ScanController;
+use App\Http\Controllers\AuthController;
+
 
 
 
@@ -34,24 +35,36 @@ Route::get('/', function () {
     return view('welcome');
 })->name('landing');
 
+
 Route::get('/about', function () {
     return view('about');
 });
 
 Route::get('/contact', function () {
-      return view('partials.contact');
+      return view('contact');
 });
 
-// sporthall
-Route::get('/sporthall', [SportHallController::class,'index']);
-Route::get('/sporthall/{gor:slug}', [SportHallController::class,'show']);
+
+//sporthall
+Route::get('/sporthall', [SportHallController::class,'index'])->name('sporthall')->middleware(['auth', 'verified']);
+Route::get('/sporthall/{gor:slug}', [SportHallController::class,'show'])->middleware(['auth', 'verified']);
+Route::get('/sporthall/{gor:slug}/check', [SportHallController::class, 'checkschedule'])->middleware(['auth', 'verified']);
+Route::post('/sporthall/{gor:slug}/check', [SportHallController::class, 'check'])->name('check')->middleware(['auth', 'verified']);
 Route::get('/sporthall/{gor:slug}/order', [SportHallController::class, 'order'])->middleware(['auth', 'verified']);
-Route::post('/sporthall/{gor:slug}/order', [SportHallController::class, 'store'])->name('store')->middleware(['auth', 'verified']);
+Route::post('/sporthall/{gor:slug}/search', [SportHallController::class, 'search'])->name('search')->middleware(['auth', 'verified']);
+Route::post('/sporthall/{gor:slug}/order', [SportHallController::class, 'store'])->name('store')->middleware(['auth', 'verified']);;
 Route::post('/sporthall/{gor:slug}/transaction', [SportHallController::class, 'transaction'])->name('transaction')->middleware(['auth', 'verified']);
+
 
 Route::get('/myticket', [TicketController::class, 'index'])->middleware(['auth', 'verified']);
 Route::get('/myticket/{payment:id}', [TicketController::class, 'show'])->middleware(['auth', 'verified']);
+Route::get('/rating', [TicketController::class, 'rating'])->name('rating')->middleware(['auth', 'verified']);
+Route::post('review-store', [TicketController::class, 'reviewstore'])->name('review.store')->middleware(['auth', 'verified']);
 
+
+//myticket
+Route::get('/myticket', [TicketController::class, 'index'])->middleware(['auth', 'verified']);
+Route::get('/myticket/{payment:id}', [TicketController::class, 'show'])->middleware(['auth', 'verified']);
 
 Route::get('/blog', [BlogController::class, 'blog'])->name('blog');
 Route::get('/detailblog', [BlogController::class, 'detailblog'])->name('detailblog');
@@ -62,6 +75,7 @@ Route::middleware(['auth', 'verified', 'is_admin'])->group(function () {
     Route::get('/admin-dashboard', [DashboardAdminController::class, 'index'])->name('admin-dashboard');
 });
 
+//gor
 Route::get('/registergor', [RegistergorController::class, 'Form'])->name('registergor')->middleware(['auth', 'verified']);
 Route::resource('gor', GorController::class)->middleware(['auth', 'verified']);
 Route::resource('field', FieldController::class)->middleware(['auth', 'verified']);

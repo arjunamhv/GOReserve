@@ -18,6 +18,22 @@ use Illuminate\Support\Str;
 class GorController extends Controller
 {
     /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
      * Store a newly created resource in storage.
      */
     public function store(StoreGorRequest $request)
@@ -57,6 +73,7 @@ class GorController extends Controller
             'detailAlamat' => $detailAlamat,
         ];
 
+
         //slug
         $slug =  Str::slug($validate['inpgorname']). '-' . uniqid();
 
@@ -78,6 +95,15 @@ class GorController extends Controller
         $user->save();
         
         return redirect()->route('admin-dashboard')->with('message', 'Registrasi GOR Berhasil!');
+
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(Gor $gor)
+    {
+        //
     }
 
     /**
@@ -169,5 +195,13 @@ class GorController extends Controller
 
         return redirect()->route('mygor.show', ['id' => $gor->user_id])->with('success', 'berhasil mengupdate data');
 
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Gor $gor)
+    {
+        //
     }
 }

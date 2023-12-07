@@ -25,6 +25,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
 </head>
 <body class="bg-white font-family-karla">
+    <section class="px-2 lg:px-32 py-16">
 
             <div class="flex items-center text-lg no-underline text-white pr-6">
                 <a class="" href="#">
@@ -46,11 +47,16 @@
 
     <!-- Text Header -->
     <header class="w-full container mx-auto">
-        <div class="flex flex-col items-center py-12">
-            <a class="font-bold text-gray-800 uppercase hover:text-gray-700 text-5xl" href="#">
-                GoReserve Blog
-            </a>
-        </div>
+        <div class="w-full px-4">
+            <div class="max-w-xl mx-auto text-center mb-16">
+              <h4 class="font-medium text-lg text-sky-800 mb-2">GOReserve</h4>
+              <h2
+                class="font-bold text-dark text-2xl mb-4 sm:text-3xl lg:text-4xl tracking-widest"
+              >
+                OUR BLOG
+              </h2>
+            </div>
+          </div>
     </header>
 
     <!-- Topic Nav -->
@@ -84,15 +90,15 @@
             <article class="flex flex-col shadow my-4">
                 <!-- Article Image -->
                 <a class="hover:opacity-75">
-                    <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+                    <img src="https://akcdn.detik.net.id/visual/2022/02/21/ilustrasi-pria-jogging_169.jpeg?w=650&q=90">
                 </a>
                 <div class="bg-white flex flex-col justify-start p-6">
                     <a class="text-blue-700 text-sm font-bold uppercase pb-4">Sport</a>
-                    <a class="text-3xl font-bold hover:text-gray-700 pb-4">Mengupas Ruang Olahraga: Kesehatan dan Kesejahteraan yang Didapatkan</a>
-                    <p href="#" class="text-sm pb-3">
+                    <a class="text-xl lg:text-3xl font-bold hover:text-gray-700 pb-4">Mengupas Ruang Olahraga: Kesehatan dan Kesejahteraan yang Didapatkan</a>
+                    <p href="#" class="text-xs lg:text-sm pb-3">
                         By <a class="font-semibold hover:text-gray-800">Divaa</a>, Published on January 1th, 2023
                     </p>
-                    <a class="pb-6">Ruang olahraga sering kali menjadi elemen yang terlupakan dalam kehidupan sehari-hari kita yang sibuk. Namun, dalam blog ini, kita akan membongkar manfaat besar yang bisa didapatkan dari ruang olahraga, tidak hanya dari segi fisik, tetapi juga aspek kesejahteraan kita.</a>
+                    <a class="pb-6">Ruang olahraga sering kali menjadi elemen yang terlupakan dalam kehidupan sehari-hari kita yang sibuk..</a>
                     <a href="/detailblog" class="font-semibold text-indigo-600"><span class="absolute inset-0" aria-hidden="true"></span>Read more <span aria-hidden="true">&rarr;</span></a>
                 </div>
             </article>
@@ -100,15 +106,15 @@
             <article class="flex flex-col shadow my-4">
                 <!-- Article Image -->
                 <a href="#" class="hover:opacity-75">
-                    <img src="https://source.unsplash.com/collection/1346951/1000x500?sig=2">
+                    <img src="https://awsimages.detik.net.id/community/media/visual/2019/09/18/b331ecec-24af-4d21-b979-144bbc7f032b_169.jpeg?w=700&q=90">
                 </a>
                 <div class="bg-white flex flex-col justify-start p-6">
-                    <a class="text-blue-700 text-sm font-bold uppercase pb-4">Automotive, Finance</a>
-                    <a class="text-3xl font-bold hover:text-gray-700 pb-4">Lorem Ipsum Dolor Sit Amet Dolor Sit Amet</a>
-                    <p href="#" class="text-sm pb-3">
-                        By <a class="font-semibold hover:text-gray-800">Divaa</a>, Published on January 12th, 2020
+                    <a class="text-blue-700 text-sm font-bold uppercase pb-4">Health</a>
+                    <a class="text-xl lg:text-3xl font-bold hover:text-gray-700 pb-4">Olahraga 10 Menit Bisa Selamatkan Jiwa dan Buat Umur Lebih Panjang</a>
+                    <p href="#" class="text-xs lg:text-sm pb-3">
+                        By <a class="font-semibold hover:text-gray-800">Divaa</a>, Published on Nov 22th, 2021
                     </p>
-                    <a class="pb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis porta dui. Ut eu iaculis massa. Sed ornare ligula lacus, quis iaculis dui porta volutpat. In sit amet posuere magna..</a>
+                    <a class="pb-6">Hasil penelitian terbaru menemukan fakta yang menakjubkan jika kita lebih rutin berolahraga..</a>
                     <a href="#" class="font-semibold text-indigo-600"><span class="absolute inset-0" aria-hidden="true"></span>Read more <span aria-hidden="true">&rarr;</span></a>
                 </div>
             </article>
@@ -116,15 +122,15 @@
             <article class="flex flex-col shadow my-4">
                 <!-- Article Image -->
                 <a class="hover:opacity-75">
-                    <img src="https://source.unsplash.com/collection/1346951/1000x500?sig=3">
+                    <img src="https://cdn1-production-images-kly.akamaized.net/kgkX4K8PyXEaiZO7YV9peHqfTIM=/1280x720/smart/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/3181233/original/032396100_1594872164-crop-young-sportswoman-tying-shoelaces-on-sneakers-4498555.jpg">
                 </a>
                 <div class="bg-white flex flex-col justify-start p-6">
                     <a class="text-blue-700 text-sm font-bold uppercase pb-4">Sports</a>
-                    <a class="text-3xl font-bold hover:text-gray-700 pb-4">Lorem Ipsum Dolor Sit Amet Dolor Sit Amet</a>
-                    <p href="#" class="text-sm pb-3">
-                        By <a class="font-semibold hover:text-gray-800">Divaa</a>, Published on October 22nd, 2019
+                    <a class="text-xl lg;text-3xl font-bold hover:text-gray-700 pb-4">Mudah, 13 Contoh Olahraga Ringan Cocok untuk Di Rumah!</a>
+                    <p href="#" class="text-xs lg:text-sm pb-3">
+                        By <a class="font-semibold hover:text-gray-800">Divaa</a>, Published on Des 16nd, 2021
                     </p>
-                    <a class="pb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis porta dui. Ut eu iaculis massa. Sed ornare ligula lacus, quis iaculis dui porta volutpat. In sit amet posuere magna..</a>
+                    <a class="pb-6">Olahraga ringan merupakan sebuah latihan yang memerlukan lebih sedikit tenaga.Jika dibandingkan dengan latihan level berat...</a>
                     <a href="#" class="font-semibold text-indigo-600"><span class="absolute inset-0" aria-hidden="true"></span>Read more <span aria-hidden="true">&rarr;</span></a>
                 </div>
             </article>
@@ -165,6 +171,7 @@
             </div>
         </aside>
     </div>
+</section>
     <script>
         function getCarouselData() {
             return {
