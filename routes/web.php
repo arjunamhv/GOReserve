@@ -16,6 +16,7 @@ use App\Http\Controllers\SportHallController;
 use App\Http\Controllers\AccountingController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\ScanController;
+use App\Http\Controllers\AuthController;
 
 
 
