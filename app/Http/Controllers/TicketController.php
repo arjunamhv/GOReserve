@@ -11,11 +11,23 @@ use Illuminate\Http\Request;
 class TicketController extends Controller
 {
 
-    public function index(){
-        
-        return view("myticket", [
-            'payment' => Payment::latest()->paginate(4)->withQueryString()
-        ]);
+    public function index(Request $request){
+       // Mendapatkan nilai filter dari request
+    $filter = $request->input('filter');
+
+    // Query untuk mendapatkan data sesuai dengan filter
+    $payments = Payment::latest();
+
+    if ($filter && $filter != 'All') {
+        $payments->whereHas('booking', function ($query) use ($filter) {
+            $query->where('status', $filter);
+        });
+    }
+
+    // Mengirim data ke view
+    return view("myticket", [
+        'payment' => $payments->paginate(4)->withQueryString(),
+    ]);
     }
 
     public function rating() {
