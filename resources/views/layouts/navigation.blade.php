@@ -7,7 +7,6 @@
             </label>
             @if (Route::has('login'))
                 @auth
-
                 <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white rounded-box w-52 text-neutral">
                         <li><a href="{{ url('') }}">Home</a></li>
                         <li><a href="{{ url('myticket') }}">My Tickets</a></li>
