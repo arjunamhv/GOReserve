@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="w-full lg:w-[60%] mx-auto rounded-3xl bg-slate-300 p-4 mb-10">
-            <h1 class="text-center text-2xl lg:text-3xl font-bold text-sky-800 mb-5">{{ $gor->name }}</h1>
+            <h1 class="text-center text-2xl lg:text-3xl font-bold text-dark mb-5">{{ $gor->name }}</h1>
             <div class="w-full mx-auto">
                 <form method="POST" action="{{ route('check', ['gor' => $gor->slug]) }}">
                     @csrf

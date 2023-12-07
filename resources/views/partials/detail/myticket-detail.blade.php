@@ -43,8 +43,8 @@
                             <p class="text-sm lg:text-lg font-medium text-slate-800 mb-4 lg:mb-2">{{ $payment->booking->user->name }}</p>
                         </div>
                         <div class="lg:p-4">
-                            <p class="text-right lg:text-left text-xs lg:text-base font-small text-gray-500 mb-2">Category</p>
-                            <p class="text-right lg:text-left text-sm lg:text-lg font-medium text-slate-800 mb-4">{{ $payment->booking->field->name }}</p>
+                            <p class="text-xs text-right lg:text-left lg:text-base font-small text-gray-500 mb-2">Nama GOR</p>
+                            <p class="text-sm lg:text-lg font-medium text-slate-800 mb-4">{{ $payment->booking->field->gor->name }}</p>
                             <p class="text-right lg:text-left text-xs lg:text-base font-small text-gray-500 mb-2">Status</p>
                             @if ($payment->booking->status === 'Paid' || $payment->booking->status === 'Check In')
                                 <p class="text-right lg:text-left text-sm lg:text-lg font-medium text-green-500 lg:mb-2">{{ $payment->booking->status }}</p>
@@ -55,15 +55,23 @@
                     </div>
                     <div class="w-full lg:w-1/2">
                         <div class="lg:p-4">
-                            <p class="text-xs lg:text-base font-small text-gray-500 mb-2">Nama GOR</p>
-                            <p class="text-sm lg:text-lg font-medium text-slate-800 mb-4">{{ $payment->booking->field->gor->name }}</p>
                             <div class="w-full flex justify-between items-center">
                                 <div class="mb-2">
-                                    <p class="text-xs lg:text-base font-small text-gray-500">Tanggal</p>
+                                    <p class="text-left text-xs lg:text-base font-small text-gray-500 mb-2">Category</p>
+                                    <p class="text-right lg:text-left text-sm lg:text-lg font-medium text-slate-800 mb-4">{{ $payment->booking->field->name }}</p>
+                                </div>
+                                <div class="mb-2">
+                                    <p class="text-right lg:text-left text-xs lg:text-base font-small text-gray-500 mb-2">Type</p>
+                                    <p class="text-right text-sm lg:text-lg font-medium text-slate-800 mb-4">{{ $payment->booking->field->type }}</p>
+                                </div>
+                            </div>
+                            <div class="w-full flex justify-between items-center">
+                                <div class="mb-2">
+                                    <p class="text-xs lg:text-base font-small text-gray-500 mb-2">Tanggal</p>
                                     <p class="text-sm lg:text-lg font-medium text-slate-800">{{ $payment->booking->booking_date }}</p>
                                 </div>
                                 <div class="mb-2 text-right">
-                                    <p class="text-xs lg:text-base font-small text-gray-500">Jam</p>
+                                    <p class="text-xs lg:text-base font-small text-gray-500 mb-2">Jam</p>
                                     <p class="text-sm lg:text-lg font-medium text-slate-800">{{ date('H:i', strtotime($payment->booking->start_time)) }} - {{ date('H:i', strtotime($payment->booking->start_time) + $payment->booking->duration * 3600) }}</p>
                                 </div>
                             </div>

@@ -48,17 +48,17 @@ class MyGORController extends Controller
         if ($gorData && isset($gorData->address)) {
             $gorData->address = json_decode($gorData->address, true);
 
-            $namaProvinsi = Province::find($gorData->address['provinsi'])->name;
-            $namaKota = Regency::find($gorData->address['kota'])->name;
-            $namaKecamatan = District::find($gorData->address['kecamatan'])->name;
-            $namaKelurahan = Village::find($gorData->address['kelurahan'])->name;
+            $namaProvinsi = Province::where('name', $gorData->address['provinsi'])->first();
+            $namaKota = Regency::where('name', $gorData->address['kota'])->first();
+            $namaKecamatan = District::where('name', $gorData->address['kecamatan'])->first();
+            $namaKelurahan = Village::where('name', $gorData->address['kelurahan'])->first();
 
             // Create a new array with modifications
             $updatedAddress = [
-                'provinsi' => $namaProvinsi,
-                'kota' => $namaKota,
-                'kecamatan' => $namaKecamatan,
-                'kelurahan' => $namaKelurahan,
+                'provinsi' => $namaProvinsi->name,
+                'kota' => $namaKota->name,
+                'kecamatan' => $namaKecamatan->name,
+                'kelurahan' => $namaKelurahan->name,
                 'detailAlamat' => $gorData->address['detailAlamat'],
             ];
 

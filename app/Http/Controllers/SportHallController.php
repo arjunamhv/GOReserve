@@ -24,6 +24,7 @@ class SportHallController extends Controller
             $namaKecamatan = District::find($gor->address['kecamatan']);
             $namaKelurahan = Village::find($gor->address['kelurahan']);
 
+            // dd($namaKota->name);
             // Create a new array with modifications
             $updatedAddress = [
                 'provinsi' => $namaProvinsi,
@@ -144,7 +145,9 @@ class SportHallController extends Controller
             'end_time' => date('H:i', strtotime($booking->start_time) + $booking->duration * 3600),
             'price' =>  $booking->field->price * $booking->duration,
             'booking_date' => $booking->booking_date,
-            'booking_id' => $booking->id
+            'booking_id' => $booking->id,
+            'fieldbanner' => $booking->field->field_banner,
+            'fieldphotos' => json_decode($booking->field->field_photos),
         ]);
 
         // Mengarahkan kembali ke halaman 'store' dengan parameter 'gor' dan memberikan pesan sukses
