@@ -7,11 +7,35 @@ use App\Models\Booking;
 use App\Models\User;
 use App\Models\Field;
 use App\Models\Payment;
+use App\Models\Province;
+use App\Models\Regency;
+use App\Models\District;
+use App\Models\Village;
 use Illuminate\Http\Request;
 
 class SportHallController extends Controller
 {
     public function index(){
+        $gors = Gor::all();
+        foreach ($gors as $gor) {
+            $gor->address = json_decode($gor->address, true);
+
+            $namaProvinsi = Province::find($gor->address['provinsi'])->name;
+            $namaKota = Regency::find($gor->address['kota'])->name;
+            $namaKecamatan = District::find($gor->address['kecamatan'])->name;
+            $namaKelurahan = Village::find($gor->address['kelurahan'])->name;
+
+            // Create a new array with modifications
+            $updatedAddress = [
+                'provinsi' => $namaProvinsi,
+                'kota' => $namaKota,
+                'kecamatan' => $namaKecamatan,
+                'kelurahan' => $namaKelurahan,
+                'detailAlamat' => $gor->address['detailAlamat'],
+            ];
+
+            // Update the decoded address with names
+            $gor->address = $updatedAddress;
         return view("sporthall", [
             'gors'=> Gor::latest()->filter(request(['search']))->paginate(7)->withQueryString()
         ]);
@@ -115,7 +139,7 @@ class SportHallController extends Controller
             'field_name' => $booking->field->name,
             'username' => $booking->user->name,
             'start_time' => $booking->start_time,
-            'end_time' => $booking->end_time,
+            'end_time' => date('H:i', strtotime($booking->start_time) + $booking->duration * 3600),
             'price' =>  $booking->field->price * $booking->duration,
             'booking_date' => $booking->booking_date,
             'booking_id' => $booking->id
