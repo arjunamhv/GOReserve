@@ -14,7 +14,7 @@ class DashboardAdminController extends Controller
     {
         $fiveDaysToGo = Carbon::now()->addDays(5)->endOfDay();
 
-        $bookings = Booking::where('status', ['paid', 'not checked in', 'checked in'])
+        $bookings = Booking::where('status', ['Paid', 'CheckIn'])
             ->whereDate('booking_date', '<=', $fiveDaysToGo)
             ->get();
 
@@ -24,8 +24,8 @@ class DashboardAdminController extends Controller
             $booking->field_type = $type->name;
         }
         $data['chart'] = $chart->build();
-        $totalTransaksi = Booking::whereNotIn('status', ['New', 'Cancled'])->count();
-        $getTotalAmount = Booking::whereNotIn('bookings.status', ['New', 'Canceled'])
+        $totalTransaksi = Booking::whereNotIn('status', ['Unpaid', 'Cancled'])->count();
+        $getTotalAmount = Booking::whereNotIn('bookings.status', ['Unpaid', 'Canceled'])
         ->join('payments', 'bookings.id', '=', 'payments.booking_id')
         ->sum('payments.amount');
         $totalAmount = 'Rp ' . number_format($getTotalAmount, 0, ',', '.');
