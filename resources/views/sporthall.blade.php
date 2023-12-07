@@ -28,7 +28,7 @@
             <div class="w-full mx-auto rounded-3xl bg-slate-300 py-4 px-4 mb-10 sm:w-3/5 lg:w-full">
                 <a href="/sporthall/{{ $gor->slug }}">
                     <div class="block lg:flex items-center justify-start">
-                        <img src="../img/login-image.png" alt="lapang" class="w-full mb-5 rounded-xl mx-auto lg:mr-12 lg:w-2/5 lg:mb-0 lg:mx-0">
+                        <img src="{{ asset('storage/' . $gor->gor_banner) }}" alt="{{ $gor->gor_banner }}" class="w-full mb-5 rounded-xl mx-auto lg:mr-12 lg:w-2/5 lg:mb-0 lg:mx-0">
                         <div class="text-center">
                             <h1 class="text-2xl lg:text-4xl font-bold text-slate-800">{{ $gor->name }}</h1>
                             <div class="flex items-center justify-start my-4">

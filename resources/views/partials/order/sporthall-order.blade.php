@@ -40,7 +40,7 @@
         <div class="w-full lg:mx-0 rounded-3xl bg-slate-300 p-4 mb-10">
             <h1 class="text-center text-xl lg:text-3xl font-bold text-slate-800 mb-4">{{ $gor->name }}</h1>
             <div class="block lg:flex items-center justify-between">
-                <img src="{{ asset('../img/login-image.png') }}" alt="lapang" class="hidden lg:block w-2/5 h-[400px] rounded-xl">
+                <img src="{{ asset('storage/' . $gor->gor_banner) }}" alt="{{ $gor->gor_banner }}" class="hidden lg:block w-2/5 h-[400px] rounded-xl">
                 <div class="lg:w-1/2">
                     <form method="POST" action="{{ route('store', ['gor' => $gor->slug]) }}">
                         @csrf
