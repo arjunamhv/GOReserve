@@ -1,7 +1,6 @@
 import defaultTheme from "tailwindcss/defaultTheme";
 import forms from "@tailwindcss/forms";
 
-
 module.exports = {
     content: [
         "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
@@ -17,7 +16,7 @@ module.exports = {
         },
     },
 
-    plugins: [require("daisyui"), require("tailwindcss-animated"), require('@kamona/tailwindcss-perspective'), require('tailwindcss-3d'), forms],
+    plugins: [require("daisyui"), forms],
 
     daisyui: {
         themes: [
@@ -31,7 +30,7 @@ module.exports = {
                     error: "#9F2C2C",
                     success: "#3A8059",
                     warning: "#E9A63F",
-                    info: "#3D9BD9",
+                    info: "#3D9BD9"
                 },
             },
             "light",
