@@ -8,12 +8,13 @@ use App\Models\Booking;
 
 class ScanController extends Controller
 {
-    public function scan(Request $request)
+    public function scancheck(Request $request)
     {
         $qr = $request->qr_code;
-        $data = Payment::where('ticket_number', $qr)->first();
-        $booking_status = Booking::where($data->Booking_id, $qr)->first();
-        if ($data !== null && $qr == $data->ticket_number) {
+        $payment = Payment::where('ticket_number', $qr)->first();
+        $ticket_code = $payment->ticket_number;
+        if ($ticket_code !== null && $qr == $ticket_code) {
+            $booking_status = Booking::where('id', $payment->booking_id)->first();
             $booking_status->update([
                 'status' => 'Checked-in'
             ]);

@@ -15,7 +15,6 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\SportHallController;
 use App\Http\Controllers\AccountingController;
-use App\Http\Controllers\LandingController;
 use App\Http\Controllers\ScanController;
 
 
@@ -31,11 +30,9 @@ use App\Http\Controllers\ScanController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// })->name('landing');
-Route::get('/', [LandingController::class,'index'])->name('landing');
-
+Route::get('/', function () {
+    return view('welcome');
+})->name('landing');
 
 Route::get('/about', function () {
     return view('about');
@@ -44,18 +41,6 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
       return view('partials.contact');
 });
-
-// Route::get('/transaksi', function () {
-//     return view('partials.order.transaksi');
-// })->middleware(['auth', 'verified']);
-
-// Route::get('/transaksi/add', function () {
-//     return view('partials.order.add');
-// })->middleware(['auth', 'verified']);
-
-// Route::get('/transaksi/input', function () {
-//     return view('partials.order.transaksi2');
-// })->middleware(['auth', 'verified']);
 
 // sporthall
 Route::get('/sporthall', [SportHallController::class,'index']);

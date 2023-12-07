@@ -72,6 +72,9 @@
                         <p>{{ $booking->field->name}}</p>
                     </div>
                 </div>
+                <div class="card-actions justify-end">
+                    <a href="{{ route('scan') }}" class="btn btn-primary mb-5 mr-5">Check in</a>
+                </div>
             </div>
         </div>
         @endforeach
@@ -88,7 +91,7 @@
         <div class="stat">
           <div class="stat-title">Total Transaksi</div>
           <div class="stat-value my-1">{{ $totalTransaksi }}</div>
-          <div class="stat-desc">↗︎ 400 (22%)</div>
+          <div class="stat-desc">Transction Count</div>
         </div>
       </div>
 

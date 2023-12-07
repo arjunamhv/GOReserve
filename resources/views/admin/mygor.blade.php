@@ -204,5 +204,5 @@
                 });
             });
         });
-    </>
+    </script>
 @endsection
