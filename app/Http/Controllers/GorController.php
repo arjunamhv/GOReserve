@@ -13,6 +13,7 @@ use App\Models\District;
 use App\Models\Village;
 
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class GorController extends Controller
 {
@@ -81,9 +82,11 @@ class GorController extends Controller
         $gor->gor_banner = $filename;
         $gor->gor_photos = json_encode($photoPaths);
         $gor->name = $validate['inpgorname'];
+        $gor->slug = $slug;
         $gor->address = json_encode($alamat);
         $gor->contact = $validate['inpgorcontact'];
-        $gor->opening_hour = $openingHour;
+        $gor->opening_hour = $validate['inpstartTime'];
+        $gor->closing_hour = $validate['inpendTime'];
         $gor->facility = json_encode($request->inpfacilities);
         $gor->save();
 
@@ -114,14 +117,6 @@ class GorController extends Controller
         }
         if ($gorData && isset($gorData->gor_photos)) {
             $gorData->gor_photos = json_decode($gorData->gor_photos, true);
-        }
-        if ($gorData && isset($gorData->opening_hour)) {
-            $separatedTimes = explode('-', $gorData->opening_hour);
-
-            $gorData->opening_hour = [
-                'startTime' => $separatedTimes[0],
-                'endTime' => $separatedTimes[1]
-            ];
         }
         if ($gorData && isset($gorData->facility)) {
             $gorData->facility = json_decode($gorData->facility, true);
@@ -193,7 +188,8 @@ class GorController extends Controller
         $gor->name = $validate['inpgorname'];
         $gor->address = json_encode($alamat);
         $gor->contact = $validate['inpgorcontact'];
-        $gor->opening_hour = $openingHour;
+        $gor->opening_hour = $validate['inpstartTime'];
+        $gor->closing_hour = $validate['inpendTime'];
         $gor->facility = json_encode($request->inpfacilities);
         $gor->save();
 
