@@ -59,6 +59,7 @@
                         @if (auth()->user()->is_admin)
                             <li><a href="{{ route('admin-dashboard') }}">My GOR</a></li>
                         @else
+                            <li><a href="{{ route('registergor') }}">Register your GOR</a></li>
                             <li><a href="{{ route('sporthall') }}">Sporthall</a></li>
                         @endif
                     </ul>
