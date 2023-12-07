@@ -69,16 +69,7 @@ class MyGORController extends Controller
         if ($gorData && isset($gorData->gor_photos)) {
             $gorData->gor_photos = json_decode($gorData->gor_photos, true);
         }
-        // dd($gorData->gor_photos);
         
-        if ($gorData && isset($gorData->opening_hour)) {
-            $separatedTimes = explode('-', $gorData->opening_hour);
-
-            $gorData->opening_hour = [
-                'startTime' => $separatedTimes[0],
-                'endTime' => $separatedTimes[1]
-            ];
-        }
         if ($gorData && isset($gorData->facility)) {
             $gorData->facility = json_decode($gorData->facility, true);
         }
