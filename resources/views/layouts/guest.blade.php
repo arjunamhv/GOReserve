@@ -22,10 +22,10 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
+        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-neutral px-4">
             <div>
                 <a href="/">
-                    <img src="{{ asset('assets/images/logo.png') }}" alt="logo" class="h-20">
+                    <img src="{{ asset('assets/images/logo.png') }}" alt="logo" class="h-10 lg:h-20">
                 </a>
             </div>
 

@@ -48,7 +48,7 @@
                             <p class="text-base font-bold text-slate-800">
                                 Name
                             </p>
-                            <input type="text" name="username" id="username" value="{{ $gor->user->name }}" class="w-full bg-slate-200 text-dark p-2 rounded-md focus:outline-none focus:ring-primary focus-ring1 focus:border-primary" readonly>
+                            <input type="text" name="username" id="username" value="{{ auth()->user()->name }}" class="w-full bg-slate-200 text-dark p-2 rounded-md focus:outline-none focus:ring-primary focus-ring1 focus:border-primary" readonly>
                         </div>
                         <div class="mb-2 text-left">
                             <p class="text-base font-bold text-slate-800">
