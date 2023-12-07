@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreGORRequest;
-use App\Http\Requests\UpdateGORRequest;
+use App\Http\Requests\StoreGorRequest;
+use App\Http\Requests\UpdateGorRequest;
 
 use App\Models\Gor;
 use App\Models\User;
@@ -131,7 +131,7 @@ class GorController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateGORRequest $request, $id)
+    public function update(UpdateGorRequest $request, $id)
     {
         $validate = $request->validated();
         $gor = Gor::find($id);
