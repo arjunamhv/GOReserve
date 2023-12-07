@@ -22,7 +22,7 @@ class VisitorStats
         $endDate = Carbon::now()->toDateString();
 
         // Mengambil data pengunjung dari database dalam rentang waktu 7 hari
-        $pengunjung = Booking::whereIn('status', ['Checked-in', 'Completed'])
+        $pengunjung = Booking::whereIn('status', ['CheckIn', 'CheckOut'])
             ->whereBetween('booking_date', [$startDate, $endDate])
             ->get(); 
 

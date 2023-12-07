@@ -16,7 +16,7 @@ class ScanController extends Controller
         if ($ticket_code !== null && $qr == $ticket_code) {
             $booking_status = Booking::where('id', $payment->booking_id)->first();
             $booking_status->update([
-                'status' => 'Checked-in'
+                'status' => 'CheckIn'
             ]);
             return response()->json([
                 'status' => 200,
