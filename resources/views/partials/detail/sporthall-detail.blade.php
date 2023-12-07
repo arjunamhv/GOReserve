@@ -17,8 +17,8 @@
             </div>
           </div>
         <div class="overflow-hidden block lg:flex justify-between">
-            <img src="../img/login-image.png" alt="lapang" class="hidden lg:block w-2/5 h-[300px] rounded-xl">
-            <img src="../img/login-image.png" alt="lapang" class="w-full lg:w-7/12 lg:h-[300px] rounded-xl">
+            <img src="{{ asset('storage/' . $gor->gor_photos[0]) }}" alt="{{ $gor->gor_photos[0] }}" class="hidden lg:block w-2/5 h-[300px] rounded-xl">
+             <img src="{{ asset('storage/' . $gor->gor_photos[1]) }}" alt="{{ $gor->gor_photos[1] }}" class="w-full lg:w-7/12 lg:h-[300px] rounded-xl">
         </div>
         <div class="block lg:flex justify-start my-5">
             <div class="lg:w-1/2">

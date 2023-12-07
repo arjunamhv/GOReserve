@@ -19,11 +19,10 @@ class SportHallController extends Controller
         $gors = Gor::all();
         foreach ($gors as $gor) {
             $gor->address = json_decode($gor->address, true);
-
-            $namaProvinsi = Province::find($gor->address['provinsi'])->name;
-            $namaKota = Regency::find($gor->address['kota'])->name;
-            $namaKecamatan = District::find($gor->address['kecamatan'])->name;
-            $namaKelurahan = Village::find($gor->address['kelurahan'])->name;
+            $namaProvinsi = Province::find($gor->address['provinsi']);
+            $namaKota = Regency::find($gor->address['kota']);
+            $namaKecamatan = District::find($gor->address['kecamatan']);
+            $namaKelurahan = Village::find($gor->address['kelurahan']);
 
             // Create a new array with modifications
             $updatedAddress = [
@@ -31,17 +30,20 @@ class SportHallController extends Controller
                 'kota' => $namaKota,
                 'kecamatan' => $namaKecamatan,
                 'kelurahan' => $namaKelurahan,
-                'detailAlamat' => $gor->address['detailAlamat'],
             ];
 
             // Update the decoded address with names
             $gor->address = $updatedAddress;
+        }
+        
         return view("sporthall", [
             'gors'=> Gor::latest()->filter(request(['search']))->paginate(7)->withQueryString()
         ]);
     }
 
     public function show(Gor $gor){
+        $gor->gor_photos = json_decode($gor->gor_photos, true);
+
         return view('partials.detail.sporthall-detail', [
             "gor" => $gor
         ]);

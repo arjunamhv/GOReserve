@@ -28,12 +28,12 @@
                 {{-- ada tiket --}}
                 <div class="mx-auto w-full lg:w-[80%] mb-10">
                     <div class="border border-slate-300 rounded-lg shadow-md p-4 flex justify-between items-center">
-                        <img src="../img/login-image.png" alt="lapang" class="hidden lg:block w-[300px] h-[200px] rounded-xl">
+                        <img src="{{ asset('storage/' . $ticket->booking->field->gor->gor_banner) }}" alt="{{ $ticket->booking->field->gor->gor_banner }}" class="hidden lg:block w-[300px] h-[200px] rounded-xl">
                         <div>
                             <p class="text-xs lg:text-base font-semibold text-slate-800 mb-2">{{ $ticket->booking->user->name }}</p>
                             <p class="text-xs lg:text-base font-semibold text-slate-800 mb-2">{{ $ticket->booking->field->gor->name }}</p>
                             <p class="text-xs lg:text-base font-semibold text-slate-800 mb-2">{{ $ticket->booking->field->name }}</p>
-                            <p class="text-xs lg:text-base font-semibold text-slate-800 mb-2">{{ date('H:i', strtotime($ticket->booking->start_time)) }} - {{ date('H:i', strtotime($ticket->booking->start_time) + $ticket->booking->duration * 3600) }} WIB</p>
+                            <p class="text-xs lg:text-base font-semibold text-slate-800 mb-2">{{ date('H:i', strtotime($ticket->booking->start_time)) }} - {{ date('H:i', strtotime($ticket->booking->end_time)) }} WIB</p>
                         </div>
                         <div class="flex flex-col items-center">
                             <a href="/myticket/{{ $ticket->id }}" class="text-xs lg:text-base font-semibold text-white bg-sky-800 py-2 px-4 rounded-2xl hover:shadow-lg hover:opacity-50 transition duration-300 ease-in-out mb-2">Ticket Detail</a>

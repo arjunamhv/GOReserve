@@ -20,7 +20,7 @@
         <div class="flex justify-between items-center mb-3">
             <div class="block lg:flex justify-start items-center">
                 <p class="text-sky-800 text-sm lg:text-lg font-semibold mb-3 lg:mb-0 lg:mr-5">{{ $payment->booking->booking_date }}</p>
-                <p class="text-sky-800 text-sm lg:text-lg font-semibold">{{ date('H:i', strtotime($payment->booking->start_time)) }} - {{ date('H:i', strtotime($payment->booking->start_time) + $payment->booking->duration * 3600) }} WIB</p>
+                <p class="text-sky-800 text-sm lg:text-lg font-semibold">{{ date('H:i', strtotime($payment->booking->start_time)) }} - {{ date('H:i', strtotime($payment->booking->end_time)) }} WIB</p>
             </div>
             <p class="text-right text-sky-800 text-base lg:text-xl font-semibold">{{ $payment->booking->duration }} x {{ number_format($payment->booking->field->price, 2, ',', '.') }}</p>
         </div>
