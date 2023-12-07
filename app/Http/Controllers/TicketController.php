@@ -26,7 +26,7 @@ class TicketController extends Controller
 
     // Mengirim data ke view
     return view("myticket", [
-        'payment' => $payments->paginate(4)->withQueryString(),
+        'payment' => Payment::latest()->paginate(7)->withQueryString(),
     ]);
     }
 
