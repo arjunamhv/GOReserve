@@ -72,7 +72,7 @@ Route::get('/faq', [BlogController::class, 'faq'])->name('faq');
 Route::get('/welcome', [BlogController::class, 'welcome'])->name('welcome');
 
 Route::middleware(['auth', 'verified', 'is_admin'])->group(function () {
-    Route::get('/admin-dashboard', [DashboardAdminController::class, 'index'])->name('admin-dashboard');
+    Route::get('/admin-dashboard/{id}', [DashboardAdminController::class, 'index'])->name('admin-dashboard');
 });
 
 //gor

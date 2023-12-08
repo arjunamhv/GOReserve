@@ -11,10 +11,10 @@
                         <li><a href="{{ url('') }}">Home</a></li>
                         <li><a href="{{ url('myticket') }}">My Tickets</a></li>
                         @if (auth()->user()->is_admin)
-                            <li><a href="{{ route('admin-dashboard') }}">My Gor</a></li>
+                            <li><a href="{{ route('admin-dashboard', ['id' => Auth::user()->id]) }}">My Gor</a></li>
                         @else
-                            <li><a href="{{ route('registergor') }}">Register your GOR</a></li>
                             <li><a href="{{ route('sporthall') }}">Find Sporthall</a></li>
+                            <li><a href="{{ route('registergor') }}">Register your GOR</a></li>
                         @endif
                     </ul>
                 @else
@@ -56,10 +56,10 @@
                 <div class="hidden md:flex">
                     <ul class="menu menu-horizontal px-0">
                         @if (auth()->user()->is_admin)
-                            <li><a href="{{ route('admin-dashboard') }}">My GOR</a></li>
+                            <li><a href="{{ route('admin-dashboard', ['id' => Auth::user()->id]) }}">My GOR</a></li>
                         @else
+                        <li><a href="{{ route('sporthall') }}">Find Sporthall</a></li>
                             <li><a href="{{ route('registergor') }}">Register your GOR</a></li>
-                            <li><a href="{{ route('sporthall') }}">Sporthall</a></li>
                         @endif
                     </ul>
                 </div>
