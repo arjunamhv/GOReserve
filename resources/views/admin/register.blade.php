@@ -22,7 +22,7 @@
                 <label for="gorphotos" class="label">
                     <span class="label-text">Add GOR Images</span>
                 </label>
-                <input type="file" id="gorphotos" name="inpgorphotos[]"
+                <input type="file" id="gorphotos" name="inpgorphotos"
                     class="error-check @error('inpgorphotos') border-error @enderror file-input file-input-bordered w-full"
                     multiple onchange="previewPhotos(this)" />
                 @error('inpgorphotos')

@@ -57,19 +57,19 @@ class GorController extends Controller
         }
 
         // Address
-        $idProvinsi = $validate['inpprovinsi'];
-        $idKota = $validate['inpkota'];
-        $idKecamatan = $validate['inpkecamatan'];
-        $idKelurahan = $validate['inpkelurahan'];
+        $Provinsi = Province::find($validate['inpprovinsi']);
+        $Kota = Regency::find($validate['inpkota']);
+        $Kecamatan = District::find($validate['inpkecamatan']);
+        $Kelurahan = Village::find($validate['inpkelurahan']);
 
         $detailAlamat = $validate['inpdetail_alamat'];
 
         // Combine address components into an array
         $alamat = [
-            'provinsi' => $idProvinsi,
-            'kota' => $idKota,
-            'kecamatan' => $idKecamatan,
-            'kelurahan' => $idKelurahan,
+            'provinsi' => $Provinsi->name,
+            'kota' => $Kota->name,
+            'kecamatan' => $Kecamatan->name,
+            'kelurahan' => $Kelurahan->name,
             'detailAlamat' => $detailAlamat,
         ];
 
@@ -160,22 +160,22 @@ class GorController extends Controller
             $photoPaths = json_decode($gor->gor_photos);
         }
 
-        // Address
-        $idProvinsi = $validate['inpprovinsi'];
-        $idKota = $validate['inpkota'];
-        $idKecamatan = $validate['inpkecamatan'];
-        $idKelurahan = $validate['inpkelurahan'];
-
-        $detailAlamat = $validate['inpdetail_alamat'];
-
-        // Combine address components into an array
-        $alamat = [
-            'provinsi' => $idProvinsi,
-            'kota' => $idKota,
-            'kecamatan' => $idKecamatan,
-            'kelurahan' => $idKelurahan,
-            'detailAlamat' => $detailAlamat,
-        ];
+         // Address
+         $Provinsi = Province::find($validate['inpprovinsi']);
+         $Kota = Regency::find($validate['inpkota']);
+         $Kecamatan = District::find($validate['inpkecamatan']);
+         $Kelurahan = Village::find($validate['inpkelurahan']);
+ 
+         $detailAlamat = $validate['inpdetail_alamat'];
+ 
+         // Combine address components into an array
+         $alamat = [
+             'provinsi' => $Provinsi->name,
+             'kota' => $Kota->name,
+             'kecamatan' => $Kecamatan->name,
+             'kelurahan' => $Kelurahan->name,
+             'detailAlamat' => $detailAlamat,
+         ];
 
         // opening_hour
         $startTime = $validate['inpstartTime'];

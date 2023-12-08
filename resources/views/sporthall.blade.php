@@ -28,14 +28,14 @@
             <div class="w-full mx-auto rounded-3xl bg-slate-300 py-4 px-4 mb-10 sm:w-3/5 lg:w-full">
                 <a href="/sporthall/{{ $gor->slug }}">
                     <div class="block lg:flex items-center justify-start">
-                        <img src="{{ asset('storage/' . $gor->gor_banner) }}" alt="{{ $gor->gor_banner }}" class="w-full mb-5 rounded-xl mx-auto lg:mr-12 lg:w-2/5 lg:mb-0 lg:mx-0">
-                        <div class="text-center">
-                            <h1 class="text-2xl lg:text-4xl font-bold text-slate-800">{{ $gor->name }}</h1>
+                        <img src="{{ asset('storage/images/gorbanner/' . $gor->gor_banner) }}" alt="{{ $gor->gor_banner }}" class="w-full mb-5 rounded-xl mx-auto lg:mr-12 lg:w-2/5 lg:mb-0 lg:mx-0">
+                        <div class="text-center lg:text-left">
+                            <h1 class="text-xl lg:text-4xl font-bold text-slate-800">{{ $gor->name }}</h1>
                             <div class="flex items-center justify-start my-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#1e293b" class="bi bi-geo-alt-fill mr-2" viewBox="0 0 16 16">
                                     <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
                                 </svg>
-                                <h3 class="text-base lg:text-xl font-semibold text-slate-800">{{ json_decode($gor->address)->kota }}</h3>
+                                <h3 class="text-sm lg:text-xl font-medium lg:font-semibold text-slate-800">{{ json_decode($gor->address)->kota }}</h3>
                             </div>
                             @foreach ($gor->field as $field)
                                 <div class="flex items-center justify-start lg:mb-2">

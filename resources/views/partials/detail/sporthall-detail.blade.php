@@ -17,8 +17,10 @@
             </div>
           </div>
         <div class="overflow-hidden block lg:flex justify-between">
-            <img src="{{ asset('storage/' . $gor->gor_photos[0]) }}" alt="{{ $gor->gor_photos[0] }}" class="hidden lg:block w-2/5 h-[300px] rounded-xl">
-             <img src="{{ asset('storage/' . $gor->gor_photos[1]) }}" alt="{{ $gor->gor_photos[1] }}" class="w-full lg:w-7/12 lg:h-[300px] rounded-xl">
+            @foreach ($gor->gor_photos as $image)
+                <img src="{{ asset('storage/' . $image) }}" alt="{{ $image }}" class="hidden lg:block w-[44%] h-[300px] rounded-xl">
+                <img src="{{ asset('storage/images/gorbanner/' . $gor->gor_banner) }}" alt="{{ $gor->gor_banner }}" class="w-full lg:block lg:w-[55%] lg:h-[300px] rounded-xl">
+            @endforeach
         </div>
         <div class="block lg:flex justify-start my-5">
             <div class="lg:w-1/2">
@@ -27,7 +29,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#1e293b" class="bi bi-geo-alt-fill mr-2" viewBox="0 0 16 16">
                         <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
                     </svg>
-                    <h3 class="text-base lg:text-lg font-medium text-slate-800">{{ json_decode($gor->address)->detail }}</h3>
+                    <h3 class="text-base lg:text-lg font-medium text-slate-800">{{ json_decode($gor->address)->detailAlamat }}</h3>
                 </div>
                 <h1 class="text-lg lg:text-2xl font-bold text-slate-800 my-2">Contact</h1>
                 <p class="text-sm lg:text-lg font-medium text-slate-800 mb-4">{{ $gor->user->name }}</p>
