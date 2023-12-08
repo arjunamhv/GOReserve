@@ -35,7 +35,7 @@
                             timer: 1500
                             });
                             setTimeout(function() {
-                                window.location.href = "{{ route('admin-dashboard') }}";
+                                window.location.href = "{{ route('admin-dashboard', ['id' => Auth::user()->id]) }}";
                             }, 1500);
                         } else {
                             Swal.fire({
