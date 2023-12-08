@@ -103,6 +103,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::get('/scan', function(){
     return view('admin.scancheck');
 })->name('scan')->middleware('auth');
-Route::post('/scancheck', [ScanController::class, 'scancheck'])->name('scancheck')->middleware('auth');
+Route::post('/scancheck', [ScanController::class, 'scancheck'])->name('scancheck')->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';
