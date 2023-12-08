@@ -135,21 +135,13 @@
             </div>
 </article>
 
-{{-- <div
-	x-data="scrollHandler(document.getElementById('the-article'))"
-	x-cloak
-	aria-hidden="true"
-	@scroll.window="calculateHeight(window.scrollY)"
-	class="fixed h-screen w-1 hover:bg-gray-200 top-0 left-0 bg-gray-300">
-	<div :style="`max-height:${height}%`" class="h-full bg-green-400"></div>
-</div> --}}
-
 <div
 	id="alpine-devtools"
 	x-data="devtools()"
 	x-show="alpines.length"
 	x-init="start()">
 </div>
+
 <script>
 function scrollHandler(element = null) {
 	return {
