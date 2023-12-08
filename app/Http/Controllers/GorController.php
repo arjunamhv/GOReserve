@@ -12,27 +12,12 @@ use App\Models\Regency;
 use App\Models\District;
 use App\Models\Village;
 
+
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class GorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      */
@@ -94,16 +79,8 @@ class GorController extends Controller
         $user->is_admin = true;
         $user->save();
         
-        return redirect()->route('admin-dashboard')->with('message', 'Registrasi GOR Berhasil!');
+        return redirect()->route('admin-dashboard', ['id' => auth()->user()->id])->with('message', 'Registrasi GOR Berhasil!');
 
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Gor $gor)
-    {
-        //
     }
 
     /**
@@ -201,13 +178,5 @@ class GorController extends Controller
 
         return redirect()->route('mygor.show', ['id' => $gor->user_id])->with('success', 'berhasil mengupdate data');
 
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Gor $gor)
-    {
-        //
     }
 }
