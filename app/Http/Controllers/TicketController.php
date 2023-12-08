@@ -7,26 +7,30 @@ use App\Models\Booking;
 use App\Models\Payment;
 use App\Models\Rating;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TicketController extends Controller
 {
 
     public function index(Request $request){
-       // Mendapatkan nilai filter dari request
-    $filter = $request->input('filter');
+    
+    // Mendapatkan id pengguna yang sedang login
+    $userId = Auth::id();
+        
+    // Query untuk mendapatkan pembayaran terkait dengan pengguna yang terautentikasi
+    $payments = Payment::whereHas('booking.user', function ($query) use ($request) {
+        $filter = $request->input('filter');
 
-    // Query untuk mendapatkan data sesuai dengan filter
-    $payments = Payment::latest();
-
-    if ($filter && $filter != 'All') {
-        $payments->whereHas('booking', function ($query) use ($filter) {
+        if ($filter && $filter !== 'All') {
             $query->where('status', $filter);
-        });
-    }
+        }
+    })->whereHas('booking', function ($query) use ($userId) {
+        $query->where('user_id', $userId);
+    })->latest()->paginate(4);
 
-    // Mengirim data ke view
+    // Send data to the view
     return view("myticket", [
-        'payment' =>$payments->paginate(4)->withQueryString(),
+        'payment' => $payments,
     ]);
     }
 
