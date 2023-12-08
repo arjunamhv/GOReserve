@@ -15,13 +15,13 @@
     {{-- end --}}
     @if (Route::has('login'))
         @auth
-            <div class="ml-auto dropdown dropdown-end hidden md:flex">
+            <div class="ml-auto dropdown dropdown-end">
                 <label tabindex="0" class="btn btn-ghost">
                     <div class="">
                         {{ Auth::user()->name }} <i class="fa-solid fa-caret-down"></i>
                     </div>
                 </label>
-                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white rounded-box w-52 text-neutral">
                     <li><a href="{{ route('profile.edit') }}">Profile</a></li>
                     <form method="POST" action="{{ route('logout') }}">
                         <li>
