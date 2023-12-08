@@ -59,7 +59,7 @@
                             class="error-check @error('inpprovinsi') border-error @enderror select select-bordered">
                             @foreach ($provinces as $provinsi)
                                 <option value="{{ $provinsi->id }}"
-                                    {{ $gorData->address['provinsi'] == $provinsi->id ? 'selected' : '' }}>
+                                    {{ $gorData->address['provinsi'] == $provinsi->name ? 'selected' : '' }}>
                                     {{ $provinsi->name }}</option>
                             @endforeach
                         </select>
@@ -67,6 +67,7 @@
                             <div class="text-error">{{ $message }}</div>
                         @enderror
                     </div>
+                    {{-- @dd($gorData->address['kota']) --}}
                     <div class="form-control w-full">
                         <label for="kota" class="label">
                             <span class="label-text">Kota/Kabupaten</span>
@@ -75,9 +76,9 @@
                             class="error-check @error('inpkota') border-error @enderror select select-bordered">
                             @foreach ($cities as $kota)
                                 <option value="{{ $kota->id }}"
-                                    {{ $gorData->address['kota'] == $kota->id ? 'selected' : '' }}>{{ $kota->name }}
+                                    {{ $gorData->address['kota'] == $kota->name ? 'selected' : '' }}>{{ $kota->name }}
                                 </option>
-                            @endforeach
+                                @endforeach
                         </select>
                         @error('inpkota')
                             <div class="text-error">{{ $message }}</div>
@@ -91,7 +92,7 @@
                             class="error-check @error('inpkecamatan') border-error @enderror select select-bordered">
                             @foreach ($districts as $kecamatan)
                                 <option value="{{ $kecamatan->id }}"
-                                    {{ $gorData->address['kecamatan'] == $kecamatan->id ? 'selected' : '' }}>
+                                    {{ $gorData->address['kecamatan'] == $kecamatan->name ? 'selected' : '' }}>
                                     {{ $kecamatan->name }}</option>
                             @endforeach
                         </select>

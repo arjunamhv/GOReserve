@@ -5,6 +5,10 @@ namespace App\Charts;
 use ArielMejiaDev\LarapexCharts\LarapexChart;
 use Carbon\Carbon;
 use App\Models\Booking;
+use App\Models\Gor;
+use App\Models\Field;
+use Illuminate\Support\Facades\Auth;
+
 
 class VisitorStats
 {
@@ -17,14 +21,29 @@ class VisitorStats
 
     public function build(): \ArielMejiaDev\LarapexCharts\BarChart
     {
+        $gorData = Gor::where('user_id', auth()->user()->id)->first();
+
+        if ($gorData) { // Check if the Gor data is found
+            $fieldsData = Field::where('gor_id', $gorData->id)->get();
+            $bookingData = collect(); 
+            foreach ($fieldsData as $field) {
+                $bookingData = $bookingData->merge(
+                    Booking::where('field_id', $field->id)->get()
+                );
+                // Your logic for each $bookingData goes here
+            }
+        } else {
+            $bookingData = collect();
+
+        }
+
         // Menghitung tanggal 7 hari yang lalu dari hari ini
         $startDate = Carbon::now()->subDays(6)->toDateString();
         $endDate = Carbon::now()->toDateString();
 
         // Mengambil data pengunjung dari database dalam rentang waktu 7 hari
-        $pengunjung = Booking::whereIn('status', ['CheckIn', 'CheckOut'])
-            ->whereBetween('booking_date', [$startDate, $endDate])
-            ->get(); 
+        $pengunjung = $bookingData->whereIn('status', ['CheckIn', 'CheckOut'])
+            ->whereBetween('booking_date', [$startDate, $endDate]); 
 
         // Mengelompokkan data pengunjung berdasarkan hari
         $groupedData = $pengunjung->groupBy(function ($date) {
