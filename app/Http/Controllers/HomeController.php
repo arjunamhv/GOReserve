@@ -16,7 +16,7 @@ class HomeController extends Controller
                 return redirect('/');
             }
             else if($is_admin==1) {
-                return redirect()->route('admin-dashboard');
+                return redirect()->route('admin-dashboard', ['id' => auth()->user()->id]);
             }
             else {
                 return redirect()->back();
