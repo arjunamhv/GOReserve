@@ -65,9 +65,9 @@ class SportHallController extends Controller
         
         // cek nama user pada tabel user
         $user = User::where('name', $username)->first();
-
+        
         // value assignment userid
-        $userId = $user->value('id');
+        $userId = $user->id;
 
         // validasi data input user
         $validatedData = $request->validate([
