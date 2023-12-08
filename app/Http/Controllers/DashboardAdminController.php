@@ -18,15 +18,13 @@ class DashboardAdminController extends Controller
 
         $gorData = Gor::where('user_id', $userId)->first();
         $fieldsData = Field::where('gor_id', $gorData->id)->get();
+        $bookingsData = Booking::where('field_id', null);
 
         if ($fieldsData) {
             foreach ($fieldsData as $field) {
                 $bookingsData = Booking::where('field_id', $field->id);
             }
-        } else {
-            $bookingsData = '';
         }
-
         $bookings = $bookingsData->where('status', ['Paid', 'CheckIn']);
         foreach ($bookings as $booking) {
             $booking->whereDate('booking_date', '<=', $fiveDaysToGo)->get();
