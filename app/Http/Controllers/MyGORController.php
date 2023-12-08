@@ -16,30 +16,6 @@ use Illuminate\Http\Request;
 class MyGORController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
      */
     public function show($userId)
@@ -81,30 +57,5 @@ class MyGORController extends Controller
 
         }
         return view('admin.mygor', ['gorData' => $gorData, 'fieldsData' => $fieldsData]);
-    }
-
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(GOR $gor)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Gor $gor)
-    {
-        //
     }
 }
