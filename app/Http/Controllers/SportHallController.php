@@ -16,27 +16,6 @@ use Illuminate\Http\Request;
 class SportHallController extends Controller
 {
     public function index(){
-        $gors = Gor::all();
-        foreach ($gors as $gor) {
-            $gor->address = json_decode($gor->address, true);
-            $namaProvinsi = Province::find($gor->address['provinsi']);
-            $namaKota = Regency::find($gor->address['kota']);
-            $namaKecamatan = District::find($gor->address['kecamatan']);
-            $namaKelurahan = Village::find($gor->address['kelurahan']);
-
-            // dd($namaKota->name);
-            // Create a new array with modifications
-            $updatedAddress = [
-                'provinsi' => $namaProvinsi,
-                'kota' => $namaKota,
-                'kecamatan' => $namaKecamatan,
-                'kelurahan' => $namaKelurahan,
-            ];
-
-            // Update the decoded address with names
-            $gor->address = $updatedAddress;
-        }
-        
         return view("sporthall", [
             'gors'=> Gor::latest()->filter(request(['search']))->paginate(7)->withQueryString()
         ]);

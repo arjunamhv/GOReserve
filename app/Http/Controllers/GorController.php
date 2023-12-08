@@ -121,11 +121,17 @@ class GorController extends Controller
         if ($gorData && isset($gorData->facility)) {
             $gorData->facility = json_decode($gorData->facility, true);
         }
+        
         $provinces = Province::all();
-        $cities = Regency::where('province_id', $gorData->address['provinsi'])->get();
-        $districts = District::where('regency_id', $gorData->address['kota'])->get();
-        $sub_districts = Village::where('district_id', $gorData->address['kecamatan'])->get();
-        return view('admin.goredit', compact('gorData', 'provinces', 'cities', 'districts', 'sub_districts'));
+        $province = Province::where('name', $gorData->address['provinsi'])->get();
+        $cities = Regency::where('province_id', $province->first()->id)->get();
+
+        $city = Regency::where('name', $gorData->address['kota'])->get();
+        $districts = District::where('regency_id', $city->first()->id)->get();
+
+        $district = District::where('name', $gorData->address['kecamatan'])->get();
+        $sub_districts = Village::where('district_id', $district->first()->id)->get();
+        return view('admin.goredit', compact('gorData', 'province', 'provinces', 'cities', 'districts', 'sub_districts'));
     }
 
     /**
