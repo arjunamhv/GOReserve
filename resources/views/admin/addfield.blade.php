@@ -56,7 +56,7 @@
             </div>
             <div class="form-control my-5">
                 <label for="fieldprice" class="label">
-                    <span class="label-text">Field Price</span>
+                    <span class="label-text">Field Price Per Hour</span>
                 </label>
                 <div class="join">
                     <div class="btn join-item btn-primary no-animation">Rp. </div>

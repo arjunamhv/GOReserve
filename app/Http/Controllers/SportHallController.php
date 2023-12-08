@@ -7,65 +7,83 @@ use App\Models\Booking;
 use App\Models\User;
 use App\Models\Field;
 use App\Models\Payment;
-use Illuminate\Http\Request;
 use App\Models\Province;
 use App\Models\Regency;
 use App\Models\District;
 use App\Models\Village;
+use Illuminate\Http\Request;
 
 class SportHallController extends Controller
 {
-    public function index()
-    {
+    public function index(){
         $gors = Gor::all();
         foreach ($gors as $gor) {
             $gor->address = json_decode($gor->address, true);
+            $namaProvinsi = Province::find($gor->address['provinsi']);
+            $namaKota = Regency::find($gor->address['kota']);
+            $namaKecamatan = District::find($gor->address['kecamatan']);
+            $namaKelurahan = Village::find($gor->address['kelurahan']);
 
-            $namaProvinsi = Province::find($gor->address['provinsi'])->name;
-            $namaKota = Regency::find($gor->address['kota'])->name;
-            $namaKecamatan = District::find($gor->address['kecamatan'])->name;
-            $namaKelurahan = Village::find($gor->address['kelurahan'])->name;
-
+            // dd($namaKota->name);
             // Create a new array with modifications
             $updatedAddress = [
                 'provinsi' => $namaProvinsi,
                 'kota' => $namaKota,
                 'kecamatan' => $namaKecamatan,
                 'kelurahan' => $namaKelurahan,
-                'detailAlamat' => $gor->address['detailAlamat'],
             ];
 
             // Update the decoded address with names
             $gor->address = $updatedAddress;
         }
-
+        
         return view("sporthall", [
-            'gors' => $gors
+            'gors'=> Gor::latest()->filter(request(['search']))->paginate(7)->withQueryString()
         ]);
     }
 
+    public function show(Gor $gor){
+        $gor->gor_photos = json_decode($gor->gor_photos, true);
 
-    public function show(Gor $gor)
-    {
         return view('partials.detail.sporthall-detail', [
             "gor" => $gor
         ]);
     }
 
-    public function order(Gor $gor)
-    {
+    public function order(Gor $gor){
         return view("partials.order.sporthall-order", [
-            "gor" => $gor,
+            "gor"=> $gor,
             "formData" => session('formData', [])
+            ] );
+    }
+
+    public function checkschedule(Gor $gor){
+        return view("partials.order.sporthall-check", [
+            "gor" => $gor,
         ]);
     }
 
-    public function store(Request $request)
-    {
+    public function check(Request $request, Gor $gor){
+        $validatedData = $request->validate([
+            "field_id" => "required",
+            "booking_date" => "required"
+        ]);
 
+        $bookings = Booking::whereDate('booking_date', $validatedData['booking_date']) //mengambil data tanggal booking
+        ->where('field_id', $validatedData['field_id'])->get();
+
+        $field = Field::find($validatedData['field_id'])->name;
+
+        return redirect()->route('check', ['gor' => $gor->slug])->with(["success" => "sudah aman", 'booking' => $bookings, 'date' => $validatedData['booking_date'], 'field' => $field]);
+    }
+
+    
+
+    public function store(Request $request){
+        
         // value assignement username dari input
         $username = $request->input('username');
-
+        
         // cek nama user pada tabel user
         $user = User::where('name', $username)->first();
 
@@ -74,49 +92,77 @@ class SportHallController extends Controller
 
         // validasi data input user
         $validatedData = $request->validate([
-            "field_id" => "required",
-            "booking_date" => "required",
-            "start_time" => "required",
-            "duration" => "required",
+            "field_id"=> "required",
+            "booking_date"=> "required",
+            "start_time"=> "required",
+            "duration"=> "required",
         ]);
-
+        
         // mengisi userid
         $validatedData['user_id'] = $userId;
-
+        
         //menenetukan akhir waktu booking
-        $endtime = strtotime($validatedData['start_time'] . ' + ' . $validatedData['duration'] . ' hours');
+        $endtime = strtotime($validatedData['start_time']. ' + '. $validatedData['duration'] .' hours');
 
+        //get data field dan gor
         $field = Field::find($validatedData['field_id'])->gor_id;
         $gor = Gor::find($field);
 
-        if (strtotime($validatedData['start_time']) < strtotime($gor->opening_hour) || strtotime($validatedData['start_time']) > strtotime($gor->closing_hour)) {
+        //prepare query
+        $starttime = $validatedData['start_time'];
+        $endTime = date('H:i', strtotime($validatedData['start_time']) + $validatedData['duration'] * 3600);//membuat endtime dari inputan duration pengguna
+        $validatedData['end_time'] = $endTime;
+
+        //cek waktu booking apakah tersedia atau tidak
+        $bookings = Booking::whereDate('booking_date', $validatedData['booking_date']) //mengambil data tanggal booking
+            ->where('field_id', $validatedData['field_id'])->where(function($query) use ($starttime, $endTime){ //pengecekan where nested
+            $query->whereBetween('start_time', [$starttime, $endTime])->orWhereBetween('end_time', [$starttime, $endTime])//cek rentang waktu booking baru dari mulai ke berhenti
+            ->orWhere(function($query2) use ($starttime, $endTime){//pengecekan kedua untuk rentang waktu
+                $query2->where('start_time', '<', $starttime)//cek apakah terdapat start_time yang waktunya lebih awal dari starttime booking baru
+                ->where('start_time', '>=', $endTime);//cek start_time booking lain juga harus lebih akhir dari end time booking baru
+            });
+        })->exists();
+
+        //validasi dari banyak kemungkinan
+        if(strtotime($validatedData['start_time']) < strtotime($gor->opening_hour) || strtotime($validatedData['start_time']) > strtotime($gor->closing_hour)){
             return redirect()->back()->with("error", "Booking diluar jam buka");
-        } elseif ($endtime > strtotime($gor->closing_hour)) {
+        }
+        elseif($endtime > strtotime($gor->closing_hour)){
             return redirect()->back()->with("error", "Durasi melebihi jam tutup");
         }
-
+        elseif($bookings){
+            return redirect()->back()->with("error", "Lapangan sudah dibooking");
+        }
+        
         // Membuat record baru dalam tabel Booking berdasarkan data yang divalidasi
         $booking = Booking::create($validatedData);
-
+        
         // Menyimpan data dalam session untuk ditampilkan pada bagian summary
         session()->flash("formData", [
             'field_name' => $booking->field->name,
             'username' => $booking->user->name,
             'start_time' => $booking->start_time,
             'end_time' => date('H:i', strtotime($booking->start_time) + $booking->duration * 3600),
-            'price' => $booking->field->price * $booking->duration,
+            'price' =>  $booking->field->price * $booking->duration,
             'booking_date' => $booking->booking_date,
-            'booking_id' => $booking->id
+            'booking_id' => $booking->id,
+            'fieldbanner' => $booking->field->field_banner,
+            'fieldphotos' => json_decode($booking->field->field_photos),
         ]);
 
         // Mengarahkan kembali ke halaman 'store' dengan parameter 'gor' dan memberikan pesan sukses
         return redirect()->route('store', ['gor' => $booking->field->gor->slug])->with("success", "Data tersimpan!");
     }
 
-    public function transaction(Request $request, $gor)
-    {
-        $payment = Payment::create($request->all());
+    public function transaction(Request $request){
+        $payment = Payment::firstOrNew([
+            'booking_id' => $request->input('booking_id'),
+            'amount' => $request->input('amount'),
+        ]);
 
+        if (!$payment->exists) {
+            $payment = Payment::create($request->all());
+        }
         // Set your Merchant Server Key
         \Midtrans\Config::$serverKey = config('midtrans.server_key');
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
@@ -139,7 +185,7 @@ class SportHallController extends Controller
 
         $snapToken = \Midtrans\Snap::getSnapToken($params);
 
-        // Mengarahkan kembali ke halaman 'store' dengan parameter 'gor' dan memberikan pesan sukses
-        return view('partials.order.transaction', compact('snapToken', 'payment'));
+         // Mengarahkan kembali ke halaman 'store' dengan parameter 'gor' dan memberikan pesan sukses
+         return view('partials.order.transaction', compact('snapToken', 'payment'));
     }
 }

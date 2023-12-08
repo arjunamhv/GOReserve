@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('ratings', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('field_id');
-            $table->double('score');
-            $table->text('review');
+            $table->increments('id');
+            $table->unsignedBigInteger('booking_id');
+            $table->longText('comments')->nullable();
+            $table->integer('star_rating');
+            $table->enum('status', ['active', 'deactive']);
             $table->timestamps();
         });
     }

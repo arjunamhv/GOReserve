@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreGORRequest;
-use App\Http\Requests\UpdateGORRequest;
+use App\Http\Requests\StoreGorRequest;
+use App\Http\Requests\UpdateGorRequest;
 
 use App\Models\Gor;
 use App\Models\User;
@@ -17,6 +17,22 @@ use Illuminate\Support\Str;
 
 class GorController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -41,21 +57,22 @@ class GorController extends Controller
         }
 
         // Address
-        $idProvinsi = $validate['inpprovinsi'];
-        $idKota = $validate['inpkota'];
-        $idKecamatan = $validate['inpkecamatan'];
-        $idKelurahan = $validate['inpkelurahan'];
+        $Provinsi = Province::find($validate['inpprovinsi']);
+        $Kota = Regency::find($validate['inpkota']);
+        $Kecamatan = District::find($validate['inpkecamatan']);
+        $Kelurahan = Village::find($validate['inpkelurahan']);
 
         $detailAlamat = $validate['inpdetail_alamat'];
 
         // Combine address components into an array
         $alamat = [
-            'provinsi' => $idProvinsi,
-            'kota' => $idKota,
-            'kecamatan' => $idKecamatan,
-            'kelurahan' => $idKelurahan,
+            'provinsi' => $Provinsi->name,
+            'kota' => $Kota->name,
+            'kecamatan' => $Kecamatan->name,
+            'kelurahan' => $Kelurahan->name,
             'detailAlamat' => $detailAlamat,
         ];
+
 
         //slug
         $slug =  Str::slug($validate['inpgorname']). '-' . uniqid();
@@ -78,6 +95,15 @@ class GorController extends Controller
         $user->save();
         
         return redirect()->route('admin-dashboard')->with('message', 'Registrasi GOR Berhasil!');
+
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(Gor $gor)
+    {
+        //
     }
 
     /**
@@ -105,7 +131,7 @@ class GorController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateGORRequest $request, $id)
+    public function update(UpdateGorRequest $request, $id)
     {
         $validate = $request->validated();
         $gor = Gor::find($id);
@@ -134,22 +160,22 @@ class GorController extends Controller
             $photoPaths = json_decode($gor->gor_photos);
         }
 
-        // Address
-        $idProvinsi = $validate['inpprovinsi'];
-        $idKota = $validate['inpkota'];
-        $idKecamatan = $validate['inpkecamatan'];
-        $idKelurahan = $validate['inpkelurahan'];
-
-        $detailAlamat = $validate['inpdetail_alamat'];
-
-        // Combine address components into an array
-        $alamat = [
-            'provinsi' => $idProvinsi,
-            'kota' => $idKota,
-            'kecamatan' => $idKecamatan,
-            'kelurahan' => $idKelurahan,
-            'detailAlamat' => $detailAlamat,
-        ];
+         // Address
+         $Provinsi = Province::find($validate['inpprovinsi']);
+         $Kota = Regency::find($validate['inpkota']);
+         $Kecamatan = District::find($validate['inpkecamatan']);
+         $Kelurahan = Village::find($validate['inpkelurahan']);
+ 
+         $detailAlamat = $validate['inpdetail_alamat'];
+ 
+         // Combine address components into an array
+         $alamat = [
+             'provinsi' => $Provinsi->name,
+             'kota' => $Kota->name,
+             'kecamatan' => $Kecamatan->name,
+             'kelurahan' => $Kelurahan->name,
+             'detailAlamat' => $detailAlamat,
+         ];
 
         // opening_hour
         $startTime = $validate['inpstartTime'];
@@ -169,5 +195,13 @@ class GorController extends Controller
 
         return redirect()->route('mygor.show', ['id' => $gor->user_id])->with('success', 'berhasil mengupdate data');
 
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Gor $gor)
+    {
+        //
     }
 }

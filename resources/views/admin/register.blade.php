@@ -22,7 +22,7 @@
                 <label for="gorphotos" class="label">
                     <span class="label-text">Add GOR Images</span>
                 </label>
-                <input type="file" id="gorphotos" name="inpgorphotos[]"
+                <input type="file" id="gorphotos" name="inpgorphotos"
                     class="error-check @error('inpgorphotos') border-error @enderror file-input file-input-bordered w-full"
                     multiple onchange="previewPhotos(this)" />
                 @error('inpgorphotos')
@@ -153,7 +153,7 @@
                 </label>
                 <div class="facility-item grid grid-cols-12 gap-4 my-1 align-middle">
                     <input type="text" name="inpfacilities[]" placeholder="Type here"
-                        value="{{ implode(',', old('inpfacilities', [])) }}" class="input input-bordered col-span-10" />
+                        value="{{ old('inpfacilities.0') }}" class="input input-bordered col-span-10" />
                     <button type="button" class="btn btn-sm btn-primary col-span-2 my-auto" id="addFacilityBtn"><i
                             class="fa-solid fa-plus inline md:hidden"></i><span class="hidden md:inline">Add
                             more</span></button>
@@ -306,29 +306,59 @@
         });
 
         // facility handling
-        document.getElementById('addFacilityBtn').addEventListener('click', function() {
-            let facilitiesContainer = document.getElementById('facilitiesContainer');
-            let facilityCount = document.querySelectorAll('[name^="inpfacilities"]').length;
-            // Tambah input untuk fasilitas baru
-            let newFacilityInput = document.createElement('div');
-            newFacilityInput.classList.add('facility-item');
-            newFacilityInput.innerHTML = `
+        document.addEventListener('DOMContentLoaded', function() {
+            // Restore the facility inputs from old input values
+            restoreFacilities();
+            document.getElementById('addFacilityBtn').addEventListener('click', function() {
+                let facilitiesContainer = document.getElementById('facilitiesContainer');
+                let facilityCount = document.querySelectorAll('[name^="inpfacilities"]').length;
+
+                // Add input for a new facility
+                let newFacilityInput = document.createElement('div');
+                newFacilityInput.classList.add('facility-item');
+                newFacilityInput.innerHTML = `
             <div class="grid grid-cols-12 gap-4 my-1 align-middle">
                 <input type="text" name="inpfacilities[${facilityCount}]" placeholder="Type here" class="input input-bordered col-span-10" />
                 <button type="button" class="btn btn-sm btn-error my-auto col-span-2 removeFacility"><i class="fa-solid fa-trash-can inline md:hidden"></i><span class="hidden md:inline">Remove</span></button>
             </div>
-            `;
-            facilitiesContainer.appendChild(newFacilityInput);
+        `;
+                facilitiesContainer.appendChild(newFacilityInput);
 
-            // Setelah menambah fasilitas baru, kita perlu menambahkan event listener
-            newFacilityInput.querySelector('.removeFacility').addEventListener('click', function() {
-                newFacilityInput.remove();
+                // Add event listener after adding a new facility
+                newFacilityInput.querySelector('.removeFacility').addEventListener('click', function() {
+                    newFacilityInput.remove();
+                });
             });
-        });
 
-        document.getElementById('facilityForm').addEventListener('click', function(event) {
-            if (event.target.classList.contains('removeFacility')) {
-                event.target.parentElement.remove();
+            document.getElementById('facilityForm').addEventListener('click', function(event) {
+                if (event.target.classList.contains('removeFacility')) {
+                    event.target.parentElement.remove();
+                }
+            });
+
+            function restoreFacilities() {
+                let inpfacilitiesOld = @json(old('inpfacilities', []));
+                let inpfacilitiesCount = inpfacilitiesOld.length;
+                if (inpfacilitiesCount > 1) {
+                    let facilitiesContainer = document.getElementById('facilitiesContainer');
+                    for (let i = 1; i < inpfacilitiesCount; i++) {
+                        let newFacilityInput = document.createElement('div');
+                        newFacilityInput.classList.add('facility-item');
+                        newFacilityInput.innerHTML = `
+                    <div class="grid grid-cols-12 gap-4 my-1 align-middle">
+                        <input type="text" name="inpfacilities[${i}]" placeholder="Type here" class="input input-bordered col-span-10" value="${inpfacilitiesOld[i]}" />
+                        <button type="button" class="btn btn-sm btn-error my-auto col-span-2 removeFacility"><i class="fa-solid fa-trash-can inline md:hidden"></i><span class="hidden md:inline">Remove</span></button>
+                    </div>
+                `;
+                        facilitiesContainer.appendChild(newFacilityInput);
+
+                        // Add event listener after adding a restored facility
+                        newFacilityInput.querySelector('.removeFacility').addEventListener('click',
+                            function() {
+                                newFacilityInput.remove();
+                            });
+                    }
+                }
             }
         });
     </script>

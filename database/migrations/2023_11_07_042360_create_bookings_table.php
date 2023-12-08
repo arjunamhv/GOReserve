@@ -18,7 +18,8 @@ return new class extends Migration
             $table->date('booking_date');
             $table->time('start_time');
             $table->integer('duration');
-            $table->string('status')->default('Belum Bayar');
+            $table->time('end_time');
+            $table->enum('status', ['Unpaid', 'Paid', 'Canceled', 'CheckIn', 'CheckOut'])->default('Unpaid');
             $table->timestamps();
         });
     }
