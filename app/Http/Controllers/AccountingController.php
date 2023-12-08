@@ -10,7 +10,7 @@ use App\Charts\TransactionStats;
 
 class AccountingController extends Controller
 {
-    public function index(TransactionStats $chart)
+    public function show(TransactionStats $chart)
     {
         // Mingguan
         $getTotalAmountWeekly = Booking::whereNotIn('bookings.status', ['Unpaid', 'Canceled'])
