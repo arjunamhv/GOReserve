@@ -25,12 +25,10 @@ class DashboardAdminController extends Controller
                 $bookingsData = Booking::where('field_id', $field->id);
             }
         }
-        $bookings = $bookingsData->where('status', ['Paid', 'CheckIn']);
+        $bookings = $bookingsData->where('status', ['Paid', 'CheckIn'])->get();
         foreach ($bookings as $booking) {
             $booking->whereDate('booking_date', '<=', $fiveDaysToGo)->get();
-        }
-        
-
+        }  
         foreach ($bookings as $booking) {
             $typeId = $booking->field->type;
             $type = Type::find($typeId);        
@@ -48,7 +46,6 @@ class DashboardAdminController extends Controller
         $getSevenDaysAgo = Carbon::now()->subDays(7);
         // Format tanggal jika diperlukan
         $sevenDaysAgo = $getSevenDaysAgo->format('d-m-Y');
-
         return view('admin.dashboard', $data, compact('bookings', 'totalTransaksi', 'totalAmount', 'sevenDaysAgo'));
     }
 }
