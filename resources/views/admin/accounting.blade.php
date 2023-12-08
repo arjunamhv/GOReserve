@@ -9,13 +9,13 @@
                 <div class="stat">
                     <div class="stat-title">Total Pendapatan Mingguan</div>
                     <div class="stat-value my-1">{{ $totalAmountWeekly }}</div>
-                    <div class="stat-desc">Since {{ $sevenDaysAgo }} Until now</div>
+                    <div class="stat-desc">Since {{ $sevenDaysAgo }} Until yesterday</div>
                 </div>
 
                 <div class="stat">
                     <div class="stat-title">Total Pendapatan Bulanan</div>
                     <div class="stat-value my-1">{{ $totalAmountMonthly }}</div>
-                    <div class="stat-desc">Since {{ $aMonthAgo }} Until now</div>
+                    <div class="stat-desc">Pendapatan di bulan {{ $thisMonth }}</div>
                 </div>
             </div>
         </div>
