@@ -46,7 +46,7 @@
                             <p class="text-xs text-right lg:text-left lg:text-base font-small text-gray-500 mb-2">Nama GOR</p>
                             <p class="text-sm lg:text-lg font-medium text-slate-800 mb-4">{{ $payment->booking->field->gor->name }}</p>
                             <p class="text-right lg:text-left text-xs lg:text-base font-small text-gray-500 mb-2">Status</p>
-                            @if ($payment->booking->status === 'Paid' || $payment->booking->status === 'Check In')
+                            @if ($payment->booking->status === 'Paid' || $payment->booking->status === 'CheckIn')
                                 <p class="text-right lg:text-left text-sm lg:text-lg font-medium text-green-500 lg:mb-2">{{ $payment->booking->status }}</p>
                             @else
                                 <p class="text-right lg:text-left text-sm lg:text-lg font-medium text-red-500 lg:mb-2">{{ $payment->booking->status }}</p>
